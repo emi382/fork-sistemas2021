@@ -9,6 +9,16 @@ class App < Sinatra::Base
    @name = params[:name]
    erb :hello_template
   end
+  
+  post "/careers" do
+  	data = JSON.parse request.body.read
+  	career = Career.new(name: data['name'])
+  	if career.save
+  		[201, { 'Location' => "careers/#{career.id}" }, 'Created']
+  	else
+  		[500, {}, 'Internal Server Error']
+  	end
+  end
 
   post "/posts" do
     request.body.rewind  # in case someone already read it
