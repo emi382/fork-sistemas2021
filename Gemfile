@@ -9,5 +9,13 @@ gem 'sequel'
 group :development do
   gem 'dotenv', '2.7.5'
   gem 'rerun'
+  
+end
+
+group :test do
+  gem 'minitest'
+  gem 'minitest-color'
+  gem 'rack-test'
+  
 end
 
