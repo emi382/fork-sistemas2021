@@ -19,6 +19,22 @@ MiniTest::Unit::TestCase
 
   end
   
+  def test_career_has_many_outcomes
+  
+    #Arrange
+    career = Career.create(name: 'Spaceman')
+		
+    #Act
+    Outcome.create(career_id: career.career_id)
+    Outcome.create(career_id: career.career_id)
+    Outcome.create(career_id: career.career_id)
+		
+    #Assert
+		
+    assert_equal career.outcomes.count, 3
+
+  end
+  
   def test_career_has_name
     career = Career.new
     
