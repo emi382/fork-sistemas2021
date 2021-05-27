@@ -16,5 +16,5 @@ ENV PATH="/usr/local/bundle/bin:${PATH}"
 
 COPY . /usr/src/app
 
-EXPOSE 9292
+EXPOSE 10009
 

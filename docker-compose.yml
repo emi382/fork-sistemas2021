@@ -4,7 +4,7 @@ services:
     build: .
     command: bash -c "bundle check || bundle install && bundle exec rerun --background 'rackup --host 0.0.0.0 -p 10009' 1>/dev/null"
     ports:
-      - "9292:9292"
+      - "10009:10009"
     environment:
       LANG: "C.UTF-8"
       LC_ALL: "C.UTF-8"

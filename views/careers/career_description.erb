@@ -1,0 +1,15 @@
+<h1> Parameters of <%=career.name%>: </h1> 
+<ul> 
+    <li> id: <%=career.id%></li> 
+    <li> name: <%=career.name%></li> 
+    <li> survey count: <%=career.surveys.count%></li> 
+</ul> 
+</br>
+
+<%career.surveys.map do |survey|%>
+<h1> Surveys associated with <%=career.name%> </h1>
+<ul> 
+<li> <%=survey.name%> </li>
+</ul>
+<%end%>
+

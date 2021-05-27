@@ -1,0 +1,14 @@
+<form action='/careers' method='POST' id='form1'>
+    <input type='text' name='name'>
+    <input type='submit' value='Submit'>
+</form>
+
+<button type='submit' form='form1' value='Submit'> Apreta este si te gusta mas </button> 
+</br> 
+</br>
+
+<%@careers.map do |career|%>
+    <li> <a href='careers/<%=career.id%>'> <%=career.name%>: <%=career.surveys.count%> </a> 
+    </li>
+<%end%> 
+

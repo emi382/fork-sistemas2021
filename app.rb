@@ -11,13 +11,29 @@ class App < Sinatra::Base
   end
   
   post "/careers" do
-  	data = JSON.parse request.body.read
-  	career = Career.new(name: data['name'])
+
+  	career = Career.new(name: params[:name])
+
   	if career.save
   		[201, { 'Location' => "careers/#{career.id}" }, 'Created']
+      redirect back
   	else
   		[500, {}, 'Internal Server Error']
   	end
+
+  end
+
+  get '/careers' do
+    @careers=Career.all
+
+    erb :'careers/career_index'
+  end
+
+  get '/careers/:id' do 
+    career = Career.where(id: params['id']).last
+
+    erb :'careers/career_description', :locals => {:career => career}
+
   end
 
   post "/posts" do
