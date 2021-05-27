@@ -1,8 +1,13 @@
 require './models/init.rb'
 
 class App < Sinatra::Base
+
   get '/' do
-    "Hello World"
+
+  @surveys=Survey.all
+  
+  erb :'landing'
+
   end
 
   get "/hello/:name" do
@@ -23,16 +28,41 @@ class App < Sinatra::Base
 
   end
 
+  post "/surveys" do 
+    survey = Survey.new(name: params[:name])
+
+    if survey.save
+      [201, { 'Location' => "surveys/#{survey.survey_id}" }, 'Created']
+      redirect back
+    else
+      [500, {}, 'Internal Server Error']
+    end
+
+  end
+
   get '/careers' do
     @careers=Career.all
 
     erb :'careers/career_index'
   end
 
+  get '/surveys' do
+    @surveys=Survey.all
+
+    erb :'surveys/survey_index'
+  end
+
   get '/careers/:id' do 
     career = Career.where(id: params['id']).last
 
     erb :'careers/career_description', :locals => {:career => career}
+
+  end
+
+  get '/surveys/:id' do 
+    survey = Survey.where(survey_id: params['id']).last
+
+    erb :'surveys/survey_description', :locals => {:survey => survey}
 
   end
 
