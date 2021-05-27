@@ -1,0 +1,17 @@
+<body style="background-color:powderblue;">
+
+<h1 style="font-size:200%;color:#003399;">Welcome to our vocational test service webpage!</h1>
+
+</br>
+<h1 style="font-size:120%">Please select a test to take:</h1>
+
+<%@surveys.map do |survey|%>
+    <li> <a href='surveys/<%=survey.survey_id%>'> <%=survey.name%> </a> 
+    </li>
+<%end%> 
+
+</br>
+
+Or take a look at what careers you might end up being recommended:
+</br>
+<a href='/careers'> List of all careers </a>
