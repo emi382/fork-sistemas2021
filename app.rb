@@ -3,18 +3,16 @@ require './models/init.rb'
 class App < Sinatra::Base
 
   get '/' do
-
-  @surveys=Survey.all
-  
-  erb :'landing'
-
+    "hola"
+  #@surveys=Survey.all
+  #erb :'landing'
   end
 
   get "/hello/:name" do
    @name = params[:name]
    erb :hello_template
   end
-  
+
   post "/careers" do
 
   	career = Career.new(name: params[:name])
@@ -28,7 +26,7 @@ class App < Sinatra::Base
 
   end
 
-  post "/surveys" do 
+  post "/surveys" do
     survey = Survey.new(name: params[:name])
 
     if survey.save
@@ -41,9 +39,10 @@ class App < Sinatra::Base
   end
 
   get '/careers' do
-    @careers=Career.all
-
-    erb :'careers/career_index'
+    @careers = Career.all
+    items = @careers.map {|career| "<li> #{career.name} </li>"}
+    @string = items.join
+    erb :'careers/career_xendi'
   end
 
   get '/surveys' do
@@ -52,14 +51,14 @@ class App < Sinatra::Base
     erb :'surveys/survey_index'
   end
 
-  get '/careers/:id' do 
+  get '/careers/:id' do
     career = Career.where(id: params['id']).last
 
     erb :'careers/career_description', :locals => {:career => career}
 
   end
 
-  get '/surveys/:id' do 
+  get '/surveys/:id' do
     survey = Survey.where(survey_id: params['id']).last
 
     erb :'surveys/survey_description', :locals => {:survey => survey}
@@ -82,4 +81,3 @@ class App < Sinatra::Base
     p.description
   end
 end
-
