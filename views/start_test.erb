@@ -1,0 +1,11 @@
+<%@questions.map do |question|%>
+    <li> <%=question.number.to_s%>
+    </br><%=question.name%>
+    </br><%=question.description%>
+        <%@questions.choices.map do |choice|%>
+        <li> <%=choice.text%> </li>
+        <%end%>
+    </br>
+    </br>
+    </li>
+<%end%> 

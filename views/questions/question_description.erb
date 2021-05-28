@@ -1,0 +1,13 @@
+<body style="background-color:powderblue;">
+<h1> Question description: </h1> 
+<ul> 
+    <li> id: <%=question.question_id%></li> 
+    <li> name: <%=question.name%></li> 
+    <li> description: <%=question.description%></li> 
+    <li> number: <%=question.number%></li> 
+</ul> 
+</br>
+
+<form action="<%=question.question_id%>/delete" method="post">
+    <input type="hidden" name="id" value=<%=question.question_id%>>
+    <button type="submit">Delete</button>

@@ -29,6 +29,8 @@ class App < Sinatra::Base
   end
 
   get "/start" do 
+    @questions=Question.all
+    erb :'start_test'
 
   end
 
@@ -44,6 +46,31 @@ class App < Sinatra::Base
 
   end
 
+  post "/surveys/start" do 
+    survey = Survey.new(name: params[:name])
+
+    if survey.save
+      [201, { 'Location' => "surveys/#{survey.survey_id}" }, 'Created']
+      redirect '/start'
+    else
+      [500, {}, 'Internal Server Error']
+    end
+
+  end
+
+  get '/surveys' do
+    @surveys=Survey.all
+
+    erb :'surveys/survey_index'
+  end
+
+  get '/surveys/:id' do 
+    survey = Survey.where(survey_id: params['id']).last
+
+    erb :'surveys/survey_description', :locals => {:survey => survey}
+
+  end
+
   post "/questions" do 
     question = Question.new(name: params[:name], description: params[:description], number: params[:number])
 
@@ -54,6 +81,23 @@ class App < Sinatra::Base
       [500, {}, 'Internal Server Error']
     end
 
+  end
+
+  get '/questions' do
+    @questions=Question.all
+
+    erb :'questions/question_index'
+  end
+
+  get '/questions/:id' do 
+    question=Question.where(question_id: params['id']).last
+
+    erb :'questions/question_description', :locals => {:question => question}
+  end
+
+  post "/questions/:id/delete" do
+    Question.where(:question_id => params[:id]).delete
+    redirect '/questions'
   end
 
   post "/careers/:id/delete" do
@@ -68,29 +112,10 @@ class App < Sinatra::Base
     erb :'careers/career_index'
   end
 
-  get '/questions' do
-    @questions=Question.all
-
-    erb :'questions/question_index'
-  end
-
-  get '/surveys' do
-    @surveys=Survey.all
-
-    erb :'surveys/survey_index'
-  end
-
   get '/careers/:id' do 
     career = Career.where(id: params['id']).last
 
     erb :'careers/career_description', :locals => {:career => career}
-
-  end
-
-  get '/surveys/:id' do 
-    survey = Survey.where(survey_id: params['id']).last
-
-    erb :'surveys/survey_description', :locals => {:survey => survey}
 
   end
 
