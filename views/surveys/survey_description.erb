@@ -1,6 +1,15 @@
 <body style="background-color:powderblue;">
 <h1 style="font-size:130%;color:#003399;"> Starting test: "<%=survey.name%>" </h1> 
-
 </br>
 
-TO DO
+(Admin) Add question to test:
+
+<form action='/surveys/<%=survey.survey_id%>' method='POST' id='form1'>
+    <label for="qname">Question name:</label><br>
+    <input type='text', id="qname", name='name'>
+    <label for="qdesc">Question description:</label><br>
+    <input type='text', id="qdesc", name='description'>
+    <label for="qnumber">Question description:</label><br>
+    <input type='number', id="qnumber", name='number'>
+    <input type='submit' value='Submit question'>
+</form>
