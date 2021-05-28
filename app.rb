@@ -28,6 +28,10 @@ class App < Sinatra::Base
 
   end
 
+  get "/start" do 
+
+  end
+
   post "/surveys" do 
     survey = Survey.new(name: params[:name])
 
@@ -51,6 +55,12 @@ class App < Sinatra::Base
     end
 
   end
+
+  post "/careers/:id/delete" do
+    Career.where(:id => params[:id]).delete
+    redirect '/careers'
+  end
+
 
   get '/careers' do
     @careers=Career.all
