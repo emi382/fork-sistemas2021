@@ -40,10 +40,17 @@ class App < Sinatra::Base
 
   end
 
-  post "/surveys/:id" do
-    question= Question.new()
-  end
+  post "/questions" do 
+    question = Question.new(name: params[:name], description: params[:description], number: params[:number])
 
+    if question.save
+      [201, { 'Location' => "questions/#{question.question_id}" }, 'Created']
+      redirect back
+    else
+      [500, {}, 'Internal Server Error']
+    end
+
+  end
 
   get '/careers' do
     @careers=Career.all

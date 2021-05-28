@@ -88,28 +88,4 @@ MiniTest::Unit::TestCase
     
     assert_equal question.valid?, false
   end
-
-  def test_question_type_is_not_null
-    question = Question.new
-    
-    question.name='a'
-    question.description='b'
-    question.number=3
-    question.type=nil
-    
-    assert_equal question.valid?, false
-  end
-
-  def test_question_type_is_not_empty
-    question = Question.new
-    
-    question.name='a'
-    question.description='b'
-    question.number=3
-    question.type=''
-    
-    assert_equal question.valid?, false
-  end
-  
-
 end
