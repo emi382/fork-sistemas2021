@@ -3,11 +3,9 @@ require './models/init.rb'
 class App < Sinatra::Base
 
   get '/' do
- "hola"
+    "hola"
   #@surveys=Survey.all
-
-#  erb :'landing'
-
+  #erb :'landing'
   end
 
   get "/hello/:name" do
@@ -41,8 +39,9 @@ class App < Sinatra::Base
   end
 
   get '/careers' do
-    @careers=Career.all
-    @careers.map { |career|  career.name}
+    @careers = Career.all
+    items = @careers.map {|career| "<li> #{career.name} </li>"}
+    @string = items.join
     erb :'careers/career_xendi'
   end
 
