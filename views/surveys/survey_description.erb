@@ -5,11 +5,20 @@
 (Admin) Add question to test:
 
 <form action='/surveys/<%=survey.survey_id%>' method='POST' id='form1'>
-    <label for="qname">Question name:</label><br>
-    <input type='text', id="qname", name='name'>
-    <label for="qdesc">Question description:</label><br>
-    <input type='text', id="qdesc", name='description'>
-    <label for="qnumber">Question description:</label><br>
-    <input type='number', id="qnumber", name='number'>
+    <label for="qname">Question name:</label></br>
+    <input type='text', id="qname", name='name'></br>
+    <label for="qdesc">Question description:</label></br>
+    <input type='text', id="qdesc", name='description'></br>
+    <label for="qnumber">Question description:</label></br>
+    <input type='number', id="qnumber", name='number'></br>
     <input type='submit' value='Submit question'>
 </form>
+
+Current questions:
+
+<!--<%survey.questions.map do |question|%>
+<h1 style="font-size:100%;"> Questions linked to this survey: </h1>
+<ul> 
+<li> <%=question.name%> <%=question.description%> <%=question.number.to_s%></li>
+</ul>
+<%end%> -->

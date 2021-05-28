@@ -40,10 +40,21 @@ class App < Sinatra::Base
 
   end
 
+  post "/surveys/:id" do
+    question= Question.new()
+  end
+
+
   get '/careers' do
     @careers=Career.all
 
     erb :'careers/career_index'
+  end
+
+  get '/questions' do
+    @questions=Question.all
+
+    erb :'questions/question_index'
   end
 
   get '/surveys' do
