@@ -1,21 +1,24 @@
-<body style="background-color:powderblue;">
-
-<h1 style="font-size:130%;color:#003399;"> Career list: </h1> 
-
-<%@careers.map do |career|%>
-    <li> <a href='careers/<%=career.id%>'> <%=career.name%>: <%=career.surveys.count%> </a> 
-    </li>
-<%end%> 
-</br> 
-</br>
-
-<h1 style="font-size:100%;color:red;"> (Admin Only) Add a new career: </h1> 
-
-<form action='/careers' method='POST' id='form1'>
-    <input type='text' name='name'>
-    <input type='submit' value='Pero mira que buen boton'>
-</form>
-
-<button type='submit' form='form1' value='Submit'> Apreta este si te gusta mas </button> 
-
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>List of careers</title>
+  </head>
+  <body style="background-color:powderblue;">
+    <div>
+      <h1> Career list: </h1>
+      <%@careers.map do |career|%>
+      <li> <a href='careers/<%=career.id%>'> <%=career.name%>: <%=career.surveys.count%> </a>
+      </li>
+      <%end%>
+    </div>
+    <br>
+    <div>
+      <h2 style="color:red"> (Admin Only) Add a new career: </h2>
+      <form action='/careers' method='POST' id='form1'>
+        <input type='text' name='name'>
+        <input type='submit' value='Pero mira que buen boton'>
+      </form>
+      <button type='submit' form='form1' value='Submit'> Apreta este si te gusta mas </button>
+    </div>
+  </body>
+</html>
