@@ -72,6 +72,21 @@ class App < Sinatra::Base
     end
   end
 
+  get "/finish" do 
+    outcomes=Outcome.all
+    max=0
+    careerid=0
+    outcomes.map do |outcome|
+      choice=Choice.find(choice_id: outcome.choice_id)
+      curr=outcome.weight * choice.value
+      if curr > max
+        max=curr
+        careerid=outcome.career_id
+      end
+    end
+    erb :'finish', :locals => {:max => max, :career_id => careerid}
+  end
+
   post "/surveys" do 
     survey = Survey.new(name: params[:name])
 
