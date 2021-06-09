@@ -7,7 +7,7 @@
     <div>
       <h1> Career list: </h1>
       <%@careers.map do |career|%>
-      <li> <a href='careers/<%=career.id%>'> <%=career.name%>: <%=career.career_id%> </a>
+      <li> <a href='careers/<%=career.career_id%>'> <%=career.name%>: <%=career.career_id%> </a>
       </li>
       <%end%>
     </div>

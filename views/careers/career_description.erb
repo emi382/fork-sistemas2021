@@ -7,7 +7,7 @@
     <div>
       <h1> Parameters of <%=career.name%>: </h1>
       <ul>
-        <li> id: <%=career.id%></li>
+        <li> id: <%=career.career_id%></li>
         <li> name: <%=career.name%></li>
         <li> survey count: <%=career.surveys.count%></li>
       </ul>
@@ -20,8 +20,8 @@
           <li> <%=survey.name%> </li>
         </ul>
       <%end%>
-      <form action="<%=career.id%>/delete" method="post">
-        <input type="hidden" name="id" value=<%=career.id%>>
+      <form action="<%=career.career_id%>/delete" method="post">
+        <input type="hidden" name="id" value=<%=career.career_id%>>
         <button type="submit">Delete</button>
       </form>
     </div>
