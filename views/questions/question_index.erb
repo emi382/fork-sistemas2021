@@ -1,23 +1,29 @@
-<body style="background-color:powderblue;">
-
-<h1 style="font-size:130%;color:#003399;"> Question list: </h1> 
-
-<%@questions.map do |question|%>
-    <li> <a href='questions/<%=question.question_id%>'> <%=question.name%> </a> 
-    </li>
-<%end%> 
-</br> 
-</br>
-
-<h1 style="font-size:100%;color:red;"> (Admin Only) Add a new question to the test: </h1> 
-
-<form action='/questions' method='POST' id='form1'>
-    <label for="qname">Question name:</label></br>
-    <input type='text', id="qname", name='name'></br>
-    <label for="qdesc">Question description:</label></br>
-    <input type='text', id="qdesc", name='description'></br>
-    <label for="qnumber">Question number:</label></br>
-    <input type='number', id="qnumber", name='number'></br>
-    <input type='submit' value='Submit question'>
-</form>
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Question</title>
+  </head>
+  <body style="background-color:powderblue;">
+    <div>
+      <h1 style="color:#003399;"> Question list: </h1>
+      <%@questions.map do |question|%>
+        <li>
+          <a href='questions/<%=question.question_id%>'> <%=question.name%> </a>
+        </li>
+      <%end%>
+    </div>
+    <br>
+    <div>
+      <h3 style="color:red;"> (Admin Only) Add a new question to the test: </h3>
+      <form action='/questions' method='POST' id='form1'>
+          <label for="qname">Question name:</label><br>
+          <input type='text', id="qname", name='name'><br>
+          <label for="qdesc">Question description:</label><br>
+          <input type='text', id="qdesc", name='description'><br>
+          <label for="qnumber">Question number:</label><br>
+          <input type='number', id="qnumber", name='number'><br>
+          <input type='submit' value='Submit question'>
+      </form>
+    </div>
+  </body>
+</html>

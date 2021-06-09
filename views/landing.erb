@@ -5,26 +5,33 @@
     <title>Homepage</title>
   </head>
   <body style="background-color:powderblue;">
-    <h1>Welcome to our vocational test service webpage!</h1>
-    <br>
-
-    <!-- <h2>Please select a test to take:</h2>
-    <%@surveys.map do |survey|%>
-        <li> <a href='surveys/<%=survey.survey_id%>'> <%=survey.name%> </a>
-        </li>
-    <%end%> -->
-
-    <h2>You can start the vocational test right away by submitting your name:</h2>
-
-        <form action='/surveys/start' method='POST'>
+    <div>
+      <h1>Welcome to our vocational test service webpage!</h1>
+      <br>
+      <!-- <h2>Please select a test to take:</h2>
+      <%@surveys.map do |survey|%>
+          <li> <a href='surveys/<%=survey.survey_id%>'> <%=survey.name%> </a>
+          </li>
+      <%end%> -->
+    </div>
+    <div>
+      <h2>You can start the vocational test right away by submitting your name:</h2>
+      <form action='/surveys/start' method='POST'>
         <input type='name', name='name'>
         <input type='submit' value='Submit name'>
-        </form>
-
+      </form>
+    </div>
     <br>
-    <p>Or take a look at what careers you might end up being recommended:</p>
+    <div>
+      <p>Or take a look at what careers you might end up being recommended:
+      <a href='/careers'> List of all careers </a>
+      </p>
+    </div>
     <br>
-    <a href='/careers'> List of all careers </a>
+    <div>
+      <p>Agregar una pregunta:
+      <a href='/questions'> List of all questions </a>
+      </p>
+    </div>
   </body>
 </html>
-

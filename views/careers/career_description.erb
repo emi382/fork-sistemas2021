@@ -1,20 +1,30 @@
-<body style="background-color:powderblue;">
-<h1> Parameters of <%=career.name%>: </h1> 
-<ul> 
-    <li> id: <%=career.career_id%></li> 
-    <li> name: <%=career.name%></li> 
-    <li> survey count: <%=career.surveys.count%></li> 
-</ul> 
-</br>
-
-<%career.surveys.map do |survey|%>
-<h1> Surveys associated with <%=career.name%> </h1>
-<ul> 
-<li> <%=survey.name%> </li>
-</ul>
-<%end%>
-
-<form action="<%=career.id%>/delete" method="post">
-    <input type="hidden" name="id" value=<%=career.id%>>
-    <button type="submit">Delete</button>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Description</title>
+  </head>
+  <body style="background-color:powderblue;">
+    <div>
+      <h1> Parameters of <%=career.name%>: </h1>
+      <ul>
+        <li> id: <%=career.id%></li>
+        <li> name: <%=career.name%></li>
+        <li> survey count: <%=career.surveys.count%></li>
+      </ul>
+    </div>
+    </br
+    <div>
+      <%career.surveys.map do |survey|%>
+        <h1> Surveys associated with <%=career.name%> </h1>
+        <ul>
+          <li> <%=survey.name%> </li>
+        </ul>
+      <%end%>
+      <form action="<%=career.id%>/delete" method="post">
+        <input type="hidden" name="id" value=<%=career.id%>>
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+  </body>
+</html>
 
