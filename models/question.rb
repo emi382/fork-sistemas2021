@@ -1,6 +1,6 @@
 class Question < Sequel::Model
 	#one_to_many:choices
-	one_to_one:choices
+	many_to_one:choices
 	#one_to_many:responses
 
 	def validate

@@ -1,0 +1,16 @@
+<%outcomes.map do |outcome|%>
+    <li>  <%=outcome.career_id%> <%=outcome.weight%> 
+    </li>
+<%end%> 
+</br> 
+
+<<form action="/outcomes/new" method="post">
+    <label for="qcareer">Career id:</label></br>
+    <input type='number', id="qcareer", name='career'></br>
+    <label for="qweight">Weighting:</label></br>
+    <input type='number', id="qweight", name='weight'></br>
+    <input type="hidden" id="choiceid" name="choice_id" value="<%=choice.choice_id%>">
+    <input type='submit' value='Submit new outcome relation'>
+</br>
+
+    <a href='/careers'> List of all careers </a>

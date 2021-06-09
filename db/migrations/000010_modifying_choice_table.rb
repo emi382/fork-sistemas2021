@@ -9,6 +9,7 @@ Sequel.migration do
 
   down do
     drop_column :survey_id
+    drop_column :value
     add_column :text
   end
 end

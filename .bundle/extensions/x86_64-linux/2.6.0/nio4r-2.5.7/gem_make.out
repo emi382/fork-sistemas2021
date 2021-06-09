@@ -1,5 +1,5 @@
 current directory: /usr/local/bundle/gems/nio4r-2.5.7/ext/nio4r
-/usr/local/bin/ruby -I /usr/local/lib/ruby/2.6.0 -r ./siteconf20210511-8-vbv5sf.rb extconf.rb
+/usr/local/bin/ruby -I /usr/local/lib/ruby/2.6.0 -r ./siteconf20210608-8-l08bst.rb extconf.rb
 checking for unistd.h... yes
 checking for linux/aio_abi.h... yes
 checking for linux/io_uring.h... no
@@ -67,4 +67,4 @@ linking shared-object nio4r_ext.so
 
 current directory: /usr/local/bundle/gems/nio4r-2.5.7/ext/nio4r
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 nio4r_ext.so ./.gem.20210511-8-m4jnep
+/usr/bin/install -c -m 0755 nio4r_ext.so ./.gem.20210608-8-5wx2qb

@@ -1,11 +1,11 @@
 Sequel.migration do
   up do
     alter_table(:questions) do
-     drop_column :type
+     add_foreign_key :choice_id, :choices
     end
   end
 
   down do
-    add_column :type, String
+    drop_column :choice_id
   end
 end

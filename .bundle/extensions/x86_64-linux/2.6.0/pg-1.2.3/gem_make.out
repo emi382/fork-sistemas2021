@@ -1,5 +1,5 @@
 current directory: /usr/local/bundle/gems/pg-1.2.3/ext
-/usr/local/bin/ruby -I /usr/local/lib/ruby/2.6.0 -r ./siteconf20210511-8-wiu9jh.rb extconf.rb
+/usr/local/bin/ruby -I /usr/local/lib/ruby/2.6.0 -r ./siteconf20210608-8-znk1wd.rb extconf.rb
 checking for pg_config... yes
 Using config values from /usr/bin/pg_config
 checking for libpq-fe.h... yes
@@ -50,4 +50,4 @@ linking shared-object pg_ext.so
 
 current directory: /usr/local/bundle/gems/pg-1.2.3/ext
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 pg_ext.so ./.gem.20210511-8-2clgh4
+/usr/bin/install -c -m 0755 pg_ext.so ./.gem.20210608-8-1rtrnit

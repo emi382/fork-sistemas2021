@@ -28,9 +28,26 @@ class App < Sinatra::Base
 
   end
 
-  get "/start" do 
-    @questions=Question.all
-    erb :'start_test'
+  post "/choices/update" do
+
+    choices.where(Sequel[:choice_id] == params[:choice_id] ).update(:value => params[:value])
+
+
+    if choice.save
+      [201, { 'Location' => "choice/#{career.id}" }, 'Created']
+      redirect back
+    else
+      [500, {}, 'Internal Server Error']
+    end
+
+  end
+
+  get "/start" do
+
+    questions=Question.all
+    questions.map do |question| 
+      erb :'start_test', :locals => {:question => question}
+    end
 
   end
 
@@ -72,7 +89,9 @@ class App < Sinatra::Base
   end
 
   post "/questions" do 
-    question = Question.new(name: params[:name], description: params[:description], number: params[:number])
+    choice = Choice.new(value: -1)
+    choice.save
+    question = Question.new(name: params[:name], description: params[:description], number: params[:number], choice_id: choice.choice_id)
 
     if question.save
       [201, { 'Location' => "questions/#{question.question_id}" }, 'Created']
@@ -97,11 +116,33 @@ class App < Sinatra::Base
 
   post "/questions/:id/delete" do
     Question.where(:question_id => params[:id]).delete
+    Outcome.where(:choice_id => params[:choice_id]).delete
+    Choice.where(:choice_id => params[:choice_id]).delete #habria que poner :cascade en el foreign key de outcome
     redirect '/questions'
   end
 
+  post "/outcomes/new" do
+    outcome=Outcome.new(choice_id: params[:choice_id], career_id: params[:career], weight: params[:weight] )
+
+    if outcome.save
+      [201, { 'Location' => "outcomes/#{outcome.outcome_id}" }, 'Created']
+      redirect back
+    else
+      [500, {}, 'Internal Server Error']
+    end
+  end
+
+  get "/questions/:id/outcomes" do
+    question=Question.where(question_id: params['id']).last
+    choice=Choice.where(choice_id: question.choice_id).last
+    outcomes=Outcome.where(choice_id: choice.choice_id)
+
+    erb :'questions/outcomes/outcomes_index', :locals =>{:outcomes => outcomes, :choice => choice}
+
+  end
+
   post "/careers/:id/delete" do
-    Career.where(:id => params[:id]).delete
+    Career.where(:career_id => params[:id]).delete
     redirect '/careers'
   end
 
@@ -113,7 +154,7 @@ class App < Sinatra::Base
   end
 
   get '/careers/:id' do 
-    career = Career.where(id: params['id']).last
+    career = Career.where(career_id: params['id']).last
 
     erb :'careers/career_description', :locals => {:career => career}
 
