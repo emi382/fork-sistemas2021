@@ -18,9 +18,12 @@
     <div>
       <form action="<%=question.question_id%>/delete" method="post">
         <input type="hidden" name="id" value=<%=question.question_id%>>
+        <input type="hidden" name="choice_id" value=<%=question.choice_id%>>
         <button type="submit">Delete</button>
       </form>
     </div>
+    <br>
+    <a href='<%=question.question_id%>/outcomes'> Add/check career multipliers </a>
   </body>
 </html>
 
