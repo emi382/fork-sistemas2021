@@ -2,6 +2,9 @@ require './models/init.rb'
 
 class App < Sinatra::Base
 
+  it1=0
+  it2=1
+
   get '/' do
 
   @surveys=Survey.all
@@ -29,26 +32,44 @@ class App < Sinatra::Base
   end
 
   post "/choices/update" do
+    Choice.find(choice_id: params[:choice_id]).update(value: params[:value])
+    it1=it1+1
+    it2=it2+1
+    redirect "/start/#{params[:next_id]}"
+  end
 
-    choices.where(Sequel[:choice_id] == params[:choice_id] ).update(:value => params[:value])
-
-
-    if choice.save
-      [201, { 'Location' => "choice/#{career.id}" }, 'Created']
-      redirect back
-    else
-      [500, {}, 'Internal Server Error']
-    end
-
+  post "/choices/update/last" do
+    Choice.find(choice_id: params[:choice_id]).update(value: params[:value])
+    it1=it1+1
+    it2=it2+1
+    redirect "/finish"
   end
 
   get "/start" do
-
+    it1=0 #podria ponerse en homepage capaz?
+    it2=1
     questions=Question.all
-    questions.map do |question| 
-      erb :'start_test', :locals => {:question => question}
-    end
+    question1=questions[it1]
+    question2=questions[it2]
+    #questions.map do |question| 
+    #erb :'start_test', :locals => {:question => question}
+    #end
 
+    erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
+  end
+
+  get "/start/:id" do 
+    questions=Question.all
+    question1=questions[it1]
+
+    if it2 > questions.length
+      redirect "/finish"
+    elsif it2==questions.length
+      erb :'start_test_last', :locals => {:questions => questions, :it1 => it1}
+    elsif it2<questions.length
+      question2=questions[it2]
+      erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
+    end
   end
 
   post "/surveys" do 
