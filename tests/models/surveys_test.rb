@@ -20,21 +20,6 @@ MiniTest::Unit::TestCase
 
   end
   
-  def test_survey_has_many_responses
-  
-    #Arrange
-    survey = Survey.create(name: 'S1')
-		
-    #Act
-    Response.create(survey_id: survey.survey_id)
-    Response.create(survey_id: survey.survey_id)
-		
-    #Assert
-		
-    assert_equal survey.responses.count, 2
-
-  end
-  
   def test_survey_has_name
     survey = Survey.new
     

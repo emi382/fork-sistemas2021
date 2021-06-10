@@ -19,21 +19,6 @@ MiniTest::Unit::TestCase
     assert_equal (choice1.question_id == choice2.question_id), true
 
   end
-  
-  def test_choice_has_many_responses
-  
-    #Arrange
-    choice = Choice.create(text: 'C1')
-		
-    #Act
-    Response.create(choice_id: choice.choice_id)
-    Response.create(choice_id: choice.choice_id)
-		
-    #Assert
-		
-    assert_equal choice.responses.count, 2
-
-  end
 
   def test_choice_has_many_outcomes
   
@@ -49,22 +34,4 @@ MiniTest::Unit::TestCase
     assert_equal choice.outcomes.count, 2
 
   end
-  
-  def test_choice_has_text
-    choice = Choice.new
-    
-    choice.text=''
-    
-    assert_equal choice.valid?, false
-  end
-  
-  def test_choice_text_is_not_null
-    choice = Choice.new
-    
-    choice.text=nil
-    
-    assert_equal choice.valid?, false
-  end
-  
-
 end
