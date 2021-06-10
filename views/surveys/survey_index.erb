@@ -1,19 +1,15 @@
-<body style="background-color:powderblue;">
-    
-    NO ESTA BIEN INTERPRETAMOS MAL LO QUE ERA SURVEY
-
-<h1 style="font-size:130%;color:#003399;"> Available tests: </h1>
-
-<%@surveys.map do |survey|%>
-    <li> <a href='surveys/<%=survey.survey_id%>'> <%=survey.name%></a> 
-    </li>
-<%end%> 
-</br></br>
-<h1 style="font-size:100%;color:red;"> Add survey (For admins only): </h1>
-
-<form action='/surveys' method='POST' id='form1'>
-	<label for="sname">Survey name:</label><br>
-    <input type='text', id="sname", name='name'>
-    <input type='submit' value='Submit survey'>
-</form>
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>List of surveys</title>
+  </head>
+  <body style="background-color:powderblue;">
+    <div>
+      <h1> Survey list: </h1>
+      <%@surveys.map do |survey|%>
+      <li> <a href='surveys/<%=survey.survey_id%>'> <%=survey.name%>: <%=survey.survey_id%></a>
+      </li>
+      <%end%>
+    </div>
+  </body>
+</html>

@@ -113,11 +113,11 @@ class App < Sinatra::Base
   end
 
   post "/surveys" do 
-    survey = Survey.new(name: params[:name])
+    survey = Survey.new(name: params[:name],career_id: params[:career_id])
 
     if survey.save
       [201, { 'Location' => "surveys/#{survey.survey_id}" }, 'Created']
-      redirect back
+      redirect '/surveys'
     else
       [500, {}, 'Internal Server Error']
     end
@@ -150,9 +150,17 @@ class App < Sinatra::Base
 
   get '/surveys/:id' do 
     survey = Survey.where(survey_id: params['id']).last
+    if survey.career_id != nil
+      career = Career.find(career_id: survey.career_id)
+      erb :'surveys/survey_description', :locals => {:survey => survey, :career => career}
+    else
+      erb :'surveys/survey_description_no_career', :locals =>{:survey => survey}
+    end
+  end
 
-    erb :'surveys/survey_description', :locals => {:survey => survey}
-
+  post '/surveys/:id/delete' do 
+    Survey.where(:survey_id => params[:id]).delete
+    redirect '/surveys'
   end
 
   post "/questions" do 

@@ -2,3 +2,12 @@
 <%=career.career_id%>
 <br>
 <%=career.name%>
+<br>
+
+Submit your name to save your results:
+
+<form action='/surveys' method='POST' id='form1'>
+          <label for="qname">Name:</label><br>
+          <input type='text', id="qname", name='name'><br>
+          <input type='hidden', id="career", name='career_id', value="<%=career.career_id%>">
+</form>
