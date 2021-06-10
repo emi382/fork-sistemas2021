@@ -24,7 +24,7 @@ MiniTest::Unit::TestCase
   
     #Arrange
 
-    choice=Choice.create(text: 'a')
+    choice=Choice.create()
     
     #Act
 

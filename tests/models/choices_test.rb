@@ -7,12 +7,12 @@ MiniTest::Unit::TestCase
   
     #Arrange
 
-    question=Question.create(name: 'Q1',description:'a',number:3,type: 'b')
+    question=Question.create(description:'a')
     
     #Act
 
-    choice1 = Choice.create(text: 'C1',question_id:question.question_id)
-    choice2 = Choice.create(text: 'C2',question_id:question.question_id)
+    choice1 = Choice.create(question_id:question.question_id)
+    choice2 = Choice.create(question_id:question.question_id)
 
     #Assert
 		
@@ -23,7 +23,7 @@ MiniTest::Unit::TestCase
   def test_choice_has_many_outcomes
   
     #Arrange
-    choice = Choice.create(text: 'C1')
+    choice = Choice.create()
     
     #Act
     Outcome.create(choice_id: choice.choice_id)

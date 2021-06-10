@@ -21,10 +21,7 @@ MiniTest::Unit::TestCase
   def test_question_description_is_not_null
     question = Question.new
     
-    question.name='a'
     question.description=nil
-    question.number=3
-    question.type='e'
     
     assert_equal question.valid?, false
   end
@@ -32,10 +29,7 @@ MiniTest::Unit::TestCase
   def test_question_description_is_not_empty
     question = Question.new
     
-    question.name='a'
     question.description=''
-    question.number=3
-    question.type='e'
     
     assert_equal question.valid?, false
   end
