@@ -16,13 +16,21 @@
     <div>
       <h3 style="color:red;"> (Admin Only) Add a new question to the test: </h3>
       <form action='/questions' method='POST' id='form1'>
-          <label for="qname">Question name:</label><br>
-          <input type='text', id="qname", name='name'><br>
-          <label for="qdesc">Question description:</label><br>
-          <input type='text', id="qdesc", name='description'><br>
-          <label for="qnumber">Question number:</label><br>
-          <input type='number', id="qnumber", name='number'><br>
-          <input type='submit' value='Submit question'>
+        <ul>
+          <li>
+            <label for="qname">Question name:</label>
+            <input type='text', id="qname", name='name'>
+          </li>
+          <li>
+            <label for="qdesc">Question description:</label>
+            <input type='text', id="qdesc", name='description'>
+          </li>
+          <li>
+            <label for="qnumber">Question number:</label><br>
+            <input type='number', id="qnumber", name='number'><br>
+          </li>
+        </ul>
+        <input type='submit' value='Submit question'>
       </form>
     </div>
   </body>

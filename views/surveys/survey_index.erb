@@ -7,7 +7,8 @@
     <div>
       <h1> Survey list: </h1>
       <%@surveys.map do |survey|%>
-      <li> <a href='surveys/<%=survey.survey_id%>'> <%=survey.name%>: <%=survey.survey_id%></a>
+      <li>
+        <a href='surveys/<%=survey.survey_id%>'> <%=survey.name%>: <%=survey.survey_id%></a>
       </li>
       <%end%>
     </div>

@@ -1,16 +1,32 @@
-<%outcomes.map do |outcome|%>
-    <li>  <%=outcome.career_id%> <%=outcome.weight%> 
-    </li>
-<%end%> 
-</br> 
-
-<<form action="/outcomes/new" method="post">
-    <label for="qcareer">Career id:</label></br>
-    <input type='number', id="qcareer", name='career'></br>
-    <label for="qweight">Weighting:</label></br>
-    <input type='number', id="qweight", name='weight'></br>
-    <input type="hidden" id="choiceid" name="choice_id" value="<%=choice.choice_id%>">
-    <input type='submit' value='Submit new outcome relation'>
-</br>
-
-    <a href='/careers'> List of all careers (helpful for checking ID) </a>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Question edit</title>
+  </head>
+  <body>
+    <div>
+      <%outcomes.map do |outcome|%>
+          <li>  <%=outcome.career_id%> <%=outcome.weight%>
+          </li>
+      <%end%>
+    </div>
+    <br>
+    <div>
+      <form action="/outcomes/new" method="post">
+        <ul>
+          <li>
+            <label for="qcareer">Career id:</label>
+            <input type='number', id="qcareer", name='career'>
+          </li>
+          <li>
+            <label for="qweight">Weighting:</label>
+            <input type='number', id="qweight", name='weight'>
+          </li>
+        </ul>
+          <input type="hidden" id="choiceid" name="choice_id" value="<%=choice.choice_id%>">
+          <input type='submit' value='Submit new outcome relation'>
+          </form>
+          <a href='/careers'> List of all careers (helpful for checking ID) </a>
+    </div>
+  </body>
+</html>
