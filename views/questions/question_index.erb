@@ -8,7 +8,7 @@
       <h1 style="color:#003399;"> Question list: </h1>
       <%@questions.map do |question|%>
         <li>
-          <a href='questions/<%=question.question_id%>'> <%=question.name%> </a>
+          <a href='questions/<%=question.question_id%>'> <%=question.description%> </a>
         </li>
       <%end%>
     </div>
@@ -16,20 +16,8 @@
     <div>
       <h3 style="color:red;"> (Admin Only) Add a new question to the test: </h3>
       <form action='/questions' method='POST' id='form1'>
-        <ul>
-          <li>
-            <label for="qname">Question name:</label>
-            <input type='text', id="qname", name='name'>
-          </li>
-          <li>
-            <label for="qdesc">Question description:</label>
-            <input type='text', id="qdesc", name='description'>
-          </li>
-          <li>
-            <label for="qnumber">Question number:</label>
-            <input type='number', id="qnumber", name='number'>
-          </li>
-        </ul>
+        <label for="qdesc">Question description:</label>
+        <input type='text', id="qdesc", name='description'>
         <input type='submit' value='Submit question'>
       </form>
       <form action="/" method="get">

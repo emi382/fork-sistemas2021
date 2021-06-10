@@ -5,7 +5,6 @@ class Question < Sequel::Model
 
 	def validate
 		super
-		errors.add(:name, 'cannot be empty') if !name || name.empty?
 		errors.add(:description, 'cannot be empty') if !description || description.empty?
     end
 end

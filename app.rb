@@ -100,7 +100,7 @@ class App < Sinatra::Base
     careerid=0
 
     careerArray.each do |k|
-      if k.acum>max
+      if k.acum>=max
         max=k.acum
         careerid=k.career_id
       end
@@ -166,7 +166,7 @@ class App < Sinatra::Base
   post "/questions" do 
     choice = Choice.new(value: -1)
     choice.save
-    question = Question.new(name: params[:name], description: params[:description], number: params[:number], choice_id: choice.choice_id)
+    question = Question.new(description: params[:description], choice_id: choice.choice_id)
 
     if question.save
       [201, { 'Location' => "questions/#{question.question_id}" }, 'Created']

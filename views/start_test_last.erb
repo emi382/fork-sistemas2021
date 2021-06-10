@@ -7,12 +7,12 @@
     <div>
       <p>Id question: <%=questions[it1].number.to_s%></p>
       <p>Name: <%=questions[it1].name%></p>
-      <p>How much do you identify with the following statement? (From 1 to 5):</p>
+      <p>How much do you identify with the following statement? (From 0 to 5):</p>
       <p><%=questions[it1].description%></p>
     </div>
     <div>
       <form action='/choices/update/last' method='POST' id='form1'>
-        <input type='range', id="value", name='value', min="1" max="5",step="1">
+        <input type='range', id="value", name='value', min="0" max="5",step="1">
         <input type="hidden" id="choiceid" name="choice_id" value="<%=questions[it1].choice_id%>">
         <input type='submit' value='Submit value'>
       </form>
