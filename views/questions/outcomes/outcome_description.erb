@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta>
+    <title>Description</title>
+  </head>
+  <body style="background-color:powderblue;">
+    <div>
+      <h1> Outcome description: </h1>
+      <ul>
+        <li> id: <%=outcome.outcome_id%></li>
+        <li> career_id: <%=outcome.career_id%></li>
+        <li> weight: <%=outcome.weight%></li>
+      </ul>
+    </div>
+    <br>
+    <div>
+      <form action="<%=outcome.outcome_id%>/delete" method="post">
+        <input type="hidden" name="id" value=<%=outcome.outcome_id%>>
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+    <div>
+      <form action="<%=outcome.outcome_id%>" method="post">
+        <input type="hidden" name="id" value=<%=outcome.outcome_id%>>
+        <label for="nWeight">Update weight:</label>
+        <input type='number', id="nWeight", name='weight'>
+        <button type="submit">Update</button>
+      </form>
+    </div>
+    <br>
+  </body>
+</html>

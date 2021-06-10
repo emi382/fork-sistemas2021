@@ -12,5 +12,12 @@
       <p><input type='text', id="qname", name='name'></p>
       <input type='hidden', id="career", name='career_id', value="<%=career.career_id%>">
     </form>
+    <ul>
+    <%careers.each do |career|%>
+        <li>
+          <%=career.career_id%> <%=career.acum%>
+        </li>
+      <%end%>
+  </ul>
   </body>
 </html>

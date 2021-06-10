@@ -5,10 +5,12 @@
   </head>
   <body>
     <div>
+      <ul>
       <%outcomes.map do |outcome|%>
-          <li>  <%=outcome.career_id%> <%=outcome.weight%>
+          <li> <a href='/outcomes/<%=outcome.outcome_id%>'> Career ID: <%=outcome.career_id%>, Weight: <%=outcome.weight%> </a>
           </li>
       <%end%>
+    </ul>
     </div>
     <br>
     <div>

@@ -98,7 +98,6 @@ class App < Sinatra::Base
 
     max=0
     careerid=0
-
     careerArray.each do |k|
       if k.acum>=max
         max=k.acum
@@ -108,7 +107,7 @@ class App < Sinatra::Base
 
     finalcareer=Career.find(career_id: careerid)
 
-    erb :'finish', :locals => {:career => finalcareer}
+    erb :'finish', :locals => {:career => finalcareer,:careers => careerArray}
 
   end
 
@@ -205,6 +204,22 @@ class App < Sinatra::Base
     else
       [500, {}, 'Internal Server Error']
     end
+  end
+
+  get "/outcomes/:id" do
+    outcome=Outcome.where(outcome_id: params['id']).last
+
+    erb :'questions/outcomes/outcome_description', :locals => {:outcome => outcome}
+  end
+
+  post "/outcomes/:id/delete" do
+    Question.where(:outcome_id => params[:id]).delete
+    redirect back
+  end
+
+  post "/outcomes/:id" do
+    Outcome.find(:outcome_id => params['id']).update(weight: params[:weight])
+    redirect back
   end
 
   get "/questions/:id/outcomes" do
