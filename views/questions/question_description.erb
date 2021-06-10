@@ -16,6 +16,9 @@
     </div>
     <br>
     <div>
+      <form action="/questions/<%=question.question_id%>/outcomes" method="get">
+        <button type="submit">Add values</button>
+      </form>
       <form action="<%=question.question_id%>/delete" method="post">
         <input type="hidden" name="id" value=<%=question.question_id%>>
         <input type="hidden" name="choice_id" value=<%=question.choice_id%>>
@@ -23,7 +26,5 @@
       </form>
     </div>
     <br>
-    <a href='<%=question.question_id%>/outcomes'> Add/check career multipliers </a>
   </body>
 </html>
-
