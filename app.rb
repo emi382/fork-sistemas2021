@@ -6,9 +6,8 @@ class App < Sinatra::Base
   it2=1
 
   get '/' do
-
-  @surveys=Survey.all
   
+
   erb :'landing'
 
   end
@@ -73,18 +72,44 @@ class App < Sinatra::Base
   end
 
   get "/finish" do 
+
     outcomes=Outcome.all
-    max=0
-    careerid=0
+    i=0
+    careers=Career.all
+    careerStruct=Struct.new(:career_id,:acum)
+    careerArray=Array.new
+
+    careers.map do |career|
+      careerArray[i]=careerStruct.new(career.career_id,0)
+      i=i+1;
+    end
+
     outcomes.map do |outcome|
       choice=Choice.find(choice_id: outcome.choice_id)
       curr=outcome.weight * choice.value
-      if curr > max
-        max=curr
-        careerid=outcome.career_id
+
+      careerArray.each do |k| 
+        if k.career_id == outcome.career_id
+          k.acum+=curr
+        end
+      end
+
+    end
+
+    max=0
+    careerid=0
+
+    careerArray.each do |k|
+      if k.acum>max
+        max=k.acum
+        careerid=k.career_id
       end
     end
-    erb :'finish', :locals => {:max => max, :career_id => careerid}
+
+    finalcareer=Career.find(career_id: careerid)
+
+    erb :'finish', :locals => {:career => finalcareer}
+
   end
 
   post "/surveys" do 
@@ -103,8 +128,14 @@ class App < Sinatra::Base
     survey = Survey.new(name: params[:name])
 
     if survey.save
+
       [201, { 'Location' => "surveys/#{survey.survey_id}" }, 'Created']
+      choices = Choice.all 
+      choices.map do |choice|
+        Choice.find(choice_id: choice.choice_id).update(survey_id: survey.survey_id)
+      end
       redirect '/start'
+
     else
       [500, {}, 'Internal Server Error']
     end
