@@ -4,8 +4,8 @@
     <title>Finished!</title>
   </head>
   <body style="background-color:powderblue;">
-    <p>The career you're the most fit for is:</p>
-    <p><%=career.name%> (ID: <%=career.career_id%>)</p>
+    <h2 >The career that most fits you, with a score of <%=max%> is:</h2>
+    <h2 style="color:#3377ff"><%=career.name%> (ID: <%=career.career_id%>)</h2>
     <p>Submit your name to save your results:</p>
     <form action='/surveys' method='POST' id='form1'>
       <p><input type='text', id="qname", name='name'></p>

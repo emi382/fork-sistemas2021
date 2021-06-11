@@ -104,7 +104,7 @@ class App < Sinatra::Base
 
     finalcareer=Career.find(career_id: careerid)
 
-    erb :'finish', :locals => {:career => finalcareer, :careers => careerArray}
+    erb :'finish', :locals => {:career => finalcareer, :careers => careerArray, :max => max}
 
   end
 
