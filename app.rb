@@ -66,10 +66,10 @@ class App < Sinatra::Base
   get "/finish" do 
 
     outcomes=Outcome.all
-    i=0
     careers=Career.all
     careerStruct=Struct.new(:career_id,:name,:acum) #structure that includes both career parameters and an accumulator
     careerArray=Array.new
+    i=0
 
     #for every career, insert it to the careerArray and start the accumulator with the value 0
     careers.map do |career|
@@ -206,8 +206,10 @@ class App < Sinatra::Base
 
   #deletes an outcome
   post "/outcomes/:id/delete" do
-    Question.where(:outcome_id => params[:id]).delete
-    redirect back
+    outcome=Outcome.find(:outcome_id => params[:id])
+    question=Question.find(:choice_id => outcome.choice_id)
+    Outcome.where(:outcome_id => params['id']).delete
+    redirect "/questions/#{question.question_id}/outcomes"
   end
 
   #updates an outcome's weight
