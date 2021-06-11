@@ -115,7 +115,7 @@ class App < Sinatra::Base
     #if saved, go back to surveys
     if survey.save
       [201, { 'Location' => "surveys/#{survey.survey_id}" }, 'Created']
-      redirect '/surveys'
+      redirect back
     else
       [500, {}, 'Internal Server Error']
     end
