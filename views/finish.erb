@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Finished</title>
+    <title>Finished!</title>
   </head>
-  <body>
-    <p><%=career.career_id%></p>
-    <p><%=career.name%></p>
+  <body style="background-color:powderblue;">
+    <p>The career you're the most fit for is:</p>
+    <p><%=career.name%> (ID: <%=career.career_id%>)</p>
     <p>Submit your name to save your results:</p>
     <form action='/surveys' method='POST' id='form1'>
-      <p><label for="qname">Name:</label></p>
       <p><input type='text', id="qname", name='name'></p>
       <input type='hidden', id="career", name='career_id', value="<%=career.career_id%>">
     </form>
+    Compare it to other careers:
     <ul>
     <%careers.each do |career|%>
         <li>
-          <%=career.name%> <%=career.acum%>
+          <%=career.name%>: <%=career.acum%>
         </li>
       <%end%>
   </ul>

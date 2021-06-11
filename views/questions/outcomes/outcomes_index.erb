@@ -3,8 +3,13 @@
   <head>
     <title>Add values </title>
   </head>
-  <body>
+  <body style="background-color:powderblue;">
     <div>
+      An outcome is a relation between this question and a particular career, it has a weight to determine how much this question
+      contributes to deciding that a certain career is what really fits someone
+      <br>
+      <br>
+      List of all current outcomes for this question:
       <ul>
       <%outcomes.map do |outcome|%>
           <li> <a href='/outcomes/<%=outcome.outcome_id%>'> Career ID: <%=outcome.career_id%>, Weight: <%=outcome.weight%> </a>
@@ -14,6 +19,7 @@
     </div>
     <br>
     <div>
+      Add a new outcome:
       <form action="/outcomes/new" method="post">
         <ul>
           <li>
@@ -28,6 +34,7 @@
           <input type="hidden" id="choiceid" name="choice_id" value="<%=choice.choice_id%>">
           <input type='submit' value='Submit new outcome relation'>
           </form>
+          <br>
           <a href='/careers'> List of all careers (helpful for checking ID) </a>
     </div>
   </body>
