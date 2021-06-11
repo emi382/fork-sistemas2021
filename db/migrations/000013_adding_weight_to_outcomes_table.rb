@@ -6,6 +6,8 @@ Sequel.migration do
   end
 
   down do
-    drop_column :weight
+    alter_table(:outcomes) do
+      drop_column :weight
+    end
   end
 end

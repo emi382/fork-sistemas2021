@@ -1,13 +1,15 @@
 Sequel.migration do
   up do
     alter_table(:questions) do
-     drop_column :type
+      drop_column :name
+      drop_column :number
     end
   end
 
   down do
     alter_table(:questions) do
-      add_column :type, String
+      add_column :name, String
+      add_column :number, Integer
     end
   end
 end

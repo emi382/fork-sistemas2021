@@ -8,8 +8,10 @@ Sequel.migration do
   end
 
   down do
-    drop_column :survey_id
-    drop_column :value
-    add_column :text
+    alter_table(:choices) do
+      drop_column :survey_id
+      drop_column :value
+      add_column :text, String
+    end
   end
 end

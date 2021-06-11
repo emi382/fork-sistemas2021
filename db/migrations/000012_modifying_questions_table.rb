@@ -6,6 +6,8 @@ Sequel.migration do
   end
 
   down do
-    drop_column :choice_id
+    alter_table(:questions) do
+      drop_column :choice_id
+    end
   end
 end
