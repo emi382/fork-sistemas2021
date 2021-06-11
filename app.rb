@@ -153,7 +153,7 @@ class App < Sinatra::Base
     choice.save
     question = Question.new(description: params[:description], choice_id: choice.choice_id)
 
-    if question.save
+    if question.save 
       [201, { 'Location' => "questions/#{question.question_id}" }, 'Created']
       redirect back
     else
@@ -180,8 +180,8 @@ class App < Sinatra::Base
   #that said choice had associated
   post "/questions/:id/delete" do
     Question.where(:question_id => params[:id]).delete
-    Outcome.where(:choice_id => params[:choice_id]).delete
     Choice.where(:choice_id => params[:choice_id]).delete #habria que poner :cascade en el foreign key de outcome
+    Outcome.where(:choice_id => params[:choice_id]).delete
     redirect '/questions'
   end
 
