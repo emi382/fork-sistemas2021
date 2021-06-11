@@ -162,12 +162,7 @@ class App < Sinatra::Base
 
   post "/questions" do
     choice = Choice.new(value: -1)
-    if choice.save
-      [201, { 'Location' => "questions/#{choice.choice_id}" }, 'Created']
-    else
-      [500, {}, 'Internal Server Error']
-    end
-
+    choice.save
     question = Question.new(name: params[:name], description: params[:description], number: params[:number], choice_id: choice.choice_id)
 
     if question.save
