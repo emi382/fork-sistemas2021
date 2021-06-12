@@ -7,7 +7,7 @@ class App < Sinatra::Base
 
   #homepage
   get '/' do
-  
+
 
   erb :'landing'
 
@@ -29,7 +29,7 @@ class App < Sinatra::Base
   #if it2 is smaller than questions.length, keeps on passing both the current question and the next question
   #if it2 is equal to questions.length, passes only the current question to the page that deals with the last element
   #if it2 is bigger than questions.length, redirects to the finish page with the test results
-  get "/start/:id" do 
+  get "/start/:id" do
     questions=Question.all
     question1=questions[it1]
 
@@ -63,7 +63,7 @@ class App < Sinatra::Base
   end
 
   #calculates how much every career fits a certain user
-  get "/finish" do 
+  get "/finish" do
 
     outcomes=Outcome.all
     careers=Career.all
@@ -84,7 +84,7 @@ class App < Sinatra::Base
       choice=Choice.find(choice_id: outcome.choice_id)
       curr=outcome.weight * choice.value
 
-      careerArray.each do |k| 
+      careerArray.each do |k|
         if k.career_id == outcome.career_id
           k.acum+=curr
         end
@@ -109,7 +109,7 @@ class App < Sinatra::Base
   end
 
   #creates a new survey with the given name and career_id parameter
-  post "/surveys" do 
+  post "/surveys" do
     survey = Survey.new(name: params[:name],career_id: params[:career_id])
 
     #if saved, go back to surveys
@@ -130,7 +130,7 @@ class App < Sinatra::Base
   end
 
   #shows the information of a particular survey
-  get '/surveys/:id' do 
+  get '/surveys/:id' do
     survey = Survey.where(survey_id: params['id']).last
     if survey.career_id != nil
       career = Career.find(career_id: survey.career_id)
@@ -141,14 +141,14 @@ class App < Sinatra::Base
   end
 
   #deletes a survey given its id
-  post '/surveys/:id/delete' do 
+  post '/surveys/:id/delete' do
     Survey.where(:survey_id => params[:id]).delete
     redirect '/surveys'
   end
 
   #creates a new question given a description
   #NOTE: automatically creates and associates a choice to the new question
-  post "/questions" do 
+  post "/questions" do
     choice = Choice.new(value: -1)
     choice.save
     question = Question.new(description: params[:description], choice_id: choice.choice_id)
@@ -170,7 +170,7 @@ class App < Sinatra::Base
   end
 
   #shows an individual question description, along with redirecting to the outcome modifying page if needed
-  get '/questions/:id' do 
+  get '/questions/:id' do
     question=Question.where(question_id: params['id']).last
 
     erb :'questions/question_description', :locals => {:question => question}
@@ -230,16 +230,18 @@ class App < Sinatra::Base
 
   #creates a new career
   post "/careers" do
-
-    career = Career.new(name: params[:name])
-
-    if career.save
-      [201, { 'Location' => "careers/#{career.id}" }, 'Created']
-      redirect back
+    #Hay que mejorar la implementacion
+    if(params['name'].empty? && params['name'] != "")
+      career = Career.new(name: params['name'])
+      if career.save
+        [201, { 'Location' => "careers/#{career.id}" }, 'Created']
+        redirect back
+      else
+        [500, {}, 'Internal Server Error']
+      end
     else
-      [500, {}, 'Internal Server Error']
+      [500, {}, 'No puedes hacer eso']
     end
-
   end
 
   #deletes a career
@@ -251,12 +253,11 @@ class App < Sinatra::Base
   #shows all careers
   get '/careers' do
     @careers=Career.all
-
     erb :'careers/career_index'
   end
 
   #shows a particular career and includes a delete button
-  get '/careers/:id' do 
+  get '/careers/:id' do
     career = Career.where(career_id: params['id']).last
 
     erb :'careers/career_description', :locals => {:career => career}
@@ -279,4 +280,3 @@ class App < Sinatra::Base
     p.description
   end
 end
-
