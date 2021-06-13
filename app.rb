@@ -150,7 +150,7 @@ class App < Sinatra::Base
   #NOTE: automatically creates and associates a choice to the new question
   post "/questions" do
     description = params[:description]
-    if description.blank?
+    if !description.blank?
       choice = Choice.new(value: -1)
       choice.save
       question = Question.new(description: description, choice_id: choice.choice_id)
