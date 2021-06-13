@@ -6,7 +6,7 @@
   <body style="background-color:powderblue;">
     <div>
       <h1> Career list: </h1>
-      <%@careers.map do |career|%>
+      <%careers.map do |career|%>
       <li> <a href='careers/<%=career.career_id%>'> <%=career.name%>: <%=career.career_id%> </a>
       </li>
       <%end%>
@@ -15,7 +15,7 @@
     <div>
       <h2 style="color:red"> (Admin Only) Add a new career: </h2>
       <form action='/careers' method='POST' id='form1'>
-        <input type='text' name='name'>
+        <input type='text' name='name' required mxinlength="1">
         <input type='submit' value='Pero mira que buen boton'>
         <button type='submit' form='form1' value='Submit'> Apreta este si te gusta mas </button>
       </form>

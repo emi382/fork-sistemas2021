@@ -26,7 +26,7 @@
       <form action="<%=outcome.outcome_id%>" method="post">
         <input type="hidden" name="id" value=<%=outcome.outcome_id%>>
         <label for="nWeight">Update weight:</label>
-        <input type='number', id="nWeight", name='weight'>
+        <input type='number', id="nWeight", name='weight' required mxinlength="1">
         <button type="submit">Update</button>
       </form>
     </div>

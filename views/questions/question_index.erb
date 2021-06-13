@@ -17,7 +17,7 @@
       <h3 style="color:red;"> (Admin Only) Add a new question to the test: </h3>
       <form action='/questions' method='POST' id='form1'>
         <label for="qdesc">Question description:</label>
-        <input type='text', id="qdesc", name='description'>
+        <input type='text', id="qdesc", name='description', required mxinlength="1">
         <input type='submit' value='Submit question'>
       </form>
       <br>
