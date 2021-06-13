@@ -149,17 +149,19 @@ class App < Sinatra::Base
   #creates a new question given a description
   #NOTE: automatically creates and associates a choice to the new question
   post "/questions" do
-    choice = Choice.new(value: -1)
-    choice.save
-    question = Question.new(description: params[:description], choice_id: choice.choice_id)
-
-    if question.save
-      [201, { 'Location' => "questions/#{question.question_id}" }, 'Created']
-      redirect back
-    else
-      [500, {}, 'Internal Server Error']
+    description = params[:description]
+    if description.blank?
+      choice = Choice.new(value: -1)
+      choice.save
+      question = Question.new(description: description, choice_id: choice.choice_id)
+      if question.save
+        [201, { 'Location' => "questions/#{question.question_id}" }, 'Created']
+        redirect back
+      else
+        [500, {}, 'Internal Server Error']
+      end
     end
-
+    redirect back
   end
 
   #shows all questions
@@ -187,8 +189,7 @@ class App < Sinatra::Base
 
   #creates a new outcome given a choice id, career_id, and weight
   post "/outcomes/new" do
-    outcome=Outcome.new(choice_id: params[:choice_id], career_id: params[:career], weight: params[:weight] )
-
+    outcome=Outcome.new(choice_id: params[:choice_id], career_id: params[:career], weight: params[:weight])
     if outcome.save
       [201, { 'Location' => "outcomes/#{outcome.outcome_id}" }, 'Created']
       redirect back
@@ -230,8 +231,9 @@ class App < Sinatra::Base
 
   #creates a new career
   post "/careers" do
+    careers=Career.all
     #Hay que mejorar la implementacion
-    if(params['name'].empty? && params['name'] != "")
+    if !params['name'].blank?
       career = Career.new(name: params['name'])
       if career.save
         [201, { 'Location' => "careers/#{career.id}" }, 'Created']
@@ -239,9 +241,8 @@ class App < Sinatra::Base
       else
         [500, {}, 'Internal Server Error']
       end
-    else
-      [500, {}, 'No puedes hacer eso']
     end
+    redirect back
   end
 
   #deletes a career
@@ -252,8 +253,8 @@ class App < Sinatra::Base
 
   #shows all careers
   get '/careers' do
-    @careers=Career.all
-    erb :'careers/career_index'
+    careers=Career.all
+    erb :'careers/career_index', :locals =>{:careers => careers}
   end
 
   #shows a particular career and includes a delete button
