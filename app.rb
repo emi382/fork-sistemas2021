@@ -7,10 +7,7 @@ class App < Sinatra::Base
 
   #homepage
   get '/' do
-
-
   erb :'landing'
-
   end
 
   #starts the test by setting the iterators to their default values and passing the first two questions
@@ -21,8 +18,12 @@ class App < Sinatra::Base
     questions=Question.all
     question1=questions[it1]
     question2=questions[it2]
-
-    erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
+    #Verifica que haya 2 question creadas, y ademas, que esten asociada a una career con su respectivo peso
+    if (question1 != nil && question2 != nil && Outcome.find(choice_id: question1.choice_id) && Outcome.find(choice_id: question2.choice_id))
+      erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
+    else
+      redirect "/"
+    end
   end
 
   #processes the current question.
@@ -64,13 +65,11 @@ class App < Sinatra::Base
 
   #calculates how much every career fits a certain user
   get "/finish" do
-
     outcomes=Outcome.all
     careers=Career.all
     careerStruct=Struct.new(:career_id,:name,:acum) #structure that includes both career parameters and an accumulator
     careerArray=Array.new
     i=0
-
     #for every career, insert it to the careerArray and start the accumulator with the value 0
     careers.map do |career|
       careerArray[i]=careerStruct.new(career.career_id,career.name,0)
@@ -79,17 +78,14 @@ class App < Sinatra::Base
 
     #multiply the choice value (user-set value) and the outcome weight (weight towards a specific career)
     #then add it to the accumulator specific to the career which is associated with the current outcome
-
     outcomes.map do |outcome|
       choice=Choice.find(choice_id: outcome.choice_id)
       curr=outcome.weight * choice.value
-
       careerArray.each do |k|
         if k.career_id == outcome.career_id
           k.acum+=curr
         end
       end
-
     end
 
     #find the career which has the maximum accumulator value, then pass it to erb for final processing
@@ -101,17 +97,13 @@ class App < Sinatra::Base
         careerid=k.career_id
       end
     end
-
     finalcareer=Career.find(career_id: careerid)
-
     erb :'finish', :locals => {:career => finalcareer, :careers => careerArray, :max => max}
-
   end
 
   #creates a new survey with the given name and career_id parameter
   post "/surveys" do
     survey = Survey.new(name: params[:name],career_id: params[:career_id])
-
     #if saved, go back to surveys
     if survey.save
       [201, { 'Location' => "surveys/#{survey.survey_id}" }, 'Created']
@@ -119,13 +111,11 @@ class App < Sinatra::Base
     else
       [500, {}, 'Internal Server Error']
     end
-
   end
 
   #shows /surveys path
   get '/surveys' do
     @surveys=Survey.all
-
     erb :'surveys/survey_index'
   end
 
@@ -167,14 +157,12 @@ class App < Sinatra::Base
   #shows all questions
   get '/questions' do
     @questions=Question.all
-
     erb :'questions/question_index'
   end
 
   #shows an individual question description, along with redirecting to the outcome modifying page if needed
   get '/questions/:id' do
     question=Question.where(question_id: params['id']).last
-
     erb :'questions/question_description', :locals => {:question => question}
   end
 
@@ -206,7 +194,6 @@ class App < Sinatra::Base
   #shows a particular outcome's information, along with delete and update weight functionalities
   get "/outcomes/:id" do
     outcome=Outcome.where(outcome_id: params['id']).last
-
     erb :'questions/outcomes/outcome_description', :locals => {:outcome => outcome}
   end
 
@@ -229,14 +216,13 @@ class App < Sinatra::Base
     question=Question.where(question_id: params['id']).last
     choice=Choice.where(choice_id: question.choice_id).last
     outcomes=Outcome.where(choice_id: choice.choice_id)
-    careers = Career.all
+    careers = Career.all #Para mostrar la lista desplegable de carreras
     erb :'questions/outcomes/outcomes_index', :locals =>{:outcomes => outcomes, :choice => choice, :careers => careers}
   end
 
   #creates a new career
   post "/careers" do
     careers=Career.all
-    #Hay que mejorar la implementacion
     if !params['name'].blank?
       career = Career.new(name: params['name'])
       if career.save
@@ -251,12 +237,14 @@ class App < Sinatra::Base
 
   #deletes a career
   post "/careers/:id/delete" do
+    #Verifico si esta asociada a un outcome
     if (Outcome.find(:career_id => params[:id]) == nil)
       Career.where(:career_id => params[:id]).delete
     else
       Outcome.where(:career_id => params[:id]).delete
       Career.where(:career_id => params[:id]).delete
     end
+    #Verifico si esta asociada a un survey
     if (Survey.find(:career_id => params[:id]) == nil)
       Career.where(:career_id => params[:id]).delete
     else
@@ -275,24 +263,6 @@ class App < Sinatra::Base
   #shows a particular career and includes a delete button
   get '/careers/:id' do
     career = Career.where(career_id: params['id']).last
-
     erb :'careers/career_description', :locals => {:career => career}
-
-  end
-
-  post "/posts" do
-    request.body.rewind  # in case someone already read it
-    data = JSON.parse request.body.read
-    post = Post.new(description: data['desc'])
-    if post.save
-      [201, { 'Location' => "posts/#{post.id}" }, 'CREATED']
-    else
-      [500, {}, 'Internal Server Error']
-    end
-  end
-
-  get '/posts' do
-    p = Post.where(id: 1).last
-    p.description
   end
 end
