@@ -20,7 +20,8 @@
     <h2 style="color:#3377ff"><%=career.name%> (ID: <%=career.career_id%>)</h2>
     <p>Submit your name to save your results:</p>
     <form action='/surveys' method='POST' id='form1'>
-      <p><input type='text', id="qname", name='name'></p>
+      <p><input type='text', id="qname", name='name'>
+      <input type="submit" value="Submit name"></p>
       <input type='hidden', id="career", name='career_id', value="<%=career.career_id%>">
     </form>
     Compare it to other careers:
@@ -31,9 +32,7 @@
         </li>
       <%end%>
     </ul>
-    <form action="/" method="get">
-        <button type="submit" name="Back">Back to homepage</button>
-    </form>
+    <a href="/questions">Back to homepage</a>
     <br>
     <footer id="main footer">© 2021 team 1. All rights reserved.</footer>
   </body>
