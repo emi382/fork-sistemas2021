@@ -5,12 +5,21 @@
   </head>
   <body style="background-color:powderblue;">
     <div>
-      <h1 style="color:#003399;"> Question list: </h1>
-      <%@questions.map do |question|%>
-        <li>
-          <a href='questions/<%=question.question_id%>'> <%=question.description%> </a>
-        </li>
-      <%end%>
+      <table border="1">
+        <h2 style="color:#003399;"> Question list: </h2>
+        <p>Click to Modify how this question affects career choice</p>
+        <tr>
+          <th>Question ID</th>
+          <th>Question text</th>
+        </tr>
+        <%@questions.map do |question|%>
+        <tr>
+          <th><%=question.question_id%></th>
+          <th><a href='questions/<%=question.question_id%>/outcomes'> <%=question.description%> </a></th>
+        </tr>
+        <%end%>
+      </table>
+
     </div>
     <br>
     <div>
