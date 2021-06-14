@@ -200,7 +200,7 @@ class App < Sinatra::Base
   post "/outcomes/:id/delete" do
     outcome=Outcome.find(:outcome_id => params[:id])
     question=Question.find(:choice_id => outcome.choice_id)
-    Outcome.where(:outcome_id => params['id']).delete
+    Outcome.where(:outcome_id => params[:id]).delete
     redirect "/questions/#{question.question_id}/outcomes"
   end
 
