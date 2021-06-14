@@ -230,9 +230,7 @@ class App < Sinatra::Base
     choice=Choice.where(choice_id: question.choice_id).last
     outcomes=Outcome.where(choice_id: choice.choice_id)
     careers = Career.all
-
     erb :'questions/outcomes/outcomes_index', :locals =>{:outcomes => outcomes, :choice => choice, :careers => careers}
-
   end
 
   #creates a new career
@@ -253,7 +251,18 @@ class App < Sinatra::Base
 
   #deletes a career
   post "/careers/:id/delete" do
-    Career.where(:career_id => params[:id]).delete
+    if (Outcome.find(:career_id => params[:id]) == nil)
+      Career.where(:career_id => params[:id]).delete
+    else
+      Outcome.where(:career_id => params[:id]).delete
+      Career.where(:career_id => params[:id]).delete
+    end
+    if (Survey.find(:career_id => params[:id]) == nil)
+      Career.where(:career_id => params[:id]).delete
+    else
+      Survey.where(:career_id => params[:id]).delete
+      Career.where(:career_id => params[:id]).delete
+    end
     redirect '/careers'
   end
 
