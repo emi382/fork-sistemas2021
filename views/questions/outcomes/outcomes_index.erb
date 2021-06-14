@@ -8,14 +8,19 @@
       An outcome is a relation between this question and a particular career, it has a weight to determine how much this question
       contributes to deciding that a certain career is what really fits someone
       <br>
-      <br>
       List of all current outcomes for this question:
-      <ul>
-      <%outcomes.map do |outcome|%>
-          <li> <a href='/outcomes/<%=outcome.outcome_id%>'> Career ID: <%=outcome.career_id%>, Weight: <%=outcome.weight%> </a>
-          </li>
-      <%end%>
-    </ul>
+      <table border="1">
+        <tr>
+          <th>Outcome ID</th>
+          <th>Career --> weight</th>
+        </tr>
+        <%outcomes.map do |outcome|%>
+        <tr>
+          <th><%=outcome.outcome_id%></th>
+          <th><a href='/outcomes/<%=outcome.outcome_id%>'><%=Career.find(career_id: outcome.career_id).name%> --> <%=outcome.weight%> </a></th>
+        </tr>
+        <%end%>
+      </table>
     </div>
     <br>
     <div>
@@ -39,6 +44,13 @@
           <input type='submit' value='Submit new outcome relation'>
           </form>
           <br>
+    </div>
+    <div>
+      <form action="delete" method="post">
+        <input type="hidden" name="id" value=<%=question.question_id%>>
+        <input type="hidden" name="choice_id" value=<%=question.choice_id%>>
+        <button type="submit" style="color:red">Delete question</button>
+      </form>
     </div>
     <br>
     <form action="/" method="get">
