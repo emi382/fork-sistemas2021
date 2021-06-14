@@ -6,10 +6,18 @@
   <body style="background-color:powderblue;">
     <div>
       <h1> Career list: </h1>
-      <%careers.map do |career|%>
-      <li> <a href='careers/<%=career.career_id%>'> <%=career.name%>: <%=career.career_id%> </a>
-      </li>
-      <%end%>
+      <table border="1">
+        <tr>
+          <th>Career ID</th>
+          <th>Career</th>
+        </tr>
+        <%careers.map do |career|%>
+        <tr>
+          <th><%=career.career_id%></th>
+          <th><a href='careers/<%=career.career_id%>'> <%=career.name%></a></th>
+        </tr>
+        <%end%>
+      </table>
     </div>
     <br>
     <div>
