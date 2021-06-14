@@ -189,13 +189,18 @@ class App < Sinatra::Base
 
   #creates a new outcome given a choice id, career_id, and weight
   post "/outcomes/new" do
-    outcome=Outcome.new(choice_id: params[:choice_id], career_id: params[:career], weight: params[:weight])
-    if outcome.save
-      [201, { 'Location' => "outcomes/#{outcome.outcome_id}" }, 'Created']
-      redirect back
-    else
-      [500, {}, 'Internal Server Error']
+    id = params[:career]
+    career_id = Career.find(career_id: id)
+    if(career_id != nil)
+      outcome = Outcome.new(choice_id: params[:choice_id], career_id: id, weight: params[:weight])
+      if outcome.save
+        [201, { 'Location' => "outcomes/#{outcome.outcome_id}" }, 'Created']
+        redirect back
+      else
+        [500, {}, 'Internal Server Error']
+      end
     end
+    redirect back
   end
 
   #shows a particular outcome's information, along with delete and update weight functionalities
