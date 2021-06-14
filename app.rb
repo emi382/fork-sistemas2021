@@ -170,8 +170,7 @@ class App < Sinatra::Base
   #that said choice had associated
   post "/questions/:id/delete" do
     Question.where(:question_id => params[:id]).delete
-    Outcome.where(:choice_id => params[:choice_id]).delete
-    Choice.where(:choice_id => params[:choice_id]).delete #habria que poner :cascade en el foreign key de outcome
+    Choice.where(:choice_id => params[:choice_id]).delete
     redirect '/questions'
   end
 
@@ -237,20 +236,7 @@ class App < Sinatra::Base
 
   #deletes a career
   post "/careers/:id/delete" do
-    #Verifico si esta asociada a un outcome
-    if (Outcome.find(:career_id => params[:id]) == nil)
-      Career.where(:career_id => params[:id]).delete
-    else
-      Outcome.where(:career_id => params[:id]).delete
-      Career.where(:career_id => params[:id]).delete
-    end
-    #Verifico si esta asociada a un survey
-    if (Survey.find(:career_id => params[:id]) == nil)
-      Career.where(:career_id => params[:id]).delete
-    else
-      Survey.where(:career_id => params[:id]).delete
-      Career.where(:career_id => params[:id]).delete
-    end
+    Career.where(:career_id => params[:id]).delete
     redirect '/careers'
   end
 
