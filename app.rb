@@ -97,8 +97,8 @@ class App < Sinatra::Base
         careerid=k.career_id
       end
     end
-    finalcareer=Career.find(career_id: careerid)
-    erb :'finish', :locals => {:career => finalcareer, :careers => careerArray, :max => max}
+    finalcareer = Career.find(career_id: careerid)
+    erb :'finish', :locals => {:career => finalcareer, :careers => careerArray.sort_by {|career| -career.acum}, :max => max}
   end
 
   #creates a new survey with the given name and career_id parameter
