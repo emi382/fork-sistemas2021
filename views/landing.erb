@@ -5,29 +5,25 @@
     <title>Homepage</title>
   </head>
   <body style="background-color:powderblue;">
-    <div>
-      <h1>Welcome to our vocational test service webpage!</h1>
-      <br>
-    </div>
-    <div>
-      <h2><a href='start'> You can start the vocational test right away by clicking on this link</a></h2>
-    </div>
+    <header id="main header">
+      <h1 id="header title"> Welcome to our vocational test service webpage! </h1>
+      <p>Find the career you are looking for!</p>
+      <nav id="main menu">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/careers">Careers</a></li>
+          <li><a href="/questions">Questions</a></li>
+          <li><a href="/surveys">Surveys</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section id="start test">
+      <h3>You can start the vocational test right away by clicking bottom this text</h3>
+      <form id="test" action="start" method="get">
+        <button type="submit" id="start test button">Start test</button>
+      </form>
+    </section>
     <br>
-    <div>
-      <p>Or take a look at what careers you might end up being recommended:
-      <a href='/careers'> List of all careers </a>
-      </p>
-    </div>
-    <h2 style="color:red;font-size:60"> Administrative tools: </h2>
-    <div>
-      <p>Agregar una pregunta:
-      <a href='/questions'> List of all questions </a>
-      </p>
-    </div>
-    <div>
-      <p>Chequea surveys anteriores:
-      <a href='/surveys'> List of all surveys </a>
-      </p>
-    </div>
+    <footer id="main footer">© 2021 Grupo 1. All rights reserved.</footer>
   </body>
 </html>
