@@ -229,8 +229,9 @@ class App < Sinatra::Base
     question=Question.where(question_id: params['id']).last
     choice=Choice.where(choice_id: question.choice_id).last
     outcomes=Outcome.where(choice_id: choice.choice_id)
+    careers = Career.all
 
-    erb :'questions/outcomes/outcomes_index', :locals =>{:outcomes => outcomes, :choice => choice}
+    erb :'questions/outcomes/outcomes_index', :locals =>{:outcomes => outcomes, :choice => choice, :careers => careers}
 
   end
 
