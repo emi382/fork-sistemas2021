@@ -217,7 +217,7 @@ class App < Sinatra::Base
     choice=Choice.where(choice_id: question.choice_id).last
     outcomes=Outcome.where(choice_id: choice.choice_id)
     careers = Career.all #Para mostrar la lista desplegable de carreras
-    erb :'questions/outcomes/outcomes_index', :locals =>{:outcomes => outcomes, :choice => choice, :careers => careers}
+    erb :'questions/outcomes/outcomes_index', :locals =>{:outcomes => outcomes, :choice => choice, :careers => careers, :question => question}
   end
 
   #creates a new career
