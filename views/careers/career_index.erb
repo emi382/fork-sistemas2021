@@ -5,41 +5,48 @@
   </head>
   <body style="background-color:powderblue;">
     <header id="main header">
-      <h1 id="header title">Career List</h1>
     </header>
-    <div>
-      <table border="1">
-        <tr>
-          <th>Career ID</th>
-          <th>Career</th>
-          <th>Delete</th>
-        </tr>
-        <%careers.map do |career|%>
-        <tr>
-          <th><%=career.career_id%></th>
-          <th><a href='careers/<%=career.career_id%>'> <%=career.name%></a></th>
-          <th>       
-              <form action="careers/<%=career.career_id%>/delete" method="post">
-                <input type="hidden" name="id" value=<%=career.career_id%>>
-               <input type='submit' value='Delete'>
-              </form>
-          </th>
-        </tr>
-        <%end%>
-      </table>
-    </div>
-    <br>
-    <div>
-      <h2 style="color:red"> (Admin Only) Add a new career: </h2>
-      <form action='/careers' method='POST' id='form1'>
-        <input type='text' name='name' required>
-        <input type='submit' value='Pero mira que buen boton'>
-        <button type='submit' form='form1' value='Submit'> Apreta este si te gusta mas </button>
-      </form>
-      <form action="/" method="get">
-        <button type="submit" name="Back">Back to homepage</button>
-      </form>
-    </div>
+    <nav id="main menu">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/careers">Careers</a></li>
+        <li><a href="/questions">Questions</a></li>
+        <li><a href="/surveys">Surveys</a></li>
+      </ul>
+    </nav>
+    <section>
+      <h1 id="">Career List</h1>
+      <div>
+        <table border="1">
+          <tr>
+            <th>Career ID</th>
+            <th>Career</th>
+            <th>Delete</th>
+          </tr>
+          <%careers.map do |career|%>
+          <tr>
+            <th><%=career.career_id%></th>
+            <th><a href='careers/<%=career.career_id%>'> <%=career.name%></a></th>
+            <th>
+                <form action="careers/<%=career.career_id%>/delete" method="post">
+                  <input type="hidden" name="id" value=<%=career.career_id%>>
+                 <input type='submit' value='Delete'>
+                </form>
+            </th>
+          </tr>
+          <%end%>
+        </table>
+      </div>
+      <br>
+      <div>
+        <h2 style="color:red"> (Admin Only) Add a new career: </h2>
+        <form action='/careers' method='POST' id='form1'>
+          <input type='text' name='name' required>
+          <input type='submit' value='Pero mira que buen boton'>
+          <button type='submit' form='form1' value='Submit'> Apreta este si te gusta mas </button>
+        </form>
+      </div>
+    </section>
     <br>
     <footer id="main footer">© 2021 team 1. All rights reserved.</footer>
   </body>

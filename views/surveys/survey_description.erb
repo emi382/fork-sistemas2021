@@ -4,19 +4,32 @@
     <title>Description</title>
   </head>
   <body style="background-color:powderblue;">
-    <div>
-      <h1> Test taken by <%=survey.name%>: </h1>
+    <header id="main header">
+    </header>
+    <nav id="main menu">
       <ul>
-        <li> id: <%=survey.survey_id%></li>
-        <li> career: <%=career.name%></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/careers">Careers</a></li>
+        <li><a href="/questions">Questions</a></li>
+        <li><a href="/surveys">Surveys</a></li>
       </ul>
-    </div>
-    <div>
-      <form action="<%=survey.survey_id%>/delete" method="post">
-        <input type="hidden" name="id" value=<%=survey.survey_id%>>
-        <button type="submit">Delete</button>
-      </form>
-    </div>
-    <a href="/questions">Back to homepage</a>
+    </nav>
+    <section>
+      <div>
+        <h1> Test taken by <%=survey.name%>: </h1>
+        <ul>
+          <li> id: <%=survey.survey_id%></li>
+          <li> career: <%=career.name%></li>
+        </ul>
+      </div>
+      <div>
+        <form action="<%=survey.survey_id%>/delete" method="post">
+          <input type="hidden" name="id" value=<%=survey.survey_id%>>
+          <button type="submit">Delete</button>
+        </form>
+      </div>
+    </section>
+    <br>
+    <footer id="main footer">© 2021 team 1. All rights reserved.</footer>
   </body>
 </html>
