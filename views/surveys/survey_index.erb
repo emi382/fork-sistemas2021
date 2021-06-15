@@ -4,22 +4,32 @@
     <title>List of surveys</title>
   </head>
   <body style="background-color:powderblue;">
+    <header id="main header">
+      <h1 id="header title">Survey List</h1>
+    </header>
     <div>
-      <h1> Survey list: </h1>
-      <%@surveys.map do |survey|%>
-      <li>
-        <a href='surveys/<%=survey.survey_id%>'> <%=survey.name%>: <%=survey.survey_id%></a>
-        <form action="surveys/<%=survey.survey_id%>/delete" method="post">
-          <input type="hidden" name="id" value=<%=survey.survey_id%>>
-          <input type='submit' value='Delete <%=survey.name%>'>
-        </form>
-      </li>
-      <%end%>
+      <table border="1">
+        <tr>
+          <th>Career</th>
+          <th>Username</th>
+          <th>Delete</th>
+        </tr>
+        <%@surveys.map do |survey|%>
+        <%career=Career.find(career_id: survey.career_id)%>
+        <tr>
+          <th><%=career.name%></th>
+          <th><a href='surveys/<%=survey.survey_id%>'> <%=survey.name%></a></th>
+          <th>       
+              <form action="surveys/<%=survey.survey_id%>/delete" method="post">
+                <input type="hidden" name="id" value=<%=survey.survey_id%>>
+               <input type='submit' value='Delete'>
+              </form>
+          </th>
+        </tr>
+        <%end%>
+      </table>
     </div>
     <br>
-    <br>
-    <form action="/" method="get">
-        <button type="submit" name="Back">Back to homepage</button>
-      </form>
+    <footer id="main footer">© 2021 team 1. All rights reserved.</footer>
   </body>
 </html>
