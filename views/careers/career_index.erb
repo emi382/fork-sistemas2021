@@ -15,9 +15,9 @@
       </ul>
     </nav>
     <section>
-      <h1 id="">Career List</h1>
-      <div>
+      <div id="table of careers">
         <table border="1">
+          <h1 id="table title">Career List</h1>
           <tr>
             <th>Career ID</th>
             <th>Career</th>
@@ -28,18 +28,18 @@
             <th><%=career.career_id%></th>
             <th><a href='careers/<%=career.career_id%>'> <%=career.name%></a></th>
             <th>
-                <form action="careers/<%=career.career_id%>/delete" method="post">
-                  <input type="hidden" name="id" value=<%=career.career_id%>>
-                 <input type='submit' value='Delete'>
-                </form>
+              <form action="careers/<%=career.career_id%>/delete" method="post">
+                <input type="hidden" name="id" value=<%=career.career_id%>>
+               <input type='submit' value='Delete'>
+              </form>
             </th>
           </tr>
           <%end%>
         </table>
       </div>
       <br>
-      <div>
-        <h2 style="color:red"> (Admin Only) Add a new career: </h2>
+      <div id="add career">
+        <h2 style="color:red" id="Add career title"> (Admin Only) Add a new career: </h2>
         <form action='/careers' method='POST' id='form1'>
           <input type='text' name='name' required>
           <input type='submit' value='Pero mira que buen boton'>

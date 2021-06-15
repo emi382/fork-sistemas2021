@@ -15,14 +15,14 @@
       </ul>
     </nav>
     <section>
-      <div>
+      <div id="survey description">
         <h1> Test taken by <%=survey.name%>: </h1>
         <ul>
           <li> id: <%=survey.survey_id%></li>
           <li> career: <%=career.name%></li>
         </ul>
       </div>
-      <div>
+      <div id="delete survey">
         <form action="<%=survey.survey_id%>/delete" method="post">
           <input type="hidden" name="id" value=<%=survey.survey_id%>>
           <button type="submit">Delete</button>

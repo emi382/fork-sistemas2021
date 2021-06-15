@@ -15,13 +15,16 @@
       </ul>
     </nav>
     <section>
-      <h1>Associated outcomes:</h1>
-      <div>
-        An outcome is a relation between this question and a particular career, it has a weight to determine how much this question
-        contributes to deciding that a certain career is what really fits someone
-        <br>
-        List of all current outcomes for this question:
-        <table border="1">
+
+      <div id="show outcome">
+        <h1>Associated outcomes:</h1>
+        <div class="text">
+          <p>An outcome is a relation between this question and a particular career, it has a weight to determine how much this question
+          contributes to deciding that a certain career is what really fits someone</p>
+          <br>
+          <p>List of all current outcomes for this question:</p>
+        </div>
+        <table border="1" id="outcome table">
           <tr>
             <th>Outcome ID</th>
             <th>Career --> weight</th>
@@ -42,7 +45,7 @@
         </table>
       </div>
       <br>
-      <div>
+      <div id="add outcome">
         Add a new outcome:
         <form action="/outcomes/new" method="post">
           <ul>
@@ -61,14 +64,8 @@
           </ul>
             <input type="hidden" id="choiceid" name="choice_id" value="<%=choice.choice_id%>">
             <input type='submit' value='Submit new outcome relation'>
-            </form>
-            <br>
-      </div>
-      <div>
-        <form action="delete" method="post">
-          <input type="hidden" name="id" value=<%=question.question_id%>>
-          <input type="hidden" name="choice_id" value=<%=question.choice_id%>>
         </form>
+        <br>
       </div>
     </section>
     <br>

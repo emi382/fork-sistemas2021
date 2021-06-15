@@ -15,7 +15,7 @@
       </ul>
     </nav>
     <section>
-      <div>
+      <div id="parameters of careers">
         <h1 id="header title">Parameters of <%=career.name%>: </h1>
         <ul>
           <li> id: <%=career.career_id%></li>
@@ -24,10 +24,10 @@
         </ul>
       </div>
       <br>
-      <div>
+      <div id="surveys">
         <%career.surveys.map do |survey|%>
           <h1> Surveys associated with <%=career.name%> </h1>
-          <ul>
+          <ul id="surveys names">
             <li> <%=survey.name%> </li>
           </ul>
         <%end%>

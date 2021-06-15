@@ -15,7 +15,7 @@
       </ul>
     </nav>
     <section>
-      <table border="1">
+      <table border="1" id="question table">
         <p>(Click on question if you want to modify outcomes)</p>
         <tr>
           <th>Question ID</th>
@@ -27,16 +27,16 @@
           <th><%=question.question_id%></th>
           <th><a href='questions/<%=question.question_id%>/outcomes'> <%=question.description%> </a></th>
           <th>
-              <form action="questions/<%=question.question_id%>/delete" method="post">
-                <input type="hidden" name="id" value=<%=question.question_id%>>
-               <input type='submit' value='Delete'>
-              </form>
+            <form action="questions/<%=question.question_id%>/delete" method="post">
+              <input type="hidden" name="id" value=<%=question.question_id%>>
+             <input type='submit' value='Delete'>
+            </form>
           </th>
         </tr>
         <%end%>
       </table>
       <br>
-      <div>
+      <div id="Add question">
       <h3 style="color:red;"> (Admin Only) Add a new question to the test: </h3>
       <form action='/questions' method='POST' id='form1'>
         <label for="qdesc">Question description:</label>
