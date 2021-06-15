@@ -11,7 +11,7 @@ class App < Sinatra::Base
   end
 
   #starts the test by setting the iterators to their default values and passing the first two questions
-  #WARNING: at least 2 questions needed for the test to work
+  #WARNING: at least 2 questions needed for the test to work, and at least one outcome per question
   get "/start" do
     it1=0 #podria ponerse en homepage capaz?
     it2=1

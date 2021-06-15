@@ -9,6 +9,10 @@
       <%@surveys.map do |survey|%>
       <li>
         <a href='surveys/<%=survey.survey_id%>'> <%=survey.name%>: <%=survey.survey_id%></a>
+        <form action="surveys/<%=survey.survey_id%>/delete" method="post">
+          <input type="hidden" name="id" value=<%=survey.survey_id%>>
+          <input type='submit' value='Delete <%=survey.name%>'>
+        </form>
       </li>
       <%end%>
     </div>
