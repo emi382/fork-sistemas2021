@@ -1,6 +1,11 @@
 require './models/init.rb'
 
 class App < Sinatra::Base
+  configure do
+     set :public_folder, File.expand_path('../public', 'style.css')
+     set :views        , File.expand_path('../views', 'style.css')
+     set :root         , File.dirname('../public/style.css')
+   end
 
   it1=0
   it2=1
