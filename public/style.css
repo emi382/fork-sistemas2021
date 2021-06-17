@@ -1,2 +1,47 @@
-html{background: #6c1d25;}
-body{font:normal medium 'Gill Sans','Gill Sans MT','Goudy Bookletter 1911','Linux Libertine O','Liberation Serif',Candara,serif;padding:0;margin:0 auto;width:40em;line-height:1.75;word-spacing:0.1em}
+* {
+  color: #ffffff;
+}
+
+body{
+    background: #000020;
+}
+header h1{
+  text-align: center;
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+nav ul{
+  list-style: none;
+  text-align: center;
+  padding: 0px;
+  background: #344b73;
+}
+
+#fondo{
+  background: #344b73;
+  margin: 0px auto;
+  width: 400px;
+  border-radius: 15px;
+  padding: 1px;
+}
+
+nav ul li{
+  padding: 0px 5px;
+  background:#344b73;
+  display: inline-block;
+}
+
+nav ul li a{
+  background: #344b73;
+}
+section{
+  margin-top: 50px;
+  text-align: center;
+}
+button{
+  color: black;
+}
+footer{
+  text-align: center;
+}
