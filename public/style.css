@@ -3,7 +3,7 @@
 }
 
 body{
-    background: #000020;
+    background: #070e38;
 }
 header h1{
   text-align: center;
@@ -15,32 +15,42 @@ nav ul{
   list-style: none;
   text-align: center;
   padding: 0px;
-  background: #344b73;
+  background: #343463;
 }
 
 #fondo{
-  background: #344b73;
+  background: #343463;
   margin: 0px auto;
   width: 400px;
   border-radius: 15px;
-  padding: 1px;
+  padding: 0.3px;
+  border-bottom: 1px solid #000015;
+  border-right: 1px solid #000015
 }
 
 nav ul li{
   padding: 0px 5px;
-  background:#344b73;
+  background:#343463;
   display: inline-block;
 }
 
+nav ul #left{
+  display: inline-block;
+  margin-right: 30px;
+}
+nav ul #right{
+  display: inline-block;
+}
 nav ul li a{
-  background: #344b73;
+  text-decoration: none;
+  background: #343463;
 }
 section{
   margin-top: 50px;
   text-align: center;
 }
 button{
-  color: black;
+  color: #070e38;
 }
 footer{
   text-align: center;
