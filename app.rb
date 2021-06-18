@@ -193,8 +193,10 @@ class App < Sinatra::Base
 
   #shows a particular outcome's information, along with delete and update weight functionalities
   get "/outcomes/:id" do
+    outcome=Outcome.find(:outcome_id => params[:id])
+    question=Question.find(:choice_id => outcome.choice_id)
     outcome=Outcome.where(outcome_id: params['id']).last
-    erb :'questions/outcomes/outcome_description', :locals => {:outcome => outcome}
+    erb :'questions/outcomes/outcome_description', :locals => {:outcome => outcome, :question => question}
   end
 
   #deletes an outcome
