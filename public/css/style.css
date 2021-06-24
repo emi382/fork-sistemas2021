@@ -38,6 +38,14 @@ header #logo :hover{
   background: #7986cb;
 }
 
+ul{
+  list-style: none;
+}
+
+.ListText li{
+  font-size: large;
+}
+
 nav ul{
   list-style: none;
   text-align: center;
