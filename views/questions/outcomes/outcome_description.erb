@@ -37,13 +37,11 @@
           <input type='number', id="nWeight", name='weight' required>
           <button type="submit">Update</button>
         </form>
+        <form action="/questions/<%=question.question_id%>/outcomes" method="get">
+          <button type="submit" name="Cancel">Back</button>
+        </form>
       </div>
     </section>
-    <div>
-      <form action="/questions/ <%=question.question_id%> /outcomes" method="get">
-        <button type="submit" name="Cancel">Cancel</button>
-      </form>
-    </div>
     <br>
     <footer id="main footer">© 2021 team 1. All rights reserved.</footer>
   </body>

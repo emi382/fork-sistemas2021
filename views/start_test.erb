@@ -18,18 +18,19 @@
         </ul>
       </nav>
     </header>
-    <div>
-      <h2 style="color:#3377ff"><%=questions[it1].description%></h2>
-    </div>
-    <div>
-      <form action='/choices/update' method='POST' id='form1'>
-        <input type='range', id="value", name='value', min="0" max="5",step="1">
-        <input type="hidden" id="choiceid" name="choice_id" value="<%=questions[it1].choice_id%>">
-        <input type="hidden" id="nextid" name="next_id" value="<%=questions[it2].question_id%>">
-        <button type="submit">Submit value</button>
-      </form>
-    </div>
-
+    <section>
+      <div>
+        <h3><%=questions[it1].description%></h2>
+      </div>
+      <div>
+        <form action='/choices/update' method='POST' id='form1'>
+          <input type='range', id="value", name='value', min="0" max="5",step="1">
+          <input type="hidden" id="choiceid" name="choice_id" value="<%=questions[it1].choice_id%>">
+          <input type="hidden" id="nextid" name="next_id" value="<%=questions[it2].question_id%>">
+          <button type="submit">Submit value</button>
+        </form>
+      </div>
+    </section>
     <br>
     <footer id="main footer">© 2021 team 1. All rights reserved.</footer>
   </body>
