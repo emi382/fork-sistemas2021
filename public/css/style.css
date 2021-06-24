@@ -15,6 +15,10 @@ h1{
 input{
   color: black
 }
+
+form label{
+  color: black
+}
 header {
   justify-content: space-between;
   align-items: center;
