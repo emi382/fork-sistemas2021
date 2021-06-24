@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <title>List of careers</title>
   </head>
   <body>
     <header>
       <div id="logo">
-        <a href="/"><img src="escudouni.png" alt="UNCR logo">
+        <a href="/"><img src="images/escudouni.png" alt="UNCR logo">
         <p>Welcome to our vocational test service webpage!</p></a>
       </div>
       <nav>
@@ -21,24 +21,28 @@
     <section>
       <div id="table of careers">
         <table border="1">
-          <h1 id="table title">Career List</h1>
-          <tr>
-            <th>Career ID</th>
-            <th>Career</th>
-            <th>Delete</th>
-          </tr>
-          <%careers.map do |career|%>
-          <tr>
-            <th><%=career.career_id%></th>
-            <th><a href='careers/<%=career.career_id%>'> <%=career.name%></a></th>
-            <th>
-              <form action="careers/<%=career.career_id%>/delete" method="post">
-                <input type="hidden" name="id" value=<%=career.career_id%>>
-                <button type="submit" name="button">Delete</button>
-              </form>
-            </th>
-          </tr>
-          <%end%>
+          <h1>Career List</h1>
+          <thead>
+            <tr>
+              <th>Career ID</th>
+              <th>Career</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%careers.map do |career|%>
+            <tr>
+              <th><%=career.career_id%></th>
+              <th><a href='careers/<%=career.career_id%>'> <%=career.name%></a></th>
+              <th>
+                <form action="careers/<%=career.career_id%>/delete" method="post">
+                  <input type="hidden" name="id" value=<%=career.career_id%>>
+                  <button type="submit" name="button">Delete</button>
+                </form>
+              </th>
+            </tr>
+            <%end%>
+          </tbody>
         </table>
       </div>
       <br>
@@ -46,8 +50,7 @@
         <h2 style="color:red" id="Add career title"> (Admin Only) Add a new career: </h2>
         <form action='/careers' method='POST' id='form1'>
           <input type='text' name='name' required>
-          <input type='submit' value='Pero mira que buen boton'>
-          <button type='submit' form='form1' value='Submit'> Apreta este si te gusta mas </button>
+          <button type='submit' form='form1' value='Submit'> Submit </button>
         </form>
       </div>
     </section>
