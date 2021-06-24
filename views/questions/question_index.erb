@@ -20,24 +20,30 @@
     </header>
     <section>
       <table border="1" id="question table">
-        <p>(Click on question if you want to modify outcomes)</p>
-        <tr>
-          <th>Question ID</th>
-          <th>Question text</th>
-          <th>Delete</th>
-        </tr>
-        <%@questions.map do |question|%>
-        <tr>
-          <th><%=question.question_id%></th>
-          <th><a href='questions/<%=question.question_id%>/outcomes'> <%=question.description%> </a></th>
-          <th>
-            <form action="questions/<%=question.question_id%>/delete" method="post">
-              <input type="hidden" name="id" value=<%=question.question_id%>>
-              <button type="submit" name="button">Delete</button>
-            </form>
-          </th>
-        </tr>
-        <%end%>
+        <h1>
+          (Click on question if you want to modify outcomes)
+        </h1>
+        <thead>
+          <tr>
+            <th>Question ID</th>
+            <th>Question text</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%@questions.map do |question|%>
+          <tr>
+            <th><%=question.question_id%></th>
+            <th><a href='questions/<%=question.question_id%>/outcomes'> <%=question.description%> </a></th>
+            <th>
+              <form action="questions/<%=question.question_id%>/delete" method="post">
+                <input type="hidden" name="id" value=<%=question.question_id%>>
+                <button type="submit" name="button">Delete</button>
+              </form>
+            </th>
+          </tr>
+          <%end%>
+        </tbody>
       </table>
       <br>
       <div id="Add question">
