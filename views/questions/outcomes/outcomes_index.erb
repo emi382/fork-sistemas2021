@@ -28,23 +28,27 @@
           <p>List of all current outcomes for this question:</p>
         </div>
         <table border="1" id="outcome table">
-          <tr>
-            <th>Outcome ID</th>
-            <th>Career --> weight</th>
-            <th>Delete</th>
-          </tr>
-          <%outcomes.map do |outcome|%>
-          <tr>
-            <th><%=outcome.outcome_id%></th>
-            <th><a href='/outcomes/<%=outcome.outcome_id%>'><%=Career.find(career_id: outcome.career_id).name%> --> <%=outcome.weight%> </a></th>
-            <th>
-              <form action="outcomes/<%=outcome.outcome_id%>/delete" method="post">
-                <input type="hidden" name="id" value=<%=outcome.outcome_id%>>
-                <button type="submit" name="button">Delete</button>
-              </form>
-            </th>
-          </tr>
-          <%end%>
+          <thead>
+            <tr>
+              <th>Outcome ID</th>
+              <th>Career --> weight</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%outcomes.map do |outcome|%>
+            <tr>
+              <th><%=outcome.outcome_id%></th>
+              <th><a href='/outcomes/<%=outcome.outcome_id%>'><%=Career.find(career_id: outcome.career_id).name%> --> <%=outcome.weight%> </a></th>
+              <th>
+                <form action="outcomes/<%=outcome.outcome_id%>/delete" method="post">
+                  <input type="hidden" name="id" value=<%=outcome.outcome_id%>>
+                  <button type="submit" name="button">Delete</button>
+                </form>
+              </th>
+            </tr>
+            <%end%>
+          </tbody>
         </table>
       </div>
       <br>
