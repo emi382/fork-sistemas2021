@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
@@ -41,7 +41,7 @@
               <th><%=outcome.outcome_id%></th>
               <th><a href='/outcomes/<%=outcome.outcome_id%>'><%=Career.find(career_id: outcome.career_id).name%> --> <%=outcome.weight%> </a></th>
               <th>
-                <form action="outcomes/<%=outcome.outcome_id%>/delete" method="post">
+                <form action="/outcomes/<%=outcome.outcome_id%>/delete" method="post">
                   <input type="hidden" name="id" value=<%=outcome.outcome_id%>>
                   <button type="submit" name="button">Delete</button>
                 </form>
@@ -53,7 +53,9 @@
       </div>
       <br>
       <div id="add outcome">
-        Add a new outcome:
+        <div class="text">
+          Add a new outcome:
+        </div>
         <form action="/outcomes/new" method="post">
           <ul>
             <li>
@@ -72,13 +74,14 @@
             <input type="hidden" id="choiceid" name="choice_id" value="<%=choice.choice_id%>">
             <button type="submit" name="button">Submit new outcome relation</button>
         </form>
+        <form action="/questions" method="get">
+          <button type="submit" name="atras">Back</button>
+        </form>
         <br>
       </div>
     </section>
     <div>
-      <form action="/questions" method="get">
-        <button type="submit" name="atras">Back</button>
-      </form>
+
     </div>
     <br>
     <footer id="main footer">©2021 team 1. All rights reserved.</footer>
