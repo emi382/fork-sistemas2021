@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="/style.css"/>
     <title>List of careers</title>
   </head>
-  <body style="background-color:powderblue;">
-    <header id="main header">
+  <body>
+    <header>
+      <div id="logo">
+        <a href="/"><img src="escudouni.png" alt="UNCR logo">
+        <p>Welcome to our vocational test service webpage!</p></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/careers">Careers</a></li>
+          <li><a href="/questions">Questions</a></li>
+          <li><a href="/surveys">Surveys</a></li>
+        </ul>
+      </nav>
     </header>
-    <nav id="main menu">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/careers">Careers</a></li>
-        <li><a href="/questions">Questions</a></li>
-        <li><a href="/surveys">Surveys</a></li>
-      </ul>
-    </nav>
     <section>
       <div id="table of careers">
         <table border="1">
@@ -30,7 +34,7 @@
             <th>
               <form action="careers/<%=career.career_id%>/delete" method="post">
                 <input type="hidden" name="id" value=<%=career.career_id%>>
-               <input type='submit' value='Delete'>
+                <button type="submit" name="button">Delete</button>
               </form>
             </th>
           </tr>
