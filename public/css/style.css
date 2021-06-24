@@ -8,6 +8,13 @@ body{
     background: #070e38;
 }
 
+h1{
+  color: #070e38
+}
+
+input{
+  color: black
+}
 header {
   justify-content: space-between;
   align-items: center;
@@ -22,6 +29,9 @@ header #logo a{
   text-decoration: none;
   display: flex;
   align-items: center;
+}
+header #logo :hover{
+  background: #7986cb;
 }
 
 nav ul{
@@ -86,4 +96,24 @@ footer{
   width: 100%;
   height: 30px;
   text-align: center;
+}
+
+table{
+  background: #070e38;
+  position:relative;
+  border-spacing: 1;
+  border-collapse: collapse;
+  border-radius:6px;
+  overflow:hidden;
+  max-width:800px;
+  width:100%;
+  margin:0 auto;
+}
+
+thead tr{
+  background: #000051;
+}
+
+tbody tr {
+  background: #534bae;
 }
