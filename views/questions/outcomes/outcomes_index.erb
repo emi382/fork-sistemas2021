@@ -21,11 +21,11 @@
     <section>
       <div id="show outcome">
         <h1>Associated outcomes:</h1>
-        <div class="text">
-          <p>An outcome is a relation between this question and a particular career, it has a weight to determine how much this question
+        <div class="">
+          <p class = "text-l">An outcome is a relation between this question and a particular career, it has a weight to determine how much this question
           contributes to deciding that a certain career is what really fits someone</p>
           <br>
-          <p>List of all current outcomes for this question:</p>
+          <p class = "text-l">List of all current outcomes for this question:</p>
         </div>
         <table border="1" id="outcome table">
           <thead>
@@ -60,9 +60,9 @@
           <ul>
             <li>
               <label for="qcareer">Career id:</label>
-              <select class="" name="career">
+              <select class="text-l" name="career">
                 <%careers.map do |careers|%>
-                <option value = <%=careers.career_id%> > <%=careers.name%> </option>
+                <option class="text-l" value = <%=careers.career_id%> > <%=careers.name%> </option>
                 <%end%>
               </select>
             </li>

@@ -18,13 +18,13 @@ class App < Sinatra::Base
   #starts the test by setting the iterators to their default values and passing the first two questions
   #WARNING: at least 2 questions needed for the test to work, and at least one outcome per question
   get "/start" do
-    it1=0 #podria ponerse en homepage capaz?
+    it1=0
     it2=1
     questions=Question.all
     question1=questions[it1]
     question2=questions[it2]
     #Verifica que haya 2 question creadas, y ademas, que esten asociada a una career con su respectivo peso
-    if (question1 != nil && question2 != nil && Outcome.find(choice_id: question1.choice_id) && Outcome.find(choice_id: question2.choice_id))
+    if Question.first_two
       erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
     else
       redirect "/"
@@ -109,7 +109,7 @@ class App < Sinatra::Base
   #creates a new survey with the given name and career_id parameter
   post "/surveys" do
     survey = Survey.new(name: params[:name],career_id: params[:career_id])
-    #if saved, go back to surveys
+    #if saved, go back to homepage
     if survey.save
       [201, { 'Location' => "surveys/#{survey.survey_id}" }, 'Created']
       redirect '/'
