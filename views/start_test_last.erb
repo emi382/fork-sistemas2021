@@ -22,13 +22,13 @@
     </header>
     <section>
       <div>
-        <h2 style="color:#3377ff"><%=questions[it1].description%></h2>
+        <h3><%=questions[it1].description%></h2>
       </div>
       <div>
         <form action='/choices/update/last' method='POST' id='form1'>
           <input type='range', id="value", name='value', min="0" max="5",step="1">
           <input type="hidden" id="choiceid" name="choice_id" value="<%=questions[it1].choice_id%>">
-          <button type="submit" name="submit-value">Submit value</button>
+          <button type="submit" name="submit-value">Submit (Last question)</button>
         </form>
       </div>
     </section>

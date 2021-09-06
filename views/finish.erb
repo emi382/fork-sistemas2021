@@ -19,12 +19,15 @@
       </nav>
     </header>
     <section>
-      <div class="text">
+      <div class="text-l">
         <h1 id="header title">The career that most fits you, with a score of <%=max%> is:</h1>
-        <h2 style="color:#3377ff"><%=career.name%> (ID: <%=career.career_id%>)</h2>
+        <br>
+        <h2 style="color:black"><%=career.name%> (ID: <%=career.career_id%>)</h2>
       </div>
       <div id="submit-result">
-        <p class="text">Submit your name to save your results:</p>
+        <br>
+        <br>
+        <p class="text-l">Submit your name to save your results:</p>
         <form action='/surveys' method='POST' id='form1'>
           <input type='text', id="qname", name='name'>
           <button type="submit" name="button">Submit name</button>
@@ -32,7 +35,7 @@
         </form>
       </div>
       <div id="text-career">
-        <p class="text">Compare it to other careers:</p>
+        <p class="text-l">Compare it to other careers:</p>
         <ul>
         <%careers.each do |career|%>
             <li>
@@ -40,6 +43,7 @@
             </li>
           <%end%>
         </ul>
+        <br>
       </div>
     </section>
     <footer id="main footer">©2021 team 1. All rights reserved.</footer>

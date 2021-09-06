@@ -4,7 +4,7 @@ class App < Sinatra::Base
   configure do
      set :public_folder, File.expand_path('../public', 'style.css')
      set :views        , File.expand_path('../views', 'style.css')
-     set :root         , File.dirname('../public/style.css')
+     set :root         , File.dirname('../css/style.css')
    end
 
   it1=0
