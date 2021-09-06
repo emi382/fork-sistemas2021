@@ -22,24 +22,28 @@
       <div id="survey list">
         <h1 id="header title">Survey List</h1>
         <table border="1" id="survey table">
-          <tr>
-            <th>Career</th>
-            <th>Username</th>
-            <th>Delete</th>
-          </tr>
-          <%@surveys.map do |survey|%>
-          <%career=Career.find(career_id: survey.career_id)%>
-          <tr>
-            <th><%=career.name%></th>
-            <th><a href='surveys/<%=survey.survey_id%>'> <%=survey.name%></a></th>
-            <th>
-                <form action="surveys/<%=survey.survey_id%>/delete" method="post">
-                  <input type="hidden" name="id" value=<%=survey.survey_id%>>
-                  <button type="submit" name="button">Delete</button>
-                </form>
-            </th>
-          </tr>
-          <%end%>
+          <thead>
+            <tr>
+              <th>Career</th>
+              <th>Username</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%@surveys.map do |survey|%>
+            <%career=Career.find(career_id: survey.career_id)%>
+            <tr>
+              <th><%=career.name%></th>
+              <th><a href='surveys/<%=survey.survey_id%>'> <%=survey.name%></a></th>
+              <th>
+                  <form action="surveys/<%=survey.survey_id%>/delete" method="post">
+                    <input type="hidden" name="id" value=<%=survey.survey_id%>>
+                    <button type="submit" name="button">Delete</button>
+                  </form>
+              </th>
+            </tr>
+            <%end%>
+          </tbody>
         </table>
       </div>
     </section>
