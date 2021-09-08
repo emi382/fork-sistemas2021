@@ -18,13 +18,14 @@ class App < Sinatra::Base
   #starts the test by setting the iterators to their default values and passing the first two questions
   #WARNING: at least 2 questions needed for the test to work, and at least one outcome per question
   get "/start" do
-    it1=0
-    it2=1
     questions=Question.all
-    question1=questions[it1]
-    question2=questions[it2]
     #Verifica que haya 2 question creadas, y ademas, que esten asociada a una career con su respectivo peso
     if Question.first_two
+      it1=0
+      it2=1
+      questions=Question.all
+      question1=questions[it1]
+      question2=questions[it2]
       erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
     else
       redirect "/"
@@ -37,13 +38,14 @@ class App < Sinatra::Base
   #if it2 is bigger than questions.length, redirects to the finish page with the test results
   get "/start/:id" do
     questions=Question.all
+    qlen=questions.length
     question1=questions[it1]
 
-    if it2 > questions.length
+    if it2 > qlen
       redirect "/finish"
-    elsif it2==questions.length
+    elsif it2==qlen
       erb :'start_test_last', :locals => {:questions => questions, :it1 => it1}
-    elsif it2<questions.length
+    elsif it2<qlen
       question2=questions[it2]
       erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
     end
@@ -70,40 +72,31 @@ class App < Sinatra::Base
 
   #calculates how much every career fits a certain user
   get "/finish" do
-    outcomes=Outcome.all
-    careers=Career.all
-    careerStruct=Struct.new(:career_id,:name,:acum) #structure that includes both career parameters and an accumulator
-    careerArray=Array.new
-    i=0
-    #for every career, insert it to the careerArray and start the accumulator with the value 0
-    careers.map do |career|
-      careerArray[i]=careerStruct.new(career.career_id,career.name,0)
-      i=i+1;
-    end
 
-    #multiply the choice value (user-set value) and the outcome weight (weight towards a specific career)
-    #then add it to the accumulator specific to the career which is associated with the current outcome
-    outcomes.map do |outcome|
-      choice=Choice.find(choice_id: outcome.choice_id)
-      curr=outcome.weight * choice.value
-      careerArray.each do |k|
-        if k.career_id == outcome.career_id
-          k.acum+=curr
-        end
-      end
-    end
+    #careerArray is a structure with a career id, career name, and an accumulator
+
+    careerArray=Career.mapToCareerStruct
+
+    #set all the accumulators
+
+    Outcome.setWeightedValues(careerArray)
 
     #find the career which has the maximum accumulator value, then pass it to erb for final processing
+
     max=0
     careerid=0
+    
     careerArray.each do |k|
       if k.acum>=max
         max=k.acum
         careerid=k.career_id
       end
     end
+
     finalcareer = Career.find(career_id: careerid)
+
     erb :'finish', :locals => {:career => finalcareer, :careers => careerArray.sort_by {|career| -career.acum}, :max => max}
+
   end
 
   #creates a new survey with the given name and career_id parameter
@@ -170,8 +163,7 @@ class App < Sinatra::Base
   #deletes a question, once a question is deleted it also deletes the choice associated with it, and any outcomes
   #that said choice had associated
   post "/questions/:id/delete" do
-    Question.where(:question_id => params[:id]).delete
-    Choice.where(:choice_id => params[:choice_id]).delete
+    Question.deleteq(params['id'])
     redirect '/questions'
   end
 
@@ -201,10 +193,9 @@ class App < Sinatra::Base
 
   #deletes an outcome
   post "/outcomes/:id/delete" do
-    outcome=Outcome.find(:outcome_id => params[:id])
-    question=Question.find(:choice_id => outcome.choice_id)
+    qid=Outcome.questionid(params[:id])
     Outcome.where(:outcome_id => params[:id]).delete
-    redirect "/questions/#{question.question_id}/outcomes"
+    redirect "/questions/#{qid}/outcomes"
   end
 
   #updates an outcome's weight
