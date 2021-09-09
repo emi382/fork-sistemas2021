@@ -17,9 +17,10 @@ class Question < Sequel::Model
    end 
 
    	#deletes a question and its associated choice given the question id
-   	def self.deleteq(id)
-   		Question.where(:question_id => params[:id]).delete
-    	Choice.where(:choice_id => params[:choice_id]).delete
+   	def self.deleteq(qid)
+   		question=Question.find(question_id: qid)
+   		Choice.where(:choice_id => question.choice_id).delete
+   		Question.where(:question_id => qid).delete
     end
 
 	def validate

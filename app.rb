@@ -163,7 +163,7 @@ class App < Sinatra::Base
   #deletes a question, once a question is deleted it also deletes the choice associated with it, and any outcomes
   #that said choice had associated
   post "/questions/:id/delete" do
-    Question.deleteq(params['id'])
+    Question.deleteq(params[:id])
     redirect '/questions'
   end
 
