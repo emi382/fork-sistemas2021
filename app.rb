@@ -2,30 +2,27 @@ require './models/init.rb'
 
 class App < Sinatra::Base
   configure do
-     set :public_folder, File.expand_path('../public', 'style.css')
-     set :views        , File.expand_path('../views', 'style.css')
-     set :root         , File.dirname('../css/style.css')
-   end
+    set :public_folder, File.expand_path('../public', 'style.css')
+    set :views        , File.expand_path('../views', 'style.css')
+    set :root         , File.dirname('../css/style.css')
+  end
 
   it1=0
   it2=1
 
   #homepage
   get '/' do
-  erb :'landing'
+    erb :'landing'
   end
 
   #starts the test by setting the iterators to their default values and passing the first two questions
   #WARNING: at least 2 questions needed for the test to work, and at least one outcome per question
   get "/start" do
     questions=Question.all
-    #Verifica que haya 2 question creadas, y ademas, que esten asociada a una career con su respectivo peso
     if Question.first_two
       it1=0
       it2=1
       questions=Question.all
-      question1=questions[it1]
-      question2=questions[it2]
       erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
     else
       redirect "/"
@@ -40,7 +37,6 @@ class App < Sinatra::Base
     questions=Question.all
     qlen=questions.length
     question1=questions[it1]
-
     if it2 > qlen
       redirect "/finish"
     elsif it2==qlen
@@ -61,42 +57,29 @@ class App < Sinatra::Base
     redirect "/start/#{params[:next_id]}"
   end
 
-  #finds and updates the value of the final choice
-  #it also increases the iterators, and redirects to the finish page
+  #finds and updates the value of the final choice, redirects to the finish page
   post "/choices/update/last" do
     Choice.find(choice_id: params[:choice_id]).update(value: params[:value])
-    it1=it1+1
-    it2=it2+1
     redirect "/finish"
   end
 
   #calculates how much every career fits a certain user
   get "/finish" do
-
     #careerArray is a structure with a career id, career name, and an accumulator
-
     careerArray=Career.mapToCareerStruct
-
-    #set all the accumulators
-
     Outcome.setWeightedValues(careerArray)
 
     #find the career which has the maximum accumulator value, then pass it to erb for final processing
-
     max=0
     careerid=0
-    
     careerArray.each do |k|
       if k.acum>=max
         max=k.acum
         careerid=k.career_id
       end
     end
-
     finalcareer = Career.find(career_id: careerid)
-
     erb :'finish', :locals => {:career => finalcareer, :careers => careerArray.sort_by {|career| -career.acum}, :max => max}
-
   end
 
   #creates a new survey with the given name and career_id parameter
@@ -187,7 +170,6 @@ class App < Sinatra::Base
   get "/outcomes/:id" do
     outcome=Outcome.find(:outcome_id => params[:id])
     question=Question.find(:choice_id => outcome.choice_id)
-    outcome=Outcome.where(outcome_id: params['id']).last
     erb :'questions/outcomes/outcome_description', :locals => {:outcome => outcome, :question => question}
   end
 
@@ -245,4 +227,5 @@ class App < Sinatra::Base
     career = Career.where(career_id: params['id']).last
     erb :'careers/career_description', :locals => {:career => career}
   end
+
 end
