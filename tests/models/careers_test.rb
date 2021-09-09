@@ -62,7 +62,7 @@ MiniTest::Unit::TestCase
 		Career.create(name: 'estas')
 		careerArray[2] = Career.find(name: 'estas')
     #Assert
-    assert_equal Career.mapToCareerStruct == careerArray, true
+    assert_equal (Career.mapToCareerStruct == careerArray), true
   end
 
 end
