@@ -3,20 +3,15 @@ require File.expand_path '../../test_helper.rb', __FILE__
 class QuestionTest < MiniTest::Unit::TestCase
 MiniTest::Unit::TestCase
 
-  #= def test_question_has_one_choice
-
+  def test_question_has_one_choice
     #Arrange
-#    choice=Choice.create()
-
+  	choice=Choice.create()
     #Act
-#    question1=Question.create(description:'a')
-#    question2=Question.create(description:'b')
-
+   	question1=Question.create(description:'a')
+   	question2=Question.create(description:'b')
     #Assert
-
-#    assert_equal (question1.choice_id == question2.choice_id), true
-
-  #= end
+   	assert_equal (question1.choice_id == question2.choice_id), true
+  end
 
   def test_question_description_is_not_null
     question = Question.new
@@ -43,7 +38,7 @@ MiniTest::Unit::TestCase
 		Outcome.create(choice_id: choice.choice_id)
 		Outcome.create(choice_id: choice.choice_id)
 		#Assert
-		assert_equal Question.first_two, false
+		assert_equal Question.first_two, true
 	end
 
 	def test_question_first_two_false
@@ -54,5 +49,16 @@ MiniTest::Unit::TestCase
 		Outcome.create(choice_id: choice.choice_id)
 		#Assert
 		assert_equal Question.first_two, false
+	end
+
+	def test_question_deleteq
+		#Arrange
+		question = Question.create(description:'a')
+		id = question.question_id
+		#Act
+		Question.deleteq(id)
+		question_id = Question.find(question_id: id)
+		#Assert
+		assert_equal (question_id == nil), true
 	end
 end
