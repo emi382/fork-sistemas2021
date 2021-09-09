@@ -65,21 +65,12 @@ class App < Sinatra::Base
 
   #calculates how much every career fits a certain user
   get "/finish" do
-    #careerArray is a structure with a career id, career name, and an accumulator
+    #careerArray is an array of structures with a career id, career name, and an accumulator
     careerArray=Career.mapToCareerStruct
     Outcome.setWeightedValues(careerArray)
-
-    #find the career which has the maximum accumulator value, then pass it to erb for final processing
-    max=0
-    careerid=0
-    careerArray.each do |k|
-      if k.acum>=max
-        max=k.acum
-        careerid=k.career_id
-      end
-    end
-    finalcareer = Career.find(career_id: careerid)
-    erb :'finish', :locals => {:career => finalcareer, :careers => careerArray.sort_by {|career| -career.acum}, :max => max}
+    #finalcareer is the same structure that careerArray is made out of
+    finalcareer=Career.bestCareerCalc(careerArray)
+    erb :'finish', :locals => {:career => finalcareer, :careers => careerArray.sort_by {|career| -career.acum} }
   end
 
   #creates a new survey with the given name and career_id parameter
