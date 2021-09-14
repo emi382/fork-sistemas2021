@@ -90,8 +90,7 @@ class App < Sinatra::Base
   #shows the information of a particular survey
   get '/surveys/:id' do
     survey = Survey.where(survey_id: params['id']).last
-    career = Career.find(career_id: survey.career_id)
-    erb :'surveys/survey_description', :locals => {:survey => survey, :career => career}
+    erb :'surveys/survey_description', :locals => {:survey => survey, :career => Career.find(career_id: survey.career_id)}
   end
 
   #deletes a survey given its id
@@ -172,8 +171,9 @@ class App < Sinatra::Base
 
   #shows the outcomes associated to the choice that is associated to a question. Also has create outcome functionalities
   get "/questions/:id/outcomes" do
-    erb :'questions/outcomes/outcomes_index', :locals =>{:question =>question=Question.where(question_id: params['id']).last,
-     :choice => Choice.where(choice_id: question.choice_id).last,
+    question=Question.where(question_id: params['id']).last
+    choice=Choice.where(choice_id: question.choice_id).last
+    erb :'questions/outcomes/outcomes_index', :locals =>{:question =>question, :choice => choice,
       :outcomes => Outcome.where(choice_id: choice.choice_id),
        :careers => Career.all}
   end
