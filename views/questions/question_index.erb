@@ -31,7 +31,7 @@
           </tr>
         </thead>
         <tbody>
-          <%@questions.map do |question|%>
+          <%questions.map do |question|%>
           <tr>
             <th><%=question.question_id%></th>
             <th><a href='questions/<%=question.question_id%>/outcomes'> <%=question.description%> </a></th>

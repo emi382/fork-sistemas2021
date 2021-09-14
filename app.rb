@@ -18,12 +18,10 @@ class App < Sinatra::Base
   #starts the test by setting the iterators to their default values and passing the first two questions
   #WARNING: at least 2 questions needed for the test to work, and at least one outcome per question
   get "/start" do
-    questions=Question.all
     if Question.first_two
       it1=0
       it2=1
-      questions=Question.all
-      erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
+      erb :'start_test', :locals => {:questions => Question.all, :it1 => it1, :it2 =>it2}
     else
       redirect "/"
     end
@@ -42,7 +40,6 @@ class App < Sinatra::Base
     elsif it2==qlen
       erb :'start_test_last', :locals => {:questions => questions, :it1 => it1}
     elsif it2<qlen
-      question2=questions[it2]
       erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
     end
   end
@@ -68,9 +65,8 @@ class App < Sinatra::Base
     #careerArray is an array of structures with a career id, career name, and an accumulator
     careerArray=Career.mapToCareerStruct
     Outcome.setWeightedValues(careerArray)
-    #finalcareer is the same structure that careerArray is made out of
-    finalcareer=Career.bestCareerCalc(careerArray)
-    erb :'finish', :locals => {:career => finalcareer, :careers => careerArray.sort_by {|career| -career.acum} }
+    #Career.bestCareerCalc returns one of the structures careerArray is made out of
+    erb :'finish', :locals => {:career => Career.bestCareerCalc(careerArray), :careers => careerArray.sort_by {|career| -career.acum} }
   end
 
   #creates a new survey with the given name and career_id parameter
@@ -124,14 +120,12 @@ class App < Sinatra::Base
 
   #shows all questions
   get '/questions' do
-    @questions=Question.all
-    erb :'questions/question_index'
+    erb :'questions/question_index', :locals => {:questions => Question.all}
   end
 
   #shows an individual question description, along with redirecting to the outcome modifying page if needed
   get '/questions/:id' do
-    question=Question.where(question_id: params['id']).last
-    erb :'questions/question_description', :locals => {:question => question}
+    erb :'questions/question_description', :locals => {:question => Question.where(question_id: params['id']).last}
   end
 
   #deletes a question, once a question is deleted it also deletes the choice associated with it, and any outcomes
@@ -159,9 +153,8 @@ class App < Sinatra::Base
 
   #shows a particular outcome's information, along with delete and update weight functionalities
   get "/outcomes/:id" do
-    outcome=Outcome.find(:outcome_id => params[:id])
-    question=Question.find(:choice_id => outcome.choice_id)
-    erb :'questions/outcomes/outcome_description', :locals => {:outcome => outcome, :question => question}
+    erb :'questions/outcomes/outcome_description', :locals => {:outcome => outcome=Outcome.find(:outcome_id => params[:id]), 
+      :question => question=Question.find(:choice_id => outcome.choice_id)}
   end
 
   #deletes an outcome
@@ -179,11 +172,10 @@ class App < Sinatra::Base
 
   #shows the outcomes associated to the choice that is associated to a question. Also has create outcome functionalities
   get "/questions/:id/outcomes" do
-    question=Question.where(question_id: params['id']).last
-    choice=Choice.where(choice_id: question.choice_id).last
-    outcomes=Outcome.where(choice_id: choice.choice_id)
-    careers = Career.all #Para mostrar la lista desplegable de carreras
-    erb :'questions/outcomes/outcomes_index', :locals =>{:outcomes => outcomes, :choice => choice, :careers => careers, :question => question}
+    erb :'questions/outcomes/outcomes_index', :locals =>{:question =>question=Question.where(question_id: params['id']).last,
+     :choice => Choice.where(choice_id: question.choice_id).last,
+      :outcomes => Outcome.where(choice_id: choice.choice_id),
+       :careers => Career.all}
   end
 
   #creates a new career
@@ -209,14 +201,12 @@ class App < Sinatra::Base
 
   #shows all careers
   get '/careers' do
-    careers=Career.all
-    erb :'careers/career_index', :locals =>{:careers => careers}
+    erb :'careers/career_index', :locals =>{:careers => Career.all}
   end
 
   #shows a particular career and includes a delete button
   get '/careers/:id' do
-    career = Career.where(career_id: params['id']).last
-    erb :'careers/career_description', :locals => {:career => career}
+    erb :'careers/career_description', :locals => {:career => Career.where(career_id: params['id']).last}
   end
 
 end
