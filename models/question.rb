@@ -1,7 +1,5 @@
 class Question < Sequel::Model
-	#one_to_many:choices
 	many_to_one:choices
-	#one_to_many:responses
 
 	#this function checks that theres at least 2 questions, and that they're each associated to at least one career through an outcome
 	def self.first_two
