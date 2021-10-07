@@ -93,6 +93,13 @@ class App < Sinatra::Base
     erb :'surveys/survey_description', :locals => {:survey => survey, :career => Career.find(career_id: survey.career_id)}
   end
 
+  #given a range of dates, returns the career count of the surveys in that range
+  get '/surveys/careercount' do
+    surveys = Survey.filterByDate(params[:startDate],params[:finishDate])
+    careerCount = Survey.careerCount(surveys)
+    erb :'surveys/careercount', :locals >= {:careers => careerCount}
+  end
+
   #deletes a survey given its id
   post '/surveys/:id/delete' do
     Survey.where(:survey_id => params[:id]).delete
