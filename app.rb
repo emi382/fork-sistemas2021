@@ -87,17 +87,18 @@ class App < Sinatra::Base
     erb :'surveys/survey_index'
   end
 
-  #shows the information of a particular survey
-  get '/surveys/:id' do
-    survey = Survey.where(survey_id: params['id']).last
-    erb :'surveys/survey_description', :locals => {:survey => survey, :career => Career.find(career_id: survey.career_id)}
-  end
-
   #given a range of dates, returns the career count of the surveys in that range
   get '/surveys/careercount' do
-    surveys = Survey.filterByDate(params[:startDate],params[:finishDate])
-    careerCount = Survey.careerCount(surveys)
-    erb :'surveys/careercount', :locals >= {:careers => careerCount}
+    #surveys = Survey.filterByDate(params[:startDate],params[:finishDate])
+    surveys=Survey.all
+    careers = Survey.careerCount(surveys)
+    erb :'surveys/careercount', :locals => {:careers => careers}
+  end
+
+  #shows the information of a particular survey
+  get '/surveys/:id' do
+    survey = Survey.where(survey_id: params[:id]).last
+    erb :'surveys/survey_description', :locals => {:survey => survey, :career => Career.find(career_id: survey.career_id)}
   end
 
   #deletes a survey given its id

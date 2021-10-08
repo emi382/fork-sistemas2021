@@ -1,1 +1,9 @@
-<!-- PLACEHOLDER -->
+<html>
+<ul>
+ 	<%careers.each do |career|%>
+        <li>
+           <%=career.name%>: <%=career.acum%>
+        </li>
+    <%end%>
+</ul>
+</html>
