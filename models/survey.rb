@@ -2,7 +2,7 @@ class Survey < Sequel::Model
 	many_to_one:careers
 
 	def self.startDate()
-		#Devuelve la fecha mas antigua de la tabla Surveys
+		#Devuelve la fecha mas antigua de la tabla Surveys.
 	end
 
 	def self.finishDate()
