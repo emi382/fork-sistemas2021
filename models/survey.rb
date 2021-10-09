@@ -1,6 +1,14 @@
 class Survey < Sequel::Model
 	many_to_one:careers
 
+	def self.startDate()
+		#Devuelve la fecha mas antigua de la tabla Surveys
+	end
+
+	def self.finishDate()
+		#Devuelve al fecha mas reciente de la tabla Surveys
+	end
+
 	def self.filterbyDate(startDate, finishDate)
  		#TODO:make this function return all surveys within the specified dates
 	end
