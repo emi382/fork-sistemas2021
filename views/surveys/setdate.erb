@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <title>Set Date</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="/surveys/careercount" method="get">
         <label for="start">Start date:</label>
         <input type="date" id="start" name="start_date"
-            value="2018-07-22"
-            min="2018-01-01" max="2018-12-31">
-    
+            value=<%=first_date%> 
+            min=<%=first_date%> 
+            max=<%=last_date%> 
+        >
         <label for="finish">Finish date:</label>
         <input type="date" id="start" name="finish_date"
-            value="2018-07-22"
-            min="2018-01-01" max="2018-12-31">
+            value=<%=first_date%>  
+            min=<%=first_date%> 
+            max=<%=last_date%>
+        >
+        <button type="submit" name="button">Buscar</button>
     </form>
 </body>
 </html>
