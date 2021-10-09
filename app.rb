@@ -88,7 +88,7 @@ class App < Sinatra::Base
   end
 
   get '/surveys/setdate' do
-    #Hola
+    #Aun no esta listo
     erb :'surveys/setdate'
   end
 
