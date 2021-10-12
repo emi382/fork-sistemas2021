@@ -87,7 +87,7 @@ class App < Sinatra::Base
     erb :'surveys/survey_index'
   end
 
-  #given a range of dates, returns the career count of the surveys in that range
+  #given a range of dates, returns the career count of the surveys in that range....
   get '/surveys/careercount' do
     #surveys = Survey.filterByDate(params[:startDate],params[:finishDate])
     surveys=Survey.all
