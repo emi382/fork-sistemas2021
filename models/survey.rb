@@ -2,15 +2,16 @@ class Survey < Sequel::Model
 	many_to_one:careers
 	
 	def self.filterByDate(startDate, finishDate)
- 		#TODO:make this function return all surveys within the specified dates
 		 surveyStruct = Struct.new(:career_id, :survey_id)
 		 surveys = Survey.all
 		 surveyArray = Array.new
 		 i = 0
 		 surveys.each do |survey|
-			if (survey.created_at >= DateTime.parse(startDate) && survey.created_at <= DateTime.parse(finishDate))
-				surveyArray[i] = surveyStruct.new(survey.career_id, survey.survey_id)
-				i=i+1
+			if (DateTime.parse(startDate) < DateTime.parse(finishDate))
+				if (survey.created_at >= DateTime.parse(startDate) && survey.created_at <= DateTime.parse(finishDate))
+					surveyArray[i] = surveyStruct.new(survey.career_id, survey.survey_id)
+					i=i+1
+				end
 			end
 		end
 		return surveyArray
