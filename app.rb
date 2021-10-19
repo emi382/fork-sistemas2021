@@ -97,8 +97,8 @@ class App < Sinatra::Base
 
   #shows the information of a particular survey
   get '/surveys/:id' do
-    survey = Survey.where(survey_id: params[:id]).last
-    erb :'surveys/survey_description', :locals => {:survey => survey, :career => Career.find(career_id: survey.career_id)}
+  survey = Survey.where(survey_id: params[:id]).last
+  erb :'surveys/survey_description', :locals => {:survey => survey, :career => Career.find(career_id: survey.career_id), :date => survey.created_at.to_formatted_s(:db)}
   end
 
   #deletes a survey given its id
