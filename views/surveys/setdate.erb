@@ -1,23 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Set Date</title>
-</head>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <title>Set date</title>
+  </head>
+  <body>
+    <header>
+      <div id="logo">
+        <a href="/"><img src="images/escudouni.png" alt="UNRC logo">
+        <p>Welcome to our vocational test service webpage!</p></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/careers">Careers</a></li>
+          <li><a href="/questions">Questions</a></li>
+          <li><a href="/surveys">Surveys</a></li>
+          <!-- Agregar un sub menu que se diriga a surveys/setdate.erb -->
+        </ul>
+      </nav>
+    </header>
 <body>
+  <section>
     <form action="/surveys/careercount" method="get">
         <label for="start">Start date:</label>
         <input type="date" id="start" name="start_date"
             value=<%=first_date%> 
-            min=<%=first_date%> 
-            max=<%=last_date%> 
         >
         <label for="finish">Finish date:</label>
         <input type="date" id="start" name="finish_date"
-            value=<%=last_date%>  
-            min=<%=first_date%> 
-            max=<%=last_date%>
+            value=<%=last_date%> 
         >
+        <label for="qcareer">Career id:</label>
+              <select class="text-l" name="career">
+                <%careers.map do |careers|%>
+                <option class="text-l" value = <%=careers.career_id%> > <%=careers.name%> </option>
+                <%end%>
+              </select>
         <button type="submit" name="button">Buscar</button>
     </form>
+  </section>
+  <footer> ©2021 Team 1. All rights reserved.</footer>
 </body>
 </html>
