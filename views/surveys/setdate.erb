@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <title>Set date</title>
+  </head>
+  <body>
+    <header>
+      <div id="logo">
+        <a href="/"><img src="images/escudouni.png" alt="UNRC logo">
+        <p>Welcome to our vocational test service webpage!</p></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/careers">Careers</a></li>
+          <li><a href="/questions">Questions</a></li>
+          <li><a href="/surveys" class="subnavbtn">Surveys</a></li>
+          <div class="subnav-content">
+             <a href="#company">Company</a>
+             <a href="#team">Team</a>
+             <a href="#careers">Careers</a>
+            </div>
+          <!-- Agregar un sub menu que se diriga a surveys/setdate.erb -->
+        </ul>
+      </nav>
+    </header>
+<body>
+    <form action="/surveys/careercount" method="get">
+        <label for="start">Start date:</label>
+        <input type="date" id="start" name="start_date"
+            value=<%=first_date%> 
+        >
+        <label for="finish">Finish date:</label>
+        <input type="date" id="start" name="finish_date"
+            value=<%=last_date%> 
+        >
+        <button type="submit" name="button">Buscar</button>
+    </form>
+    <footer> ©2021 Team 1. All rights reserved.</footer>
+</body>
+</html>
