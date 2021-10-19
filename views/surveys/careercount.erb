@@ -1,9 +1,43 @@
+
+<!DOCTYPE html>
 <html>
-<ul>
- 	<%careers.each do |career|%>
-        <li>
-           <%=career.name%>: <%=career.acum%>
-        </li>
-    <%end%>
-</ul>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <title>Homepage</title>
+  </head>
+  <body>
+    <header>
+      <div id="logo">
+        <a href="/"><img src="images/escudouni.png" alt="UNRC logo">
+        <p>Welcome to our vocational test service webpage!</p></a>
+      </div>
+      <nav class="navigation">
+        <ul class="mainmenu">
+          <li><a href="/careers">Careers</a></li>
+          <li><a href="/questions">Questions</a></li>
+          <li><a href="/surveys">Surveys</a>
+            <ul class="submenu">
+              <li><a href="/surveys/setdate">Set date</a></li>
+            </ul>
+          </li>
+          <!-- Agregar un sub menu que se diriga a surveys/setdate.erb -->
+        </ul>
+      </nav>
+    </header>
+    <section>
+        <ul>
+            <%careers.each do |careerdo|%>
+               <li>
+                   <% if careerdo.name == career %>
+                   <p class="text"> <%=careerdo.name%> - <%=careerdo.acum%> encuestas</p> 
+                   <% end %>
+               </li>
+           <%end%>
+       </ul>
+    </section>
+    <br>
+    <footer> ©2021 Team 1. All rights reserved.</footer>
+  </body>
+</html>
+<html>
 </html>
