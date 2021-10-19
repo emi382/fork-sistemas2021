@@ -87,12 +87,19 @@ class App < Sinatra::Base
     erb :'surveys/survey_index'
   end
 
+  #Se selecciona el rango y la carrera
+  get '/surveys/setdate' do
+    first_date = Survey.first
+    last_date = Survey.last
+    erb :'surveys/setdate', :locals => {:first_date => (first_date.created_at).to_formatted_s(:db), :last_date => (last_date.created_at + 10000).to_formatted_s(:db), :careers => Career.all}
+  end
+
   #given a range of dates, returns the career count of the surveys in that range....
   get '/surveys/careercount' do
     #surveys = Survey.filterByDate(params[:startDate],params[:finishDate])
     surveys=Survey.all
     careers = Survey.careerCount(surveys)
-    erb :'surveys/careercount', :locals => {:careers => careers}
+    erb :'surveys/careercount', :locals => {:careers => careers, :career => Career.find(career_id: params[:career]).name}
   end
 
   #shows the information of a particular survey
