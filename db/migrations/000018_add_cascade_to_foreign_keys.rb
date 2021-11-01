@@ -7,12 +7,12 @@ Sequel.migration do
       add_foreign_key [:career_id], :careers, on_delete: :cascade
     end
     alter_table(:surveys) do
-        drop_foreign_key [:career_id], name: :surveys_career_id_fkey
-        add_foreign_key [:career_id], :careers, on_delete: :cascade
+      drop_foreign_key [:career_id], name: :surveys_career_id_fkey
+      add_foreign_key [:career_id], :careers, on_delete: :cascade
     end
     alter_table(:questions) do
-        drop_foreign_key [:choice_id], name: :questions_choice_id_fkey
-        add_foreign_key [:choice_id], :choices, on_delete: :cascade
+      drop_foreign_key [:choice_id], name: :questions_choice_id_fkey
+      add_foreign_key [:choice_id], :choices, on_delete: :cascade
     end
   end
 
@@ -28,8 +28,8 @@ Sequel.migration do
       add_foreign_key [:career_id], :careers
     end
     alter_table(:questions) do
-        drop_foreign_key [:choice_id], name: :questions_choice_id_fkey
-        add_foreign_key [:choice_id], :choices
+      drop_foreign_key [:choice_id], name: :questions_choice_id_fkey
+      add_foreign_key [:choice_id], :choices
     end
   end
 end

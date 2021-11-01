@@ -1,40 +1,39 @@
-require File.expand_path '../../test_helper.rb', __FILE__
+require File.expand_path '../test_helper.rb', __dir__
 
-#Test to determine questions is working properly
+# Test to determine questions is working properly
 class QuestionTest < MiniTest::Unit::TestCase
-MiniTest::Unit::TestCase
+  MiniTest::Unit::TestCase
 
   def test_question_has_one_choice
-    #Arrange
-  	choice=Choice.create()
+    # Arrange
 
-    #Act
-   	question1=Question.create(description: 'a')
-   	question2=Question.create(description: 'b')
+    # Act
+    question1 = Question.create(description: 'a')
+    question2 = Question.create(description: 'b')
 
-    #Assert
-   	assert_equal (question1.choice_id == question2.choice_id), true
+    # Assert
+    assert_equal (question1.choice_id == question2.choice_id), true
   end
 
   def test_question_description_is_not_null
-    #Arrange
+    # Arrange
     question = Question.new
 
-    #Act
+    # Act
     question.description = nil
 
-    #Assert
+    # Assert
     assert_equal question.valid?, false
   end
 
   def test_question_description_is_not_empty
-    #Arrange
+    # Arrange
     question = Question.new
 
-    #Act
+    # Act
     question.description = ''
 
-    #Assert
+    # Assert
     assert_equal question.valid?, false
   end
 end

@@ -1,7 +1,7 @@
 Sequel.migration do
   up do
     alter_table(:questions) do
-     add_foreign_key :choice_id, :choices
+      add_foreign_key :choice_id, :choices
     end
   end
 

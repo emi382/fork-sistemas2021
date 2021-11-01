@@ -1,53 +1,53 @@
-require File.expand_path '../../test_helper.rb', __FILE__
+require File.expand_path '../test_helper.rb', __dir__
 
-#Test to determine careers is working properly
+# Test to determine careers is working properly
 class CareerTest < MiniTest::Unit::TestCase
-MiniTest::Unit::TestCase
+  MiniTest::Unit::TestCase
   def test_career_has_many_surveys
-    #Arrange
+    # Arrange
     career = Career.create(name: 'Spaceman')
 
-    #Act
+    # Act
     Survey.create(name: 'U1', career_id: career.career_id)
     Survey.create(name: 'U2', career_id: career.career_id)
     Survey.create(name: 'U3', career_id: career.career_id)
 
-    #Assert
+    # Assert
     assert_equal career.surveys.count, 3
   end
 
   def test_career_has_many_outcomes
-    #Arrange
+    # Arrange
     career = Career.create(name: 'Spaceman')
 
-    #Act
+    # Act
     Outcome.create(career_id: career.career_id)
     Outcome.create(career_id: career.career_id)
     Outcome.create(career_id: career.career_id)
 
-    #Assert
+    # Assert
     assert_equal career.outcomes.count, 3
   end
 
   def test_career_has_name
-    #Arrange
+    # Arrange
     career = Career.new
 
-    #Act
+    # Act
     career.name = ''
 
-    #Assert
+    # Assert
     assert_equal career.valid?, false
   end
 
   def test_career_name_is_not_null
-    #Arrange
+    # Arrange
     career = Career.new
 
-    #Act
+    # Act
     career.name = nil
 
-    #Assert
+    # Assert
     assert_equal career.valid?, false
   end
 end

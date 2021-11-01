@@ -1,42 +1,42 @@
-require File.expand_path '../../test_helper.rb', __FILE__
+require File.expand_path '../test_helper.rb', __dir__
 
-#Test to determine response is working properly (Not needed)
+# Test to determine response is working properly (Not needed)
 class ResponseTest < MiniTest::Unit::TestCase
-MiniTest::Unit::TestCase
+  MiniTest::Unit::TestCase
 
   def test_response_has_one_choice
-    #Arrange
-    choice=Choice.create(text: 'a')
+    # Arrange
+    choice = Choice.create(text: 'a')
 
-    #Act
+    # Act
     response1 = Response.create(choice_id: choice.choice_id)
     response2 = Response.create(choice_id: choice.choice_id)
 
-    #Assert
+    # Assert
     assert_equal (response1.choice_id == response2.choice_id), true
   end
 
   def test_response_has_one_question
-    #Arrange
-    question=Question.create(name: 'Q1', description: "asd", number: 3, type: "asdasg")
+    # Arrange
+    question = Question.create(name: 'Q1', description: 'asd', number: 3, type: 'asdasg')
 
-    #Act
+    # Act
     response1 = Response.create(question_id: question.question_id)
     response2 = Response.create(question_id: question.question_id)
 
-    #Assert
+    # Assert
     assert_equal (response1.question_id == response2.question_id), true
   end
 
   def test_response_has_one_survey
-    #Arrange
-    survey=Survey.create(name: 'S1')
+    # Arrange
+    survey = Survey.create(name: 'S1')
 
-    #Act
+    # Act
     response1 = Response.create(survey_id: survey.survey_id)
     response2 = Response.create(survey_id: survey.survey_id)
 
-    #Assert
+    # Assert
     assert_equal (response1.survey_id == response2.survey_id), true
   end
 end
