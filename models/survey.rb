@@ -1,9 +1,21 @@
 #The survey class records what result a certain person got for the test in what date
 class Survey < Sequel::Model
 	many_to_one:careers
-
-	def self.filterbyDate(startDate, finishDate)
- 		#TODO:make this function return all surveys within the specified dates
+	
+	def self.filterByDate(startDate, finishDate)
+		 surveyStruct = Struct.new(:career_id, :survey_id)
+		 surveys = Survey.all
+		 surveyArray = Array.new
+		 i = 0
+		 surveys.each do |survey|
+			if (DateTime.parse(startDate) < DateTime.parse(finishDate))
+				if (survey.created_at >= DateTime.parse(startDate) && survey.created_at <= DateTime.parse(finishDate).change(hour: 23, min: 59, sec:59))
+					surveyArray[i] = surveyStruct.new(survey.career_id, survey.survey_id)
+					i=i+1
+				end
+			end
+		end
+		return surveyArray
 	end
 
 	#this function returns a structure of careers and an accumulator representing the survey count of said careers

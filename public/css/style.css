@@ -159,3 +159,42 @@ thead tr{
 tbody tr {
   background: #534bae;
 }
+.mainmenu, .submenu {
+  list-style: none;
+  padding: 0;
+}
+
+/* this is the initial state of all submenus.
+  we set it to max-height: 0, and hide the overflowed content.
+*/
+.submenu {
+  position: absolute;
+  display: none;
+  overflow: hidden;
+  padding-left: 40px;
+  padding-bottom: 5px;
+  margin-bottom: 49px;
+  top: 49px;
+  max-height: 0;
+}
+
+.submenu li{
+  float: right;
+  color: #fff;
+  width: 100%;
+  margin: 0;
+}
+
+.submenu li a{
+  padding: 0;
+  margin: 0;
+}
+
+/* when hovering over a .mainmenu item,
+  display the submenu inside it.
+  we're changing the submenu's max-height from 0 to 200px;
+*/
+.mainmenu li:hover .submenu {
+  display: block;
+  max-height: 200px;
+}

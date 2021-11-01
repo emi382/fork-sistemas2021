@@ -86,18 +86,29 @@ class App < Sinatra::Base
     erb :'surveys/survey_index'
   end
 
-  #given a range of dates, returns the career count of the surveys in that range
+  #Se selecciona el rango y la carrera
+  get '/surveys/setdate' do
+    surveys = Survey.first
+    if (surveys != nil) 
+      first_date = Survey.first
+      last_date = Survey.last
+      erb :'surveys/setdate', :locals => {:first_date => (first_date.created_at).to_formatted_s(:db), :last_date => (last_date.created_at + 10000).to_formatted_s(:db), :careers => Career.all}
+    else
+      redirect '/'
+    end
+  end
+
+  #given a range of dates, returns the career count of the surveys in that range....
   get '/surveys/careercount' do
-    #surveys = Survey.filterByDate(params[:startDate],params[:finishDate])
-    surveys=Survey.all
+    surveys = Survey.filterByDate(params[:startDate],params[:finishDate])
     careers = Survey.careerCount(surveys)
-    erb :'surveys/careercount', :locals => {:careers => careers}
+    erb :'surveys/careercount', :locals => {:careers => careers, :career => Career.find(career_id: params[:career]).name}
   end
 
   #shows the information of a particular survey
   get '/surveys/:id' do
-    survey = Survey.where(survey_id: params[:id]).last
-    erb :'surveys/survey_description', :locals => {:survey => survey, :career => Career.find(career_id: survey.career_id)}
+  survey = Survey.where(survey_id: params[:id]).last
+  erb :'surveys/survey_description', :locals => {:survey => survey, :career => Career.find(career_id: survey.career_id), :date => survey.created_at.to_formatted_s(:db)}
   end
 
   #deletes a survey given its id
