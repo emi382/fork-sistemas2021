@@ -6,6 +6,7 @@ gem 'sinatra', '2.0.7'
 gem 'pg'
 gem 'sequel'
 gem 'rails'
+gem 'rubocop', require: false
 
 group :development do
   gem 'dotenv', '2.7.5'
