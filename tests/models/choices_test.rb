@@ -1,5 +1,6 @@
 require File.expand_path '../../test_helper.rb', __FILE__
 
+#Test to determine choices is working properly
 class ChoiceTest < MiniTest::Unit::TestCase
 MiniTest::Unit::TestCase
 

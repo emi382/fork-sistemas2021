@@ -1,3 +1,4 @@
+#The class outcome will tell us how much a question influences a certain career result
 class Outcome < Sequel::Model
 	many_to_one:choices
 	many_to_one:careers
@@ -23,7 +24,7 @@ class Outcome < Sequel::Model
           			k.acum+=curr
         		end
       		end
-      	end
+  end
 	end
 
 end

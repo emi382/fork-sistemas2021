@@ -12,6 +12,7 @@ DB = Sequel.connect(
    host: 'testdb',
    user: 'unicorn',
    password: 'magic')
+# Nos dice que va a hacer rollback
 class Minitest::HooksSpec
   def around
     DB.transaction(:rollback=>:always, :auto_savepoint=>true){super}

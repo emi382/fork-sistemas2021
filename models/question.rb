@@ -1,3 +1,4 @@
+#The class question includes the questions of our test that need to be answered
 class Question < Sequel::Model
 	many_to_one:choices
 

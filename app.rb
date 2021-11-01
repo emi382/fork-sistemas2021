@@ -1,5 +1,6 @@
 require './models/init.rb'
 
+#This is the main class which determines the behavior of every path in our website
 class App < Sinatra::Base
   configure do
     set :public_folder, File.expand_path('../public', 'style.css')
@@ -12,7 +13,7 @@ class App < Sinatra::Base
 
   #homepage
   get '/' do
-    erb :'landing'
+    erb :landing
   end
 
   #starts the test by setting the iterators to their default values and passing the first two questions
@@ -21,7 +22,7 @@ class App < Sinatra::Base
     if Question.first_two
       it1=0
       it2=1
-      erb :'start_test', :locals => {:questions => Question.all, :it1 => it1, :it2 =>it2}
+      erb :start_test, :locals => {:questions => Question.all, :it1 => it1, :it2 =>it2}
     else
       redirect "/"
     end
@@ -38,9 +39,9 @@ class App < Sinatra::Base
     if it2 > qlen
       redirect "/finish"
     elsif it2==qlen
-      erb :'start_test_last', :locals => {:questions => questions, :it1 => it1}
+      erb :start_test_last, :locals => {:questions => questions, :it1 => it1}
     elsif it2<qlen
-      erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
+      erb :start_test, :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
     end
   end
 
@@ -62,11 +63,9 @@ class App < Sinatra::Base
 
   #calculates how much every career fits a certain user
   get "/finish" do
-    #careerArray is an array of structures with a career id, career name, and an accumulator
     careerArray=Career.mapToCareerStruct
     Outcome.setWeightedValues(careerArray)
-    #Career.bestCareerCalc returns one of the structures careerArray is made out of
-    erb :'finish', :locals => {:career => Career.bestCareerCalc(careerArray), :careers => careerArray.sort_by {|career| -career.acum} }
+    erb :finish, :locals => {:career => Career.bestCareerCalc(careerArray), :careers => careerArray.sort_by { |career| -career.acum} }
   end
 
   #creates a new survey with the given name and career_id parameter

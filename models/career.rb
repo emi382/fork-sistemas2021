@@ -1,3 +1,4 @@
+#This class includes possible careers that our test can return
 class Career < Sequel::Model
 	one_to_many:surveys
 	one_to_many:outcomes
@@ -11,7 +12,7 @@ class Career < Sequel::Model
 		careers.each do |career|
       		careerArray[i]=careerStruct.new(career.career_id,career.name,0)
       		i=i+1
-      	end
+  end
       	return careerArray
     end
 

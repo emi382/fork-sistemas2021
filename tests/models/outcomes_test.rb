@@ -1,5 +1,6 @@
 require File.expand_path '../../test_helper.rb', __FILE__
 
+#Test to determine outcomes is working properly
 class OutcomeTest < MiniTest::Unit::TestCase
 MiniTest::Unit::TestCase
 

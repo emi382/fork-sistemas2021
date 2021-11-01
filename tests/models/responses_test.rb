@@ -1,5 +1,6 @@
 require File.expand_path '../../test_helper.rb', __FILE__
 
+#Test to determine response is working properly (Not needed)
 class ResponseTest < MiniTest::Unit::TestCase
 MiniTest::Unit::TestCase
 

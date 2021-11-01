@@ -1,0 +1,1951 @@
+Inspecting 36 files
+CWCCCCCCCCCCCCCCCCCCCWCCCCWCCWWWWWWC
+
+Offenses:
+
+Gemfile:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+ruby '2.6.4'
+^
+Gemfile:6:1: C: [Correctable] Bundler/OrderedGems: Gems should be sorted in an alphabetical order within their section of the Gemfile. Gem pg should appear before sinatra.
+gem 'pg'
+^^^^^^^^
+Gemfile:8:1: C: [Correctable] Bundler/OrderedGems: Gems should be sorted in an alphabetical order within their section of the Gemfile. Gem rails should appear before sequel.
+gem 'rails'
+^^^^^^^^^^^
+Gemfile:14:1: C: [Correctable] Layout/EmptyLinesAroundBlockBody: Extra empty line detected at block body end.
+Gemfile:21:1: C: [Correctable] Layout/EmptyLinesAroundBlockBody: Extra empty line detected at block body end.
+app.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require './models/init.rb'
+^
+app.rb:1:23: C: [Correctable] Style/RedundantFileExtensionInRequire: Redundant .rb file extension detected.
+require './models/init.rb'
+                      ^^^
+app.rb:3:1: C: Metrics/ClassLength: Class has too many lines. [154/100]
+class App < Sinatra::Base ...
+^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class App.
+class App < Sinatra::Base
+^^^^^^^^^
+app.rb:6:15: C: [Correctable] Layout/SpaceBeforeComma: Space found before comma.
+    set :views        , File.expand_path('../views', 'style.css')
+              ^^^^^^^^
+app.rb:7:14: C: [Correctable] Layout/SpaceBeforeComma: Space found before comma.
+    set :root         , File.dirname('../css/style.css')
+             ^^^^^^^^^
+app.rb:10:6: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+  it1=0
+     ^
+app.rb:11:6: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+  it2=1
+     ^
+app.rb:13:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #homepage
+  ^^^^^^^^^
+app.rb:15:9: C: [Correctable] Style/SymbolLiteral: Do not use strings for word-like symbol literals.
+    erb :'landing'
+        ^^^^^^^^^^
+app.rb:18:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #starts the test by setting the iterators to their default values and passing the first two questions
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:19:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #WARNING: at least 2 questions needed for the test to work, and at least one outcome per question
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:20:7: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  get "/start" do
+      ^^^^^^^^
+app.rb:22:10: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+      it1=0
+         ^
+app.rb:23:10: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+      it2=1
+         ^
+app.rb:24:11: C: [Correctable] Style/SymbolLiteral: Do not use strings for word-like symbol literals.
+      erb :'start_test', :locals => {:questions => Question.all, :it1 => it1, :it2 =>it2}
+          ^^^^^^^^^^^^^
+app.rb:24:26: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      erb :'start_test', :locals => {:questions => Question.all, :it1 => it1, :it2 =>it2}
+                         ^^^^^^^^^^
+app.rb:24:37: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside { missing.
+      erb :'start_test', :locals => {:questions => Question.all, :it1 => it1, :it2 =>it2}
+                                    ^
+app.rb:24:38: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      erb :'start_test', :locals => {:questions => Question.all, :it1 => it1, :it2 =>it2}
+                                     ^^^^^^^^^^^^^
+app.rb:24:66: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      erb :'start_test', :locals => {:questions => Question.all, :it1 => it1, :it2 =>it2}
+                                                                 ^^^^^^^
+app.rb:24:79: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      erb :'start_test', :locals => {:questions => Question.all, :it1 => it1, :it2 =>it2}
+                                                                              ^^^^^^^
+app.rb:24:84: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =>.
+      erb :'start_test', :locals => {:questions => Question.all, :it1 => it1, :it2 =>it2}
+                                                                                   ^^
+app.rb:24:89: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside } missing.
+      erb :'start_test', :locals => {:questions => Question.all, :it1 => it1, :it2 =>it2}
+                                                                                        ^
+app.rb:26:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      redirect "/"
+               ^^^
+app.rb:30:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #processes the current question.
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:31:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #if it2 is smaller than questions.length, keeps on passing both the current question and the next question
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:32:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #if it2 is equal to questions.length, passes only the current question to the page that deals with the last element
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:33:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #if it2 is bigger than questions.length, redirects to the finish page with the test results
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:34:7: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  get "/start/:id" do
+      ^^^^^^^^^^^^
+app.rb:35:14: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    questions=Question.all
+             ^
+app.rb:36:9: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    qlen=questions.length
+        ^
+app.rb:37:5: W: Lint/UselessAssignment: Useless assignment to variable - question1. Did you mean questions?
+    question1=questions[it1]
+    ^^^^^^^^^
+app.rb:37:14: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    question1=questions[it1]
+             ^
+app.rb:39:16: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      redirect "/finish"
+               ^^^^^^^^^
+app.rb:40:14: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator ==.
+    elsif it2==qlen
+             ^^
+app.rb:41:11: C: [Correctable] Style/SymbolLiteral: Do not use strings for word-like symbol literals.
+      erb :'start_test_last', :locals => {:questions => questions, :it1 => it1}
+          ^^^^^^^^^^^^^^^^^^
+app.rb:41:31: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      erb :'start_test_last', :locals => {:questions => questions, :it1 => it1}
+                              ^^^^^^^^^^
+app.rb:41:42: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside { missing.
+      erb :'start_test_last', :locals => {:questions => questions, :it1 => it1}
+                                         ^
+app.rb:41:43: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      erb :'start_test_last', :locals => {:questions => questions, :it1 => it1}
+                                          ^^^^^^^^^^^^^
+app.rb:41:68: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      erb :'start_test_last', :locals => {:questions => questions, :it1 => it1}
+                                                                   ^^^^^^^
+app.rb:41:79: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside } missing.
+      erb :'start_test_last', :locals => {:questions => questions, :it1 => it1}
+                                                                              ^
+app.rb:42:14: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator <.
+    elsif it2<qlen
+             ^
+app.rb:43:11: C: [Correctable] Style/SymbolLiteral: Do not use strings for word-like symbol literals.
+      erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
+          ^^^^^^^^^^^^^
+app.rb:43:26: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
+                         ^^^^^^^^^^
+app.rb:43:37: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside { missing.
+      erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
+                                    ^
+app.rb:43:38: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
+                                     ^^^^^^^^^^^^^
+app.rb:43:63: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
+                                                              ^^^^^^^
+app.rb:43:76: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
+                                                                           ^^^^^^^
+app.rb:43:81: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =>.
+      erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
+                                                                                ^^
+app.rb:43:86: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside } missing.
+      erb :'start_test', :locals => {:questions => questions, :it1 => it1, :it2 =>it2}
+                                                                                     ^
+app.rb:47:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #finds and updates the value of a particular choice
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:48:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #it also increases the iterators, because this is done as part of the test-taking process
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:49:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #redirects to the next question in the test
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:50:8: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  post "/choices/update" do
+       ^^^^^^^^^^^^^^^^^
+app.rb:52:5: C: [Correctable] Style/SelfAssignment: Use self-assignment shorthand +=.
+    it1=it1+1
+    ^^^^^^^^^
+app.rb:52:8: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    it1=it1+1
+       ^
+app.rb:52:12: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator +.
+    it1=it1+1
+           ^
+app.rb:53:5: C: [Correctable] Style/SelfAssignment: Use self-assignment shorthand +=.
+    it2=it2+1
+    ^^^^^^^^^
+app.rb:53:8: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    it2=it2+1
+       ^
+app.rb:53:12: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator +.
+    it2=it2+1
+           ^
+app.rb:57:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #finds and updates the value of the final choice, redirects to the finish page
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:58:8: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  post "/choices/update/last" do
+       ^^^^^^^^^^^^^^^^^^^^^^
+app.rb:60:14: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    redirect "/finish"
+             ^^^^^^^^^
+app.rb:63:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #calculates how much every career fits a certain user
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:64:7: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  get "/finish" do
+      ^^^^^^^^^
+app.rb:65:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #careerArray is an array of structures with a career id, career name, and an accumulator
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:66:5: C: Naming/VariableName: Use snake_case for variable names.
+    careerArray=Career.mapToCareerStruct
+    ^^^^^^^^^^^
+app.rb:66:16: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    careerArray=Career.mapToCareerStruct
+               ^
+app.rb:67:31: C: Naming/VariableName: Use snake_case for variable names.
+    Outcome.setWeightedValues(careerArray)
+                              ^^^^^^^^^^^
+app.rb:68:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Career.bestCareerCalc returns one of the structures careerArray is made out of
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:69:9: C: [Correctable] Style/SymbolLiteral: Do not use strings for word-like symbol literals.
+    erb :'finish', :locals => {:career => Career.bestCareerCalc(careerArray), :careers => careerArray.sort_by {|career| -career.acum} }
+        ^^^^^^^^^
+app.rb:69:20: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'finish', :locals => {:career => Career.bestCareerCalc(careerArray), :careers => careerArray.sort_by {|career| -career.acum} }
+                   ^^^^^^^^^^
+app.rb:69:31: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside { missing.
+    erb :'finish', :locals => {:career => Career.bestCareerCalc(careerArray), :careers => careerArray.sort_by {|career| -career.acum} }
+                              ^
+app.rb:69:32: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'finish', :locals => {:career => Career.bestCareerCalc(careerArray), :careers => careerArray.sort_by {|career| -career.acum} }
+                               ^^^^^^^^^^
+app.rb:69:65: C: Naming/VariableName: Use snake_case for variable names.
+    erb :'finish', :locals => {:career => Career.bestCareerCalc(careerArray), :careers => careerArray.sort_by {|career| -career.acum} }
+                                                                ^^^^^^^^^^^
+app.rb:69:79: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'finish', :locals => {:career => Career.bestCareerCalc(careerArray), :careers => careerArray.sort_by {|career| -career.acum} }
+                                                                              ^^^^^^^^^^^
+app.rb:69:91: C: Naming/VariableName: Use snake_case for variable names.
+    erb :'finish', :locals => {:career => Career.bestCareerCalc(careerArray), :careers => careerArray.sort_by {|career| -career.acum} }
+                                                                                          ^^^^^^^^^^^
+app.rb:69:111: C: [Correctable] Layout/SpaceInsideBlockBraces: Space between { and | missing.
+    erb :'finish', :locals => {:career => Career.bestCareerCalc(careerArray), :careers => careerArray.sort_by {|career| -career.acum} }
+                                                                                                              ^^
+app.rb:69:121: C: [Correctable] Layout/LineLength: Line is too long. [135/120]
+    erb :'finish', :locals => {:career => Career.bestCareerCalc(careerArray), :careers => careerArray.sort_by {|career| -career.acum} }
+                                                                                                                        ^^^^^^^^^^^^^^^
+app.rb:69:133: C: [Correctable] Layout/SpaceInsideBlockBraces: Space missing inside }.
+    erb :'finish', :locals => {:career => Career.bestCareerCalc(careerArray), :careers => careerArray.sort_by {|career| -career.acum} }
+                                                                                                                                    ^
+app.rb:72:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #creates a new survey with the given name and career_id parameter
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:73:8: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  post "/surveys" do
+       ^^^^^^^^^^
+app.rb:74:44: C: [Correctable] Layout/SpaceAfterComma: Space missing after comma.
+    survey = Survey.new(name: params[:name],career_id: params[:career_id])
+                                           ^
+app.rb:75:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #if saved, go back to homepage
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:77:7: W: Lint/Void: Literal [201, { 'Location' => "surveys/#{survey.survey_id}" }, 'Created'] used in void context.
+      [201, { 'Location' => "surveys/#{survey.survey_id}" }, 'Created']
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:84:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #shows /surveys path
+  ^^^^^^^^^^^^^^^^^^^^
+app.rb:86:13: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    @surveys=Survey.all
+            ^
+app.rb:90:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #given a range of dates, returns the career count of the surveys in that range
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:92:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #surveys = Survey.filterByDate(params[:startDate],params[:finishDate])
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:93:12: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    surveys=Survey.all
+           ^
+app.rb:95:33: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'surveys/careercount', :locals => {:careers => careers}
+                                ^^^^^^^^^^
+app.rb:95:44: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside { missing.
+    erb :'surveys/careercount', :locals => {:careers => careers}
+                                           ^
+app.rb:95:45: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'surveys/careercount', :locals => {:careers => careers}
+                                            ^^^^^^^^^^^
+app.rb:95:64: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside } missing.
+    erb :'surveys/careercount', :locals => {:careers => careers}
+                                                               ^
+app.rb:98:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #shows the information of a particular survey
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:101:40: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'surveys/survey_description', :locals => {:survey => survey, :career => Career.find(career_id: survey.career_id)}
+                                       ^^^^^^^^^^
+app.rb:101:51: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside { missing.
+    erb :'surveys/survey_description', :locals => {:survey => survey, :career => Career.find(career_id: survey.career_id)}
+                                                  ^
+app.rb:101:52: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'surveys/survey_description', :locals => {:survey => survey, :career => Career.find(career_id: survey.career_id)}
+                                                   ^^^^^^^^^^
+app.rb:101:71: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'surveys/survey_description', :locals => {:survey => survey, :career => Career.find(career_id: survey.career_id)}
+                                                                      ^^^^^^^^^^
+app.rb:101:121: C: [Correctable] Layout/LineLength: Line is too long. [122/120]
+    erb :'surveys/survey_description', :locals => {:survey => survey, :career => Career.find(career_id: survey.career_id)}
+                                                                                                                        ^^
+app.rb:101:122: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside } missing.
+    erb :'surveys/survey_description', :locals => {:survey => survey, :career => Career.find(career_id: survey.career_id)}
+                                                                                                                         ^
+app.rb:104:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #deletes a survey given its id
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:106:18: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    Survey.where(:survey_id => params[:id]).delete
+                 ^^^^^^^^^^^^^
+app.rb:110:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #creates a new question given a description
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:111:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #NOTE: automatically creates and associates a choice to the new question
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:112:8: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  post "/questions" do
+       ^^^^^^^^^^^^
+app.rb:114:5: C: [Correctable] Style/NegatedIf: Favor unless over if for negative conditions.
+    if !description.blank? ...
+    ^^^^^^^^^^^^^^^^^^^^^^
+app.rb:119:9: W: Lint/Void: Literal [201, { 'Location' => "questions/#{question.question_id}" }, 'Created'] used in void context.
+        [201, { 'Location' => "questions/#{question.question_id}" }, 'Created']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:128:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #shows all questions
+  ^^^^^^^^^^^^^^^^^^^^
+app.rb:130:38: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'questions/question_index', :locals => {:questions => Question.all}
+                                     ^^^^^^^^^^
+app.rb:130:49: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside { missing.
+    erb :'questions/question_index', :locals => {:questions => Question.all}
+                                                ^
+app.rb:130:50: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'questions/question_index', :locals => {:questions => Question.all}
+                                                 ^^^^^^^^^^^^^
+app.rb:130:76: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside } missing.
+    erb :'questions/question_index', :locals => {:questions => Question.all}
+                                                                           ^
+app.rb:133:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #shows an individual question description, along with redirecting to the outcome modifying page if needed
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:135:44: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'questions/question_description', :locals => {:question => Question.where(question_id: params['id']).last}
+                                           ^^^^^^^^^^
+app.rb:135:55: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside { missing.
+    erb :'questions/question_description', :locals => {:question => Question.where(question_id: params['id']).last}
+                                                      ^
+app.rb:135:56: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'questions/question_description', :locals => {:question => Question.where(question_id: params['id']).last}
+                                                       ^^^^^^^^^^^^
+app.rb:135:115: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside } missing.
+    erb :'questions/question_description', :locals => {:question => Question.where(question_id: params['id']).last}
+                                                                                                                  ^
+app.rb:138:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #deletes a question, once a question is deleted it also deletes the choice associated with it, and any outcomes
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:139:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #that said choice had associated
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:140:8: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  post "/questions/:id/delete" do
+       ^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:145:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #creates a new outcome given a choice id, career_id, and weight
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:146:8: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  post "/outcomes/new" do
+       ^^^^^^^^^^^^^^^
+app.rb:149:5: C: [Correctable] Layout/SpaceAroundKeyword: Space after keyword if is missing.
+    if(career_id != nil)
+    ^^
+app.rb:149:8: C: [Correctable] Style/NonNilCheck: Prefer !career_id.nil? over career_id != nil.
+    if(career_id != nil)
+       ^^^^^^^^^^^^^^^^
+app.rb:152:9: W: Lint/Void: Literal [201, { 'Location' => "outcomes/#{outcome.outcome_id}" }, 'Created'] used in void context.
+        [201, { 'Location' => "outcomes/#{outcome.outcome_id}" }, 'Created']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:161:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #shows a particular outcome's information, along with delete and update weight functionalities
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:162:7: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  get "/outcomes/:id" do
+      ^^^^^^^^^^^^^^^
+app.rb:163:52: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'questions/outcomes/outcome_description', :locals => {:outcome => outcome=Outcome.find(:outcome_id => params[:id]), 
+                                                   ^^^^^^^^^^
+app.rb:163:63: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside { missing.
+    erb :'questions/outcomes/outcome_description', :locals => {:outcome => outcome=Outcome.find(:outcome_id => params[:id]), 
+                                                              ^
+app.rb:163:64: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'questions/outcomes/outcome_description', :locals => {:outcome => outcome=Outcome.find(:outcome_id => params[:id]), 
+                                                               ^^^^^^^^^^^
+app.rb:163:83: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    erb :'questions/outcomes/outcome_description', :locals => {:outcome => outcome=Outcome.find(:outcome_id => params[:id]), 
+                                                                                  ^
+app.rb:163:97: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'questions/outcomes/outcome_description', :locals => {:outcome => outcome=Outcome.find(:outcome_id => params[:id]), 
+                                                                                                ^^^^^^^^^^^^^^
+app.rb:163:121: C: Layout/LineLength: Line is too long. [125/120]
+    erb :'questions/outcomes/outcome_description', :locals => {:outcome => outcome=Outcome.find(:outcome_id => params[:id]), 
+                                                                                                                        ^^^^^
+app.rb:163:125: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    erb :'questions/outcomes/outcome_description', :locals => {:outcome => outcome=Outcome.find(:outcome_id => params[:id]), 
+                                                                                                                            ^
+app.rb:164:7: C: [Correctable] Layout/HashAlignment: Align the keys of a hash literal if they span more than one line.
+      :question => question=Question.find(:choice_id => outcome.choice_id)}
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:164:7: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      :question => question=Question.find(:choice_id => outcome.choice_id)}
+      ^^^^^^^^^^^^
+app.rb:164:20: W: Lint/UselessAssignment: Useless assignment to variable - question.
+      :question => question=Question.find(:choice_id => outcome.choice_id)}
+                   ^^^^^^^^
+app.rb:164:28: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+      :question => question=Question.find(:choice_id => outcome.choice_id)}
+                           ^
+app.rb:164:43: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      :question => question=Question.find(:choice_id => outcome.choice_id)}
+                                          ^^^^^^^^^^^^^
+app.rb:164:75: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside } missing.
+      :question => question=Question.find(:choice_id => outcome.choice_id)}
+                                                                          ^
+app.rb:167:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #deletes an outcome
+  ^^^^^^^^^^^^^^^^^^^
+app.rb:168:8: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  post "/outcomes/:id/delete" do
+       ^^^^^^^^^^^^^^^^^^^^^^
+app.rb:169:8: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    qid=Outcome.questionid(params[:id])
+       ^
+app.rb:170:19: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    Outcome.where(:outcome_id => params[:id]).delete
+                  ^^^^^^^^^^^^^^
+app.rb:174:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #updates an outcome's weight
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:175:8: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  post "/outcomes/:id" do
+       ^^^^^^^^^^^^^^^
+app.rb:176:18: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    Outcome.find(:outcome_id => params['id']).update(weight: params[:weight])
+                 ^^^^^^^^^^^^^^
+app.rb:180:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #shows the outcomes associated to the choice that is associated to a question. Also has create outcome functionalities
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:181:7: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  get "/questions/:id/outcomes" do
+      ^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:182:13: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    question=Question.where(question_id: params['id']).last
+            ^
+app.rb:183:11: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    choice=Choice.where(choice_id: question.choice_id).last
+          ^
+app.rb:184:47: C: [Correctable] Layout/HashAlignment: Align the keys of a hash literal if they span more than one line.
+    erb :'questions/outcomes/outcomes_index', :locals =>{:question =>question, :choice => choice, ...
+                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:184:47: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'questions/outcomes/outcomes_index', :locals =>{:question =>question, :choice => choice,
+                                              ^^^^^^^^^^
+app.rb:184:55: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =>.
+    erb :'questions/outcomes/outcomes_index', :locals =>{:question =>question, :choice => choice,
+                                                      ^^
+app.rb:184:57: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside { missing.
+    erb :'questions/outcomes/outcomes_index', :locals =>{:question =>question, :choice => choice,
+                                                        ^
+app.rb:184:58: C: [Correctable] Layout/HashAlignment: Align the keys of a hash literal if they span more than one line.
+    erb :'questions/outcomes/outcomes_index', :locals =>{:question =>question, :choice => choice,
+                                                         ^^^^^^^^^^^^^^^^^^^^
+app.rb:184:58: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'questions/outcomes/outcomes_index', :locals =>{:question =>question, :choice => choice,
+                                                         ^^^^^^^^^^^^
+app.rb:184:68: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =>.
+    erb :'questions/outcomes/outcomes_index', :locals =>{:question =>question, :choice => choice,
+                                                                   ^^
+app.rb:184:80: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'questions/outcomes/outcomes_index', :locals =>{:question =>question, :choice => choice,
+                                                                               ^^^^^^^^^^
+app.rb:185:7: C: [Correctable] Layout/HashAlignment: Align the keys of a hash literal if they span more than one line.
+      :outcomes => Outcome.where(choice_id: choice.choice_id),
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:185:7: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+      :outcomes => Outcome.where(choice_id: choice.choice_id),
+      ^^^^^^^^^^^^
+app.rb:186:8: C: [Correctable] Layout/HashAlignment: Align the keys of a hash literal if they span more than one line.
+       :careers => Career.all}
+       ^^^^^^^^^^^^^^^^^^^^^^
+app.rb:186:8: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+       :careers => Career.all}
+       ^^^^^^^^^^^
+app.rb:186:30: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside } missing.
+       :careers => Career.all}
+                             ^
+app.rb:189:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #creates a new career
+  ^^^^^^^^^^^^^^^^^^^^^
+app.rb:190:8: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  post "/careers" do
+       ^^^^^^^^^^
+app.rb:191:5: W: Lint/UselessAssignment: Useless assignment to variable - careers. Did you mean career?
+    careers=Career.all
+    ^^^^^^^
+app.rb:191:12: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    careers=Career.all
+           ^
+app.rb:192:5: C: [Correctable] Style/NegatedIf: Favor unless over if for negative conditions.
+    if !params['name'].blank? ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:195:9: W: Lint/Void: Literal [201, { 'Location' => "careers/#{career.id}" }, 'Created'] used in void context.
+        [201, { 'Location' => "careers/#{career.id}" }, 'Created']
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:204:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #deletes a career
+  ^^^^^^^^^^^^^^^^^
+app.rb:205:8: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+  post "/careers/:id/delete" do
+       ^^^^^^^^^^^^^^^^^^^^^
+app.rb:206:18: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    Career.where(:career_id => params[:id]).delete
+                 ^^^^^^^^^^^^^
+app.rb:210:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #shows all careers
+  ^^^^^^^^^^^^^^^^^^
+app.rb:212:34: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'careers/career_index', :locals =>{:careers => Career.all}
+                                 ^^^^^^^^^^
+app.rb:212:42: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =>.
+    erb :'careers/career_index', :locals =>{:careers => Career.all}
+                                         ^^
+app.rb:212:44: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside { missing.
+    erb :'careers/career_index', :locals =>{:careers => Career.all}
+                                           ^
+app.rb:212:45: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'careers/career_index', :locals =>{:careers => Career.all}
+                                            ^^^^^^^^^^^
+app.rb:212:67: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside } missing.
+    erb :'careers/career_index', :locals =>{:careers => Career.all}
+                                                                  ^
+app.rb:215:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+  #shows a particular career and includes a delete button
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+app.rb:217:40: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'careers/career_description', :locals => {:career => Career.where(career_id: params['id']).last}
+                                       ^^^^^^^^^^
+app.rb:217:51: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside { missing.
+    erb :'careers/career_description', :locals => {:career => Career.where(career_id: params['id']).last}
+                                                  ^
+app.rb:217:52: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    erb :'careers/career_description', :locals => {:career => Career.where(career_id: params['id']).last}
+                                                   ^^^^^^^^^^
+app.rb:217:105: C: [Correctable] Layout/SpaceInsideHashLiteralBraces: Space inside } missing.
+    erb :'careers/career_description', :locals => {:career => Career.where(career_id: params['id']).last}
+                                                                                                        ^
+app.rb:219:1: C: [Correctable] Layout/EmptyLinesAroundClassBody: Extra empty line detected at class body end.
+config.ru:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require "bundler"
+^
+config.ru:1:9: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+require "bundler"
+        ^^^^^^^^^
+config.ru:2:9: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+require "sinatra"
+        ^^^^^^^^^
+config.ru:13:20: C: [Correctable] Layout/MultilineMethodCallBraceLayout: Closing method call brace must be on the line after the last argument when opening brace is on a separate line from the first argument.
+  password: 'magic')
+                   ^
+config.ru:19:1: C: [Correctable] Layout/TrailingEmptyLines: 1 trailing blank lines detected.
+db/migrations/000010_modifying_choice_table.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/000010_modifying_choice_table.rb:5:6: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+     drop_column :text
+     ^^^^^^^^^^^^^^^^^
+db/migrations/000010_modifying_choice_table.rb:6:6: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+     add_foreign_key :survey_id, :surveys
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrations/000010_modifying_choice_table.rb:17:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/000011_adding_integer_to_choice_table.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/000011_adding_integer_to_choice_table.rb:3:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #alter_table(:choices) do
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrations/000011_adding_integer_to_choice_table.rb:5:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #end
+    ^^^^
+db/migrations/000011_adding_integer_to_choice_table.rb:9:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #drop_column :value
+    ^^^^^^^^^^^^^^^^^^^
+db/migrations/000011_adding_integer_to_choice_table.rb:11:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/000012_modifying_questions_table.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/000012_modifying_questions_table.rb:4:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+     add_foreign_key :choice_id, :choices
+    ^
+db/migrations/000012_modifying_questions_table.rb:13:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/000013_adding_weight_to_outcomes_table.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/000013_adding_weight_to_outcomes_table.rb:13:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/000014_removing_survey_from_choice_table.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/000014_removing_survey_from_choice_table.rb:13:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/000015_removing_question_id_from_choices_table.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/000015_removing_question_id_from_choices_table.rb:13:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/000016_removing_name_and_number_from_questions_table.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/000016_removing_name_and_number_from_questions_table.rb:15:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/000017_remove_everything_from_responses_table.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/000017_remove_everything_from_responses_table.rb:17:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/000018_add_cascade_to_foreign_keys.rb:1:1: C: Metrics/BlockLength: Block has too many lines. [32/25]
+Sequel.migration do ...
+^^^^^^^^^^^^^^^^^^^
+db/migrations/000018_add_cascade_to_foreign_keys.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/000018_add_cascade_to_foreign_keys.rb:10:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        drop_foreign_key [:career_id], name: :surveys_career_id_fkey
+    ^^^^
+db/migrations/000018_add_cascade_to_foreign_keys.rb:14:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        drop_foreign_key [:choice_id], name: :questions_choice_id_fkey
+    ^^^^
+db/migrations/000018_add_cascade_to_foreign_keys.rb:31:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+        drop_foreign_key [:choice_id], name: :questions_choice_id_fkey
+    ^^^^
+db/migrations/000018_add_cascade_to_foreign_keys.rb:35:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/00001_create_posts_table.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/00001_create_posts_table.rb:7:3: C: [Correctable] Layout/CommentIndentation: Incorrect indentation detected (column 2 instead of 6).
+  #    DateTime      :updated_at,   default: Sequel::CURRENT_TIMESTAMP
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+db/migrations/00002_add_date_fields_to_posts.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/00003_create_careers_table.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/00004_create_questions_table.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/00005_create_surveys_table.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/00005_create_surveys_table.rb:4:18: C: [Correctable] Layout/ExtraSpacing: Unnecessary spacing detected.
+      primary_key   :survey_id
+                 ^^
+db/migrations/00005_create_surveys_table.rb:4:18: C: [Correctable] Layout/SpaceBeforeFirstArg: Put one space between the method name and the first argument.
+      primary_key   :survey_id
+                 ^^^
+db/migrations/00005_create_surveys_table.rb:5:13: C: [Correctable] Layout/ExtraSpacing: Unnecessary spacing detected.
+      String 	    :name
+            ^^^^^
+db/migrations/00005_create_surveys_table.rb:5:13: C: [Correctable] Layout/SpaceBeforeFirstArg: Put one space between the method name and the first argument.
+      String 	    :name
+            ^^^^^^
+db/migrations/00005_create_surveys_table.rb:6:47: C: [Correctable] Layout/SpaceAfterColon: Space missing after colon.
+      foreign_key   :career_id, :careers, null:true
+                                              ^
+db/migrations/00006_create_choices_table.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/00006_create_choices_table.rb:6:51: C: [Correctable] Layout/SpaceAfterColon: Space missing after colon.
+      foreign_key   :question_id, :questions, null:true
+                                                  ^
+db/migrations/00006_create_choices_table.rb:15:4: C: [Correctable] Layout/TrailingEmptyLines: Final newline missing.
+end
+   
+db/migrations/00007_create_outcomes_table.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/00007_create_outcomes_table.rb:5:47: C: [Correctable] Layout/SpaceAfterColon: Space missing after colon.
+      foreign_key   :career_id, :careers, null:true
+                                              ^
+db/migrations/00007_create_outcomes_table.rb:6:47: C: [Correctable] Layout/SpaceAfterColon: Space missing after colon.
+      foreign_key   :choice_id, :choices, null:true
+                                              ^
+db/migrations/00008_create_responses_table.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/00008_create_responses_table.rb:5:49: C: [Correctable] Layout/SpaceAfterColon: Space missing after colon.
+      foreign_key   :survey_id,   :surveys, null:true
+                                                ^
+db/migrations/00008_create_responses_table.rb:6:49: C: [Correctable] Layout/SpaceAfterColon: Space missing after colon.
+      foreign_key   :choice_id,   :choices, null:true
+                                                ^
+db/migrations/00008_create_responses_table.rb:7:51: C: [Correctable] Layout/SpaceAfterColon: Space missing after colon.
+      foreign_key   :question_id, :questions, null:true
+                                                  ^
+db/migrations/00009_remove_type_from_questions.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+Sequel.migration do
+^
+db/migrations/00009_remove_type_from_questions.rb:4:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+     drop_column :type
+    ^
+models/career.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class Career.
+class Career < Sequel::Model
+^^^^^^^^^^^^
+models/career.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Career < Sequel::Model
+^
+models/career.rb:2:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	one_to_many:surveys
+^
+models/career.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	one_to_many:surveys
+^
+models/career.rb:2:13: C: [Correctable] Layout/SpaceBeforeFirstArg: Put one space between the method name and the first argument.
+	one_to_many:surveys
+            
+models/career.rb:3:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	one_to_many:outcomes
+^
+models/career.rb:3:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	one_to_many:outcomes
+^
+models/career.rb:3:13: C: [Correctable] Layout/SpaceBeforeFirstArg: Put one space between the method name and the first argument.
+	one_to_many:outcomes
+            
+models/career.rb:5:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	#Given all the careers, maps them to an array of structures that have the career id, name, and an accumulator
+^
+models/career.rb:5:2: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+	#Given all the careers, maps them to an array of structures that have the career id, name, and an accumulator
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/career.rb:6:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	def self.mapToCareerStruct
+^
+models/career.rb:6:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	def self.mapToCareerStruct
+^
+models/career.rb:6:11: C: Naming/MethodName: Use snake_case for method names.
+	def self.mapToCareerStruct
+          ^^^^^^^^^^^^^^^^^
+models/career.rb:7:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		careerStruct=Struct.new(:career_id,:name,:acum)
+^^
+models/career.rb:7:2: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+		careerStruct=Struct.new(:career_id,:name,:acum)
+ ^
+models/career.rb:7:3: C: Naming/VariableName: Use snake_case for variable names.
+		careerStruct=Struct.new(:career_id,:name,:acum)
+  ^^^^^^^^^^^^
+models/career.rb:7:15: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+		careerStruct=Struct.new(:career_id,:name,:acum)
+              ^
+models/career.rb:7:37: C: [Correctable] Layout/SpaceAfterComma: Space missing after comma.
+		careerStruct=Struct.new(:career_id,:name,:acum)
+                                    ^
+models/career.rb:7:43: C: [Correctable] Layout/SpaceAfterComma: Space missing after comma.
+		careerStruct=Struct.new(:career_id,:name,:acum)
+                                          ^
+models/career.rb:8:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		careers=Career.all
+^^
+models/career.rb:8:10: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+		careers=Career.all
+         ^
+models/career.rb:9:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		careerArray=Array.new
+^^
+models/career.rb:9:3: C: Naming/VariableName: Use snake_case for variable names.
+		careerArray=Array.new
+  ^^^^^^^^^^^
+models/career.rb:9:14: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+		careerArray=Array.new
+             ^
+models/career.rb:9:15: C: [Correctable] Style/EmptyLiteral: Use array literal [] instead of Array.new.
+		careerArray=Array.new
+              ^^^^^^^^^
+models/career.rb:10:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		i=0
+^^
+models/career.rb:10:4: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+		i=0
+   ^
+models/career.rb:11:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		careers.each do |career|
+^^
+models/career.rb:12:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+      		careerArray[i]=careerStruct.new(career.career_id,career.name,0)
+^^^^^^^^
+models/career.rb:12:8: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+      		careerArray[i]=careerStruct.new(career.career_id,career.name,0)
+       ^
+models/career.rb:12:9: C: Naming/VariableName: Use snake_case for variable names.
+      		careerArray[i]=careerStruct.new(career.career_id,career.name,0)
+        ^^^^^^^^^^^
+models/career.rb:12:23: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+      		careerArray[i]=careerStruct.new(career.career_id,career.name,0)
+                      ^
+models/career.rb:12:24: C: Naming/VariableName: Use snake_case for variable names.
+      		careerArray[i]=careerStruct.new(career.career_id,career.name,0)
+                       ^^^^^^^^^^^^
+models/career.rb:12:57: C: [Correctable] Layout/SpaceAfterComma: Space missing after comma.
+      		careerArray[i]=careerStruct.new(career.career_id,career.name,0)
+                                                        ^
+models/career.rb:12:69: C: [Correctable] Layout/SpaceAfterComma: Space missing after comma.
+      		careerArray[i]=careerStruct.new(career.career_id,career.name,0)
+                                                                    ^
+models/career.rb:13:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+      		i=i+1
+^^^^^^^^
+models/career.rb:13:9: C: [Correctable] Style/SelfAssignment: Use self-assignment shorthand +=.
+      		i=i+1
+        ^^^^^
+models/career.rb:13:10: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+      		i=i+1
+         ^
+models/career.rb:13:12: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator +.
+      		i=i+1
+           ^
+models/career.rb:14:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+      	end
+^^^^^^^
+models/career.rb:14:8: C: [Correctable] Layout/BlockAlignment: end at 14, 7 is not aligned with careers.each do |career| at 11, 2.
+      	end
+       ^^^
+models/career.rb:15:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+      	return careerArray
+^^^^^^^
+models/career.rb:15:8: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+      	return careerArray
+       ^^^^^^^^^^^^^^^^^^
+models/career.rb:15:8: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+      	return careerArray
+       ^^^^^^
+models/career.rb:15:15: C: Naming/VariableName: Use snake_case for variable names.
+      	return careerArray
+              ^^^^^^^^^^^
+models/career.rb:16:5: W: [Correctable] Layout/DefEndAlignment: end at 16, 4 is not aligned with def at 6, 1.
+    end
+    ^^^
+models/career.rb:18:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Given a careerArray with all its accumulators set, calculates which one has the highest acum value and returns the careerStruct
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/career.rb:18:121: C: Layout/LineLength: Line is too long. [132/120]
+    #Given a careerArray with all its accumulators set, calculates which one has the highest acum value and returns the careerStruct
+                                                                                                                        ^^^^^^^^^^^^
+models/career.rb:19:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+    def self.bestCareerCalc(carray)
+^^^^
+models/career.rb:19:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    def self.bestCareerCalc(carray) ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/career.rb:19:5: C: Metrics/MethodLength: Method has too many lines. [11/10]
+    def self.bestCareerCalc(carray) ...
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/career.rb:19:14: C: Naming/MethodName: Use snake_case for method names.
+    def self.bestCareerCalc(carray)
+             ^^^^^^^^^^^^^^
+models/career.rb:20:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+    	max=0
+^^^^^
+models/career.rb:20:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+    	max=0
+    ^
+models/career.rb:20:9: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    	max=0
+        ^
+models/career.rb:21:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+    	careerid=0
+^^^^^
+models/career.rb:21:14: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    	careerid=0
+             ^
+models/career.rb:22:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+    	finalcareer=carray[0]
+^^^^^
+models/career.rb:22:17: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    	finalcareer=carray[0]
+                ^
+models/career.rb:23:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+    	carray.each do |k|
+^^^^^
+models/career.rb:24:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+      		if k.acum>=max
+^^^^^^^^
+models/career.rb:24:6: C: [Correctable] Layout/IndentationWidth: Use 2 (not 3) spaces for indentation.
+      		if k.acum>=max
+     ^^^
+models/career.rb:24:9: C: [Correctable] Style/Next: Use next to skip iteration.
+      		if k.acum>=max
+        ^^^^^^^^^^^^^^
+models/career.rb:24:18: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator >=.
+      		if k.acum>=max
+                 ^^
+models/career.rb:25:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+        		max=k.acum
+^^^^^^^^^^
+models/career.rb:25:14: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+        		max=k.acum
+             ^
+models/career.rb:26:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+        		careerid=k.career_id
+^^^^^^^^^^
+models/career.rb:26:19: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+        		careerid=k.career_id
+                  ^
+models/career.rb:27:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+        		finalcareer=k
+^^^^^^^^^^
+models/career.rb:27:22: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+        		finalcareer=k
+                     ^
+models/career.rb:28:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+     		end
+^^^^^^^
+models/career.rb:28:8: W: [Correctable] Layout/EndAlignment: end at 28, 7 is not aligned with if at 24, 8.
+     		end
+       ^^^
+models/career.rb:29:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+    	end
+^^^^^
+models/career.rb:30:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+    	return finalcareer
+^^^^^
+models/career.rb:30:6: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+    	return finalcareer
+     ^^^^^^
+models/career.rb:33:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	def validate
+^
+models/career.rb:33:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	def validate
+^
+models/career.rb:34:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	  super 
+^
+models/career.rb:34:9: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+	  super 
+        ^
+models/career.rb:35:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	  errors.add(:name, 'cannot be empty') if !name || name.empty?
+^
+models/career.rb:36:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	end  
+^
+models/career.rb:36:5: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+	end  
+    ^^
+models/choice.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Choice < Sequel::Model
+^
+models/choice.rb:2:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	one_to_one:questions #in sequel, to setup a one to one relation, its needed to list it as many_to_one in the table that has the foreign key
+^
+models/choice.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	one_to_one:questions #in sequel, to setup a one to one relation, its needed to list it as many_to_one in the table that has the foreign key
+^
+models/choice.rb:2:12: C: [Correctable] Layout/SpaceBeforeFirstArg: Put one space between the method name and the first argument.
+	one_to_one:questions #in sequel, to setup a one to one relation, its needed to list it as many_to_one in the table that has the foreign key
+           
+models/choice.rb:2:23: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+	one_to_one:questions #in sequel, to setup a one to one relation, its needed to list it as many_to_one in the table that has the foreign key
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/choice.rb:2:120: C: Layout/LineLength: Line is too long. [141/120]
+	one_to_one:questions #in sequel, to setup a one to one relation, its needed to list it as many_to_one in the table that has the foreign key ...
+                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^
+models/choice.rb:3:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	one_to_many:outcomes
+^
+models/choice.rb:3:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	one_to_many:outcomes
+^
+models/choice.rb:3:13: C: [Correctable] Layout/SpaceBeforeFirstArg: Put one space between the method name and the first argument.
+	one_to_many:outcomes
+            
+models/choice.rb:5:1: C: [Correctable] Layout/TrailingEmptyLines: 1 trailing blank lines detected.
+models/init.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require_relative 'post'
+^
+models/init.rb:8:1: C: [Correctable] Layout/TrailingEmptyLines: 1 trailing blank lines detected.
+models/outcome.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class Outcome.
+class Outcome < Sequel::Model
+^^^^^^^^^^^^^
+models/outcome.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Outcome < Sequel::Model
+^
+models/outcome.rb:2:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	many_to_one:choices
+^
+models/outcome.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	many_to_one:choices
+^
+models/outcome.rb:2:13: C: [Correctable] Layout/SpaceBeforeFirstArg: Put one space between the method name and the first argument.
+	many_to_one:choices
+            
+models/outcome.rb:3:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	many_to_one:careers
+^
+models/outcome.rb:3:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	many_to_one:careers
+^
+models/outcome.rb:3:13: C: [Correctable] Layout/SpaceBeforeFirstArg: Put one space between the method name and the first argument.
+	many_to_one:careers
+            
+models/outcome.rb:5:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	#returns the question id of the question an outcome is associated to through choice, given the outcome id
+^
+models/outcome.rb:5:2: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+	#returns the question id of the question an outcome is associated to through choice, given the outcome id
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/outcome.rb:6:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	def self.questionid(oid)
+^
+models/outcome.rb:6:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	def self.questionid(oid)
+^
+models/outcome.rb:7:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		outcome=Outcome.find(:outcome_id => oid)
+^^
+models/outcome.rb:7:2: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+		outcome=Outcome.find(:outcome_id => oid)
+ ^
+models/outcome.rb:7:10: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+		outcome=Outcome.find(:outcome_id => oid)
+         ^
+models/outcome.rb:7:24: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+		outcome=Outcome.find(:outcome_id => oid)
+                       ^^^^^^^^^^^^^^
+models/outcome.rb:8:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+    	question=Question.find(:choice_id => outcome.choice_id)
+^^^^^
+models/outcome.rb:8:6: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    	question=Question.find(:choice_id => outcome.choice_id)
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/outcome.rb:8:14: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    	question=Question.find(:choice_id => outcome.choice_id)
+             ^
+models/outcome.rb:8:29: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    	question=Question.find(:choice_id => outcome.choice_id)
+                            ^^^^^^^^^^^^^
+models/outcome.rb:9:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+    	return question.question_id
+^^^^^
+models/outcome.rb:9:6: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+    	return question.question_id
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/outcome.rb:9:6: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+    	return question.question_id
+     ^^^^^^
+models/outcome.rb:10:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	end
+^
+models/outcome.rb:12:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	#Given an array of career ids and accumulators for each career, 
+^
+models/outcome.rb:12:2: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+	#Given an array of career ids and accumulators for each career, 
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/outcome.rb:12:65: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+	#Given an array of career ids and accumulators for each career, 
+                                                                ^
+models/outcome.rb:13:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	#iterates over all outcomes, and for every career that is associated with that outcome
+^
+models/outcome.rb:13:2: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+	#iterates over all outcomes, and for every career that is associated with that outcome
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/outcome.rb:14:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	#multiplies the user-selected choice value by the outcome weight, then adds it to the
+^
+models/outcome.rb:14:2: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+	#multiplies the user-selected choice value by the outcome weight, then adds it to the
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/outcome.rb:15:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	#respective career's accumulator
+^
+models/outcome.rb:15:2: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+	#respective career's accumulator
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/outcome.rb:16:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	def self.setWeightedValues(cArray)
+^
+models/outcome.rb:16:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	def self.setWeightedValues(cArray)
+^
+models/outcome.rb:16:11: C: Naming/MethodName: Use snake_case for method names.
+	def self.setWeightedValues(cArray)
+          ^^^^^^^^^^^^^^^^^
+models/outcome.rb:16:29: C: Naming/MethodParameterName: Only use lowercase characters for method parameter.
+	def self.setWeightedValues(cArray)
+                            ^^^^^^
+models/outcome.rb:16:29: C: Naming/VariableName: Use snake_case for variable names.
+	def self.setWeightedValues(cArray)
+                            ^^^^^^
+models/outcome.rb:17:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		outcomes=Outcome.all
+^^
+models/outcome.rb:17:2: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+		outcomes=Outcome.all
+ ^
+models/outcome.rb:17:11: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+		outcomes=Outcome.all
+          ^
+models/outcome.rb:18:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		outcomes.map do |outcome|
+^^
+models/outcome.rb:19:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+      		cArray.each do |k|
+^^^^^^^^
+models/outcome.rb:19:8: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+      		cArray.each do |k|
+       ^
+models/outcome.rb:19:9: C: Naming/VariableName: Use snake_case for variable names.
+      		cArray.each do |k|
+        ^^^^^^
+models/outcome.rb:20:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+        		if k.career_id == outcome.career_id
+^^^^^^^^^^
+models/outcome.rb:20:11: C: [Correctable] Style/Next: Use next to skip iteration.
+        		if k.career_id == outcome.career_id
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/outcome.rb:21:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+        			choice=Choice.find(choice_id: outcome.choice_id)
+^^^^^^^^^^^
+models/outcome.rb:21:11: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+        			choice=Choice.find(choice_id: outcome.choice_id)
+          ^
+models/outcome.rb:21:18: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+        			choice=Choice.find(choice_id: outcome.choice_id)
+                 ^
+models/outcome.rb:22:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+     				curr=outcome.weight * choice.value
+^^^^^^^^^
+models/outcome.rb:22:10: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+     				curr=outcome.weight * choice.value
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/outcome.rb:22:14: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+     				curr=outcome.weight * choice.value
+             ^
+models/outcome.rb:23:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+          			k.acum+=curr
+^^^^^^^^^^^^^
+models/outcome.rb:23:14: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+          			k.acum+=curr
+             ^^^^^^^^^^^^
+models/outcome.rb:23:20: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator +=.
+          			k.acum+=curr
+                   ^^
+models/outcome.rb:24:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+        		end
+^^^^^^^^^^
+models/outcome.rb:25:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+      		end
+^^^^^^^^
+models/outcome.rb:26:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+      	end
+^^^^^^^
+models/outcome.rb:26:8: C: [Correctable] Layout/BlockAlignment: end at 26, 7 is not aligned with outcomes.map do |outcome| at 18, 2.
+      	end
+       ^^^
+models/outcome.rb:27:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	end
+^
+models/outcome.rb:28:1: C: [Correctable] Layout/EmptyLinesAroundClassBody: Extra empty line detected at class body end.
+models/post.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Post < Sequel::Model
+^
+models/question.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class Question.
+class Question < Sequel::Model
+^^^^^^^^^^^^^^
+models/question.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Question < Sequel::Model
+^
+models/question.rb:2:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	many_to_one:choices
+^
+models/question.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	many_to_one:choices
+^
+models/question.rb:2:13: C: [Correctable] Layout/SpaceBeforeFirstArg: Put one space between the method name and the first argument.
+	many_to_one:choices
+            
+models/question.rb:4:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	#this function checks that theres at least 2 questions, and that they're each associated to at least one career through an outcome
+^
+models/question.rb:4:2: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+	#this function checks that theres at least 2 questions, and that they're each associated to at least one career through an outcome
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/question.rb:4:120: C: Layout/LineLength: Line is too long. [132/120]
+	#this function checks that theres at least 2 questions, and that they're each associated to at least one career through an outcome ...
+                                                                                                                       ^^^^^^^^^^^^
+models/question.rb:5:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	def self.first_two
+^
+models/question.rb:5:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	def self.first_two
+^
+models/question.rb:6:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+      	question=Question.first(2)
+^^^^^^^
+models/question.rb:6:2: C: [Correctable] Layout/IndentationWidth: Use 2 (not 6) spaces for indentation.
+      	question=Question.first(2)
+ ^^^^^^
+models/question.rb:6:16: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+      	question=Question.first(2)
+               ^
+models/question.rb:7:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+      	return false if question.length < 2
+^^^^^^^
+models/question.rb:7:8: C: [Correctable] Layout/EmptyLineAfterGuardClause: Add empty line after guard clause.
+      	return false if question.length < 2
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/question.rb:8:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+      	check=true
+^^^^^^^
+models/question.rb:8:13: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+      	check=true
+            ^
+models/question.rb:9:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+      	question.each do |q| 
+^^^^^^^
+models/question.rb:9:28: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+      	question.each do |q| 
+                           ^
+models/question.rb:10:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+      		outcomes=Outcome.where(choice_id: q.choice_id)
+^^^^^^^^
+models/question.rb:10:8: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+      		outcomes=Outcome.where(choice_id: q.choice_id)
+       ^
+models/question.rb:10:17: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+      		outcomes=Outcome.where(choice_id: q.choice_id)
+                ^
+models/question.rb:11:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+      		l=outcomes.count
+^^^^^^^^
+models/question.rb:11:10: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+      		l=outcomes.count
+         ^
+models/question.rb:12:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+      		check = check && l>0
+^^^^^^^^
+models/question.rb:12:9: C: [Correctable] Style/SelfAssignment: Use self-assignment shorthand &&=.
+      		check = check && l>0
+        ^^^^^^^^^^^^^^^^^^^^
+models/question.rb:12:26: C: [Correctable] Style/NumericPredicate: Use l.positive? instead of l>0.
+      		check = check && l>0
+                         ^^^
+models/question.rb:12:27: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator >.
+      		check = check && l>0
+                          ^
+models/question.rb:13:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+      	end
+^^^^^^^
+models/question.rb:14:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+      	check
+^^^^^^^
+models/question.rb:15:5: W: [Correctable] Layout/DefEndAlignment: end at 15, 4 is not aligned with def at 5, 1.
+    end 
+    ^^^
+models/question.rb:15:8: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+    end 
+       ^
+models/question.rb:17:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+   	#deletes a question and its associated choice given the question id
+^^^^
+models/question.rb:17:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+   	#deletes a question and its associated choice given the question id
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/question.rb:18:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+   	def self.deleteq(qid)
+^^^^
+models/question.rb:18:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 4) spaces for indentation.
+   	def self.deleteq(qid)
+^^^^
+models/question.rb:18:5: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+   	def self.deleteq(qid) ...
+    ^^^^^^^^^^^^^^^^^^^^^
+models/question.rb:19:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+   		question=Question.find(question_id: qid)
+^^^^^
+models/question.rb:19:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+   		question=Question.find(question_id: qid)
+    ^
+models/question.rb:19:14: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+   		question=Question.find(question_id: qid)
+             ^
+models/question.rb:20:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+   		Choice.where(:choice_id => question.choice_id).delete
+^^^^^
+models/question.rb:20:19: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+   		Choice.where(:choice_id => question.choice_id).delete
+                  ^^^^^^^^^^^^^
+models/question.rb:21:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+   		Question.where(:question_id => qid).delete
+^^^^^
+models/question.rb:21:21: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+   		Question.where(:question_id => qid).delete
+                    ^^^^^^^^^^^^^^^
+models/question.rb:24:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	def validate
+^
+models/question.rb:24:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	def validate
+^
+models/question.rb:25:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		super
+^^
+models/question.rb:25:2: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+		super
+ ^
+models/question.rb:26:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		errors.add(:description, 'cannot be empty') if !description || description.empty?
+^^
+models/question.rb:27:5: W: [Correctable] Layout/DefEndAlignment: end at 27, 4 is not aligned with def at 24, 1.
+    end
+    ^^^
+models/response.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Response < Sequel::Model
+^
+models/response.rb:2:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	many_to_one:choices
+^
+models/response.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	many_to_one:choices
+^
+models/response.rb:2:13: C: [Correctable] Layout/SpaceBeforeFirstArg: Put one space between the method name and the first argument.
+	many_to_one:choices
+            
+models/response.rb:3:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	many_to_one:questions
+^
+models/response.rb:3:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	many_to_one:questions
+^
+models/response.rb:3:13: C: [Correctable] Layout/SpaceBeforeFirstArg: Put one space between the method name and the first argument.
+	many_to_one:questions
+            
+models/response.rb:4:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	many_to_one:surveys
+^
+models/response.rb:4:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	many_to_one:surveys
+^
+models/response.rb:4:13: C: [Correctable] Layout/SpaceBeforeFirstArg: Put one space between the method name and the first argument.
+	many_to_one:surveys
+            
+models/survey.rb:1:1: C: Style/Documentation: Missing top-level documentation comment for class Survey.
+class Survey < Sequel::Model
+^^^^^^^^^^^^
+models/survey.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+class Survey < Sequel::Model
+^
+models/survey.rb:2:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	many_to_one:careers
+^
+models/survey.rb:2:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	many_to_one:careers
+^
+models/survey.rb:2:13: C: [Correctable] Layout/SpaceBeforeFirstArg: Put one space between the method name and the first argument.
+	many_to_one:careers
+            
+models/survey.rb:4:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	def self.filterbyDate(startDate, finishDate)
+^
+models/survey.rb:4:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	def self.filterbyDate(startDate, finishDate)
+^
+models/survey.rb:4:11: C: Naming/MethodName: Use snake_case for method names.
+	def self.filterbyDate(startDate, finishDate)
+          ^^^^^^^^^^^^
+models/survey.rb:4:24: C: Naming/MethodParameterName: Only use lowercase characters for method parameter.
+	def self.filterbyDate(startDate, finishDate)
+                       ^^^^^^^^^
+models/survey.rb:4:24: C: Naming/VariableName: Use snake_case for variable names.
+	def self.filterbyDate(startDate, finishDate)
+                       ^^^^^^^^^
+models/survey.rb:4:35: C: Naming/MethodParameterName: Only use lowercase characters for method parameter.
+	def self.filterbyDate(startDate, finishDate)
+                                  ^^^^^^^^^^
+models/survey.rb:4:35: C: Naming/VariableName: Use snake_case for variable names.
+	def self.filterbyDate(startDate, finishDate)
+                                  ^^^^^^^^^^
+models/survey.rb:5:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+ 		#TODO:make this function return all surveys within the specified dates
+^^^
+models/survey.rb:5:4: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+ 		#TODO:make this function return all surveys within the specified dates
+   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/survey.rb:5:5: C: [Correctable] Style/CommentAnnotation: Annotation keywords like TODO should be all upper case, followed by a colon, and a space, then a note describing the problem.
+ 		#TODO:make this function return all surveys within the specified dates
+    ^^^^^
+models/survey.rb:6:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	end
+^
+models/survey.rb:8:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	#this function returns a structure of careers and an accumulator representing the survey count of said careers
+^
+models/survey.rb:8:2: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+	#this function returns a structure of careers and an accumulator representing the survey count of said careers
+ ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/survey.rb:9:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	def self.careerCount(surveys)
+^
+models/survey.rb:9:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	def self.careerCount(surveys)
+^
+models/survey.rb:9:11: C: Naming/MethodName: Use snake_case for method names.
+	def self.careerCount(surveys)
+          ^^^^^^^^^^^
+models/survey.rb:10:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		careers=Career.mapToCareerStruct
+^^
+models/survey.rb:10:2: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+		careers=Career.mapToCareerStruct
+ ^
+models/survey.rb:10:10: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+		careers=Career.mapToCareerStruct
+         ^
+models/survey.rb:11:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		surveys.each do |s|
+^^
+models/survey.rb:12:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			careers.each do |c|
+^^^
+models/survey.rb:12:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+			careers.each do |c|
+  ^
+models/survey.rb:13:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+				if (s.career_id == c.career_id)
+^^^^
+models/survey.rb:13:4: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+				if (s.career_id == c.career_id)
+   ^
+models/survey.rb:13:5: C: [Correctable] Style/IfUnlessModifier: Favor modifier if usage when having a single-line body. Another good alternative is the usage of control flow &&/||.
+				if (s.career_id == c.career_id)
+    ^^
+models/survey.rb:13:8: C: [Correctable] Style/ParenthesesAroundCondition: Don't use parentheses around the condition of an if.
+				if (s.career_id == c.career_id)
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+models/survey.rb:14:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+					c.acum=c.acum+1
+^^^^^
+models/survey.rb:14:5: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+					c.acum=c.acum+1
+    ^
+models/survey.rb:14:12: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+					c.acum=c.acum+1
+           ^
+models/survey.rb:14:19: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator +.
+					c.acum=c.acum+1
+                  ^
+models/survey.rb:15:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+				end
+^^^^
+models/survey.rb:16:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+			end
+^^^
+models/survey.rb:17:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		end
+^^
+models/survey.rb:18:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		return careers
+^^
+models/survey.rb:18:3: C: [Correctable] Style/RedundantReturn: Redundant return detected.
+		return careers
+  ^^^^^^
+models/survey.rb:19:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	end
+^
+models/survey.rb:20:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+models/survey.rb:20:1: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+models/survey.rb:21:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	def validate
+^
+models/survey.rb:21:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+	def validate
+^
+models/survey.rb:22:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	  super 
+^
+models/survey.rb:22:9: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+	  super 
+        ^
+models/survey.rb:23:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	  errors.add(:name, 'cannot be empty') if !name || name.empty?
+^
+models/survey.rb:24:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+	end  
+^
+models/survey.rb:24:5: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+	end  
+    ^^
+models/survey.rb:25:1: C: [Correctable] Layout/EmptyLinesAroundClassBody: Extra empty line detected at class body end.
+tests/models/careers_test.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require File.expand_path '../../test_helper.rb', __FILE__
+^
+tests/models/careers_test.rb:1:14: C: [Correctable] Style/ExpandPathArguments: Use expand_path('../test_helper.rb', __dir__) instead of expand_path('../../test_helper.rb', __FILE__).
+require File.expand_path '../../test_helper.rb', __FILE__
+             ^^^^^^^^^^^
+tests/models/careers_test.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class CareerTest.
+class CareerTest < MiniTest::Unit::TestCase
+^^^^^^^^^^^^^^^^
+tests/models/careers_test.rb:4:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 0) spaces for indentation.
+MiniTest::Unit::TestCase
+
+tests/models/careers_test.rb:4:17: W: Lint/Void: Variable TestCase used in void context.
+MiniTest::Unit::TestCase
+                ^^^^^^^^
+tests/models/careers_test.rb:5:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def test_career_has_many_surveys ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/careers_test.rb:6:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Arrange
+    ^^^^^^^^
+tests/models/careers_test.rb:9:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Act
+    ^^^^
+tests/models/careers_test.rb:14:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Assert
+    ^^^^^^^
+tests/models/careers_test.rb:18:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def test_career_has_many_outcomes ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/careers_test.rb:19:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Arrange
+    ^^^^^^^^
+tests/models/careers_test.rb:22:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Act
+    ^^^^
+tests/models/careers_test.rb:27:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Assert
+    ^^^^^^^
+tests/models/careers_test.rb:31:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def test_career_has_name ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/careers_test.rb:32:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Arrange
+    ^^^^^^^^
+tests/models/careers_test.rb:35:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Act
+    ^^^^
+tests/models/careers_test.rb:38:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Assert
+    ^^^^^^^
+tests/models/careers_test.rb:42:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def test_career_name_is_not_null ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/careers_test.rb:43:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Arrange
+    ^^^^^^^^
+tests/models/careers_test.rb:46:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Act
+    ^^^^
+tests/models/careers_test.rb:49:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Assert
+    ^^^^^^^
+tests/models/choices_test.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require File.expand_path '../../test_helper.rb', __FILE__
+^
+tests/models/choices_test.rb:1:14: C: [Correctable] Style/ExpandPathArguments: Use expand_path('../test_helper.rb', __dir__) instead of expand_path('../../test_helper.rb', __FILE__).
+require File.expand_path '../../test_helper.rb', __FILE__
+             ^^^^^^^^^^^
+tests/models/choices_test.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class ChoiceTest.
+class ChoiceTest < MiniTest::Unit::TestCase
+^^^^^^^^^^^^^^^^
+tests/models/choices_test.rb:4:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 0) spaces for indentation.
+MiniTest::Unit::TestCase
+
+tests/models/choices_test.rb:4:17: W: Lint/Void: Variable TestCase used in void context.
+MiniTest::Unit::TestCase
+                ^^^^^^^^
+tests/models/choices_test.rb:6:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def test_choice_has_many_outcomes ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/choices_test.rb:7:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Arrange
+    ^^^^^^^^
+tests/models/choices_test.rb:8:27: C: [Correctable] Style/MethodCallWithoutArgsParentheses: Do not use parentheses for method calls with no arguments.
+    choice = Choice.create()
+                          ^^
+tests/models/choices_test.rb:10:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Act
+    ^^^^
+tests/models/choices_test.rb:14:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Assert
+    ^^^^^^^
+tests/models/outcomes_test.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require File.expand_path '../../test_helper.rb', __FILE__
+^
+tests/models/outcomes_test.rb:1:14: C: [Correctable] Style/ExpandPathArguments: Use expand_path('../test_helper.rb', __dir__) instead of expand_path('../../test_helper.rb', __FILE__).
+require File.expand_path '../../test_helper.rb', __FILE__
+             ^^^^^^^^^^^
+tests/models/outcomes_test.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class OutcomeTest.
+class OutcomeTest < MiniTest::Unit::TestCase
+^^^^^^^^^^^^^^^^^
+tests/models/outcomes_test.rb:4:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 0) spaces for indentation.
+MiniTest::Unit::TestCase
+
+tests/models/outcomes_test.rb:4:17: W: Lint/Void: Variable TestCase used in void context.
+MiniTest::Unit::TestCase
+                ^^^^^^^^
+tests/models/outcomes_test.rb:6:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def test_outcome_has_one_career ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/outcomes_test.rb:7:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Arrange
+    ^^^^^^^^
+tests/models/outcomes_test.rb:8:11: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    career=Career.create(name: 'C1')
+          ^
+tests/models/outcomes_test.rb:10:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Act
+    ^^^^
+tests/models/outcomes_test.rb:14:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Assert
+    ^^^^^^^
+tests/models/outcomes_test.rb:18:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def test_outcome_has_one_choice ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/outcomes_test.rb:19:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Arrange
+    ^^^^^^^^
+tests/models/outcomes_test.rb:20:11: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    choice=Choice.create()
+          ^
+tests/models/outcomes_test.rb:20:25: C: [Correctable] Style/MethodCallWithoutArgsParentheses: Do not use parentheses for method calls with no arguments.
+    choice=Choice.create()
+                        ^^
+tests/models/outcomes_test.rb:22:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Act
+    ^^^^
+tests/models/outcomes_test.rb:26:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Assert
+    ^^^^^^^
+tests/models/questions_test.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require File.expand_path '../../test_helper.rb', __FILE__
+^
+tests/models/questions_test.rb:1:14: C: [Correctable] Style/ExpandPathArguments: Use expand_path('../test_helper.rb', __dir__) instead of expand_path('../../test_helper.rb', __FILE__).
+require File.expand_path '../../test_helper.rb', __FILE__
+             ^^^^^^^^^^^
+tests/models/questions_test.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class QuestionTest.
+class QuestionTest < MiniTest::Unit::TestCase
+^^^^^^^^^^^^^^^^^^
+tests/models/questions_test.rb:4:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 0) spaces for indentation.
+MiniTest::Unit::TestCase
+
+tests/models/questions_test.rb:4:17: W: Lint/Void: Variable TestCase used in void context.
+MiniTest::Unit::TestCase
+                ^^^^^^^^
+tests/models/questions_test.rb:6:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def test_question_has_one_choice ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/questions_test.rb:7:5: C: [Correctable] Layout/CommentIndentation: Incorrect indentation detected (column 4 instead of 3).
+    #Arrange
+    ^^^^^^^^
+tests/models/questions_test.rb:7:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Arrange
+    ^^^^^^^^
+tests/models/questions_test.rb:8:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+  	choice=Choice.create()
+^^^
+tests/models/questions_test.rb:8:3: C: [Correctable] Layout/IndentationWidth: Use 2 (not 1) spaces for indentation.
+  	choice=Choice.create()
+  ^
+tests/models/questions_test.rb:8:4: W: Lint/UselessAssignment: Useless assignment to variable - choice.
+  	choice=Choice.create()
+   ^^^^^^
+tests/models/questions_test.rb:8:10: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+  	choice=Choice.create()
+         ^
+tests/models/questions_test.rb:8:24: C: [Correctable] Style/MethodCallWithoutArgsParentheses: Do not use parentheses for method calls with no arguments.
+  	choice=Choice.create()
+                       ^^
+tests/models/questions_test.rb:10:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Act
+    ^^^^
+tests/models/questions_test.rb:11:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+   	question1=Question.create(description: 'a')
+^^^^
+tests/models/questions_test.rb:11:5: C: Layout/IndentationConsistency: Inconsistent indentation detected.
+   	question1=Question.create(description: 'a')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/questions_test.rb:11:14: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+   	question1=Question.create(description: 'a')
+             ^
+tests/models/questions_test.rb:12:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+   	question2=Question.create(description: 'b')
+^^^^
+tests/models/questions_test.rb:12:5: C: Layout/IndentationConsistency: Inconsistent indentation detected.
+   	question2=Question.create(description: 'b')
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/questions_test.rb:12:14: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+   	question2=Question.create(description: 'b')
+             ^
+tests/models/questions_test.rb:14:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Assert
+    ^^^^^^^
+tests/models/questions_test.rb:15:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+   	assert_equal (question1.choice_id == question2.choice_id), true
+^^^^
+tests/models/questions_test.rb:15:5: C: Layout/IndentationConsistency: Inconsistent indentation detected.
+   	assert_equal (question1.choice_id == question2.choice_id), true
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/questions_test.rb:18:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def test_question_description_is_not_null ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/questions_test.rb:19:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Arrange
+    ^^^^^^^^
+tests/models/questions_test.rb:22:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Act
+    ^^^^
+tests/models/questions_test.rb:25:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Assert
+    ^^^^^^^
+tests/models/questions_test.rb:29:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def test_question_description_is_not_empty ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/questions_test.rb:30:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Arrange
+    ^^^^^^^^
+tests/models/questions_test.rb:33:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Act
+    ^^^^
+tests/models/questions_test.rb:36:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Assert
+    ^^^^^^^
+tests/models/responses_test.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require File.expand_path '../../test_helper.rb', __FILE__
+^
+tests/models/responses_test.rb:1:14: C: [Correctable] Style/ExpandPathArguments: Use expand_path('../test_helper.rb', __dir__) instead of expand_path('../../test_helper.rb', __FILE__).
+require File.expand_path '../../test_helper.rb', __FILE__
+             ^^^^^^^^^^^
+tests/models/responses_test.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class ResponseTest.
+class ResponseTest < MiniTest::Unit::TestCase
+^^^^^^^^^^^^^^^^^^
+tests/models/responses_test.rb:4:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 0) spaces for indentation.
+MiniTest::Unit::TestCase
+
+tests/models/responses_test.rb:4:17: W: Lint/Void: Variable TestCase used in void context.
+MiniTest::Unit::TestCase
+                ^^^^^^^^
+tests/models/responses_test.rb:6:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def test_response_has_one_choice ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/responses_test.rb:7:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Arrange
+    ^^^^^^^^
+tests/models/responses_test.rb:8:11: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    choice=Choice.create(text: 'a')
+          ^
+tests/models/responses_test.rb:10:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Act
+    ^^^^
+tests/models/responses_test.rb:14:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Assert
+    ^^^^^^^
+tests/models/responses_test.rb:18:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def test_response_has_one_question ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/responses_test.rb:19:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Arrange
+    ^^^^^^^^
+tests/models/responses_test.rb:20:13: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    question=Question.create(name: 'Q1', description: "asd", number: 3, type: "asdasg")
+            ^
+tests/models/responses_test.rb:20:55: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    question=Question.create(name: 'Q1', description: "asd", number: 3, type: "asdasg")
+                                                      ^^^^^
+tests/models/responses_test.rb:20:79: C: [Correctable] Style/StringLiterals: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+    question=Question.create(name: 'Q1', description: "asd", number: 3, type: "asdasg")
+                                                                              ^^^^^^^^
+tests/models/responses_test.rb:22:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Act
+    ^^^^
+tests/models/responses_test.rb:26:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Assert
+    ^^^^^^^
+tests/models/responses_test.rb:30:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def test_response_has_one_survey ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/responses_test.rb:31:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Arrange
+    ^^^^^^^^
+tests/models/responses_test.rb:32:11: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    survey=Survey.create(name: 'S1')
+          ^
+tests/models/responses_test.rb:34:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Act
+    ^^^^
+tests/models/responses_test.rb:38:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Assert
+    ^^^^^^^
+tests/models/surveys_test.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+require File.expand_path '../../test_helper.rb', __FILE__
+^
+tests/models/surveys_test.rb:1:14: C: [Correctable] Style/ExpandPathArguments: Use expand_path('../test_helper.rb', __dir__) instead of expand_path('../../test_helper.rb', __FILE__).
+require File.expand_path '../../test_helper.rb', __FILE__
+             ^^^^^^^^^^^
+tests/models/surveys_test.rb:3:1: C: Style/Documentation: Missing top-level documentation comment for class SurveyTest.
+class SurveyTest < MiniTest::Unit::TestCase
+^^^^^^^^^^^^^^^^
+tests/models/surveys_test.rb:4:1: C: [Correctable] Layout/IndentationWidth: Use 2 (not 0) spaces for indentation.
+MiniTest::Unit::TestCase
+
+tests/models/surveys_test.rb:4:17: W: Lint/Void: Variable TestCase used in void context.
+MiniTest::Unit::TestCase
+                ^^^^^^^^
+tests/models/surveys_test.rb:6:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def test_survey_has_one_career ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/surveys_test.rb:7:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Arrange
+    ^^^^^^^^
+tests/models/surveys_test.rb:8:11: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =.
+    career=Career.create(name: 'C1')
+          ^
+tests/models/surveys_test.rb:10:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Act
+    ^^^^
+tests/models/surveys_test.rb:14:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Assert
+    ^^^^^^^
+tests/models/surveys_test.rb:16:1: C: [Correctable] Layout/EmptyLinesAroundMethodBody: Extra empty line detected at method body end.
+tests/models/surveys_test.rb:19:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def test_survey_has_name ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/surveys_test.rb:20:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		#Arrange
+^^
+tests/models/surveys_test.rb:20:3: C: [Correctable] Layout/CommentIndentation: Incorrect indentation detected (column 2 instead of 4).
+		#Arrange
+  ^^^^^^^^
+tests/models/surveys_test.rb:20:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+		#Arrange
+  ^^^^^^^^
+tests/models/surveys_test.rb:23:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		#Act
+^^
+tests/models/surveys_test.rb:23:3: C: [Correctable] Layout/CommentIndentation: Incorrect indentation detected (column 2 instead of 4).
+		#Act
+  ^^^^
+tests/models/surveys_test.rb:23:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+		#Act
+  ^^^^
+tests/models/surveys_test.rb:26:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		#Assert
+^^
+tests/models/surveys_test.rb:26:3: C: [Correctable] Layout/CommentIndentation: Incorrect indentation detected (column 2 instead of 4).
+		#Assert
+  ^^^^^^^
+tests/models/surveys_test.rb:26:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+		#Assert
+  ^^^^^^^
+tests/models/surveys_test.rb:30:3: C: [Correctable] Layout/IndentationConsistency: Inconsistent indentation detected.
+  def test_survey_name_is_not_null ...
+  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/models/surveys_test.rb:31:1: C: [Correctable] Layout/IndentationStyle: Tab detected in indentation.
+		#Arrange
+^^
+tests/models/surveys_test.rb:31:3: C: [Correctable] Layout/CommentIndentation: Incorrect indentation detected (column 2 instead of 4).
+		#Arrange
+  ^^^^^^^^
+tests/models/surveys_test.rb:31:3: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+		#Arrange
+  ^^^^^^^^
+tests/models/surveys_test.rb:34:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Act
+    ^^^^
+tests/models/surveys_test.rb:37:5: C: [Correctable] Layout/LeadingCommentSpace: Missing space after #.
+    #Assert
+    ^^^^^^^
+tests/models/surveys_test.rb:40:1: C: [Correctable] Layout/EmptyLinesAroundClassBody: Extra empty line detected at class body end.
+tests/test_helper.rb:1:1: C: [Correctable] Style/FrozenStringLiteralComment: Missing frozen string literal comment.
+# Configurar el test helper para conectarse a la DB de Test
+^
+tests/test_helper.rb:2:23: C: [Correctable] Layout/TrailingWhitespace: Trailing whitespace detected.
+# tests/test_helper.rb 
+                      ^
+tests/test_helper.rb:10:4: C: [Correctable] Layout/FirstArgumentIndentation: Indent the first argument one step more than the start of the previous line.
+   adapter: 'postgres', ...
+   ^^^^^^^^^^^^^^^^^^^^
+tests/test_helper.rb:14:21: C: [Correctable] Layout/MultilineMethodCallBraceLayout: Closing method call brace must be on the line after the last argument when opening brace is on a separate line from the first argument.
+   password: 'magic')
+                    ^
+tests/test_helper.rb:15:1: C: Style/Documentation: Missing top-level documentation comment for class Minitest::HooksSpec.
+class Minitest::HooksSpec
+^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_helper.rb:15:7: C: [Correctable] Style/ClassAndModuleChildren: Use nested module/class definitions instead of compact style.
+class Minitest::HooksSpec
+      ^^^^^^^^^^^^^^^^^^^
+tests/test_helper.rb:17:20: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    DB.transaction(:rollback=>:always, :auto_savepoint=>true){super}
+                   ^^^^^^^^^^^
+tests/test_helper.rb:17:29: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =>.
+    DB.transaction(:rollback=>:always, :auto_savepoint=>true){super}
+                            ^^
+tests/test_helper.rb:17:40: C: [Correctable] Style/HashSyntax: Use the new Ruby 1.9 hash syntax.
+    DB.transaction(:rollback=>:always, :auto_savepoint=>true){super}
+                                       ^^^^^^^^^^^^^^^^^
+tests/test_helper.rb:17:55: C: [Correctable] Layout/SpaceAroundOperators: Surrounding space missing for operator =>.
+    DB.transaction(:rollback=>:always, :auto_savepoint=>true){super}
+                                                      ^^
+tests/test_helper.rb:17:62: C: [Correctable] Layout/SpaceBeforeBlockBraces: Space missing to the left of {.
+    DB.transaction(:rollback=>:always, :auto_savepoint=>true){super}
+                                                             ^
+tests/test_helper.rb:17:63: C: [Correctable] Layout/SpaceInsideBlockBraces: Space missing inside {.
+    DB.transaction(:rollback=>:always, :auto_savepoint=>true){super}
+                                                              ^
+tests/test_helper.rb:17:68: C: [Correctable] Layout/SpaceInsideBlockBraces: Space missing inside }.
+    DB.transaction(:rollback=>:always, :auto_savepoint=>true){super}
+                                                                   ^
+
+36 files inspected, 656 offenses detected, 599 offenses auto-correctable

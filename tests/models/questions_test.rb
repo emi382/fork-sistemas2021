@@ -1,5 +1,6 @@
 require File.expand_path '../../test_helper.rb', __FILE__
 
+#Test to determine questions is working properly
 class QuestionTest < MiniTest::Unit::TestCase
 MiniTest::Unit::TestCase
 

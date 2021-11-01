@@ -1,3 +1,4 @@
+#The survey class records what result a certain person got for the test in what date
 class Survey < Sequel::Model
 	many_to_one:careers
 

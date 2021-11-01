@@ -1,5 +1,6 @@
 require File.expand_path '../../test_helper.rb', __FILE__
 
+#Test to determine careers is working properly
 class CareerTest < MiniTest::Unit::TestCase
 MiniTest::Unit::TestCase
   def test_career_has_many_surveys
