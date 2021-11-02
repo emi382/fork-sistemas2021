@@ -2,7 +2,7 @@ require File.expand_path '../test_helper.rb', __dir__
 
 # Test to determine response is working properly (Not needed)
 class ResponseTest < MiniTest::Unit::TestCase
-  MiniTest::Unit::TestCase
+  # MiniTest::Unit::TestCase
 
   def test_response_has_one_choice
     # Arrange

@@ -2,7 +2,7 @@ require File.expand_path '../test_helper.rb', __dir__
 
 # Test to determine surveys is working properly
 class SurveyTest < MiniTest::Unit::TestCase
-  MiniTest::Unit::TestCase
+  # MiniTest::Unit::TestCase
 
   def test_survey_has_one_career
     # Arrange

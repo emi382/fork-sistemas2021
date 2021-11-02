@@ -2,7 +2,7 @@ require File.expand_path '../test_helper.rb', __dir__
 
 # Test to determine careers is working properly
 class CareerTest < MiniTest::Unit::TestCase
-  MiniTest::Unit::TestCase
+  # MiniTest::Unit::TestCase
   def test_career_has_many_surveys
     # Arrange
     career = Career.create(name: 'Spaceman')

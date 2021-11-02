@@ -2,7 +2,7 @@ require File.expand_path '../test_helper.rb', __dir__
 
 # Test to determine questions is working properly
 class QuestionTest < MiniTest::Unit::TestCase
-  MiniTest::Unit::TestCase
+  # MiniTest::Unit::TestCase
 
   def test_question_has_one_choice
     # Arrange

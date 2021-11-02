@@ -8,6 +8,15 @@ class App < Sinatra::Base
     set :root, File.dirname('../css/style.css')
   end
 
+  def save_or_error(object)
+    if object.save
+      [201, {}, 'Created']
+      redirect back
+    else
+      [500, {}, 'Internal Server Error']
+    end
+  end
+
   it1 = 0
   it2 = 1
 
@@ -72,13 +81,8 @@ class App < Sinatra::Base
   # creates a new survey with the given name and career_id parameter
   post '/surveys' do
     survey = Survey.new(name: params[:name], career_id: params[:career_id])
-    # if saved, go back to homepage
-    if survey.save
-      [201, { 'Location' => "surveys/#{survey.survey_id}" }, 'Created']
-      redirect '/'
-    else
-      [500, {}, 'Internal Server Error']
-    end
+    save_or_error(survey)
+    redirect '/'
   end
 
   # shows /surveys path
@@ -131,14 +135,8 @@ class App < Sinatra::Base
       choice = Choice.new(value: -1)
       choice.save
       question = Question.new(description: description, choice_id: choice.choice_id)
-      if question.save
-        [201, { 'Location' => "questions/#{question.question_id}" }, 'Created']
-        redirect back
-      else
-        [500, {}, 'Internal Server Error']
-      end
+      save_or_error(question)
     end
-    redirect back
   end
 
   # shows all questions
@@ -164,21 +162,16 @@ class App < Sinatra::Base
     career_id = Career.find(career_id: id)
     unless career_id.nil?
       outcome = Outcome.new(choice_id: params[:choice_id], career_id: id, weight: params[:weight])
-      if outcome.save
-        [201, { 'Location' => "outcomes/#{outcome.outcome_id}" }, 'Created']
-        redirect back
-      else
-        [500, {}, 'Internal Server Error']
-      end
+      save_or_error(outcome)
     end
-    redirect back
   end
 
   # shows a particular outcome's information, along with delete and update weight functionalities
   get '/outcomes/:id' do
+    outcome = Outcome.find(outcome_id: params[:id])
     erb :'questions/outcomes/outcome_description', locals: {
-      outcome: outcome = Outcome.find(outcome_id: params[:id]),
-      question: question = Question.find(choice_id: outcome.choice_id)
+      outcome: outcome,
+      question: Question.find(choice_id: outcome.choice_id)
     }
   end
 
@@ -208,14 +201,8 @@ class App < Sinatra::Base
   post '/careers' do
     unless params['name'].blank?
       career = Career.new(name: params['name'])
-      if career.save
-        [201, { 'Location' => "careers/#{career.id}" }, 'Created']
-        redirect back
-      else
-        [500, {}, 'Internal Server Error']
-      end
+      save_or_error(career)
     end
-    redirect back
   end
 
   # deletes a career

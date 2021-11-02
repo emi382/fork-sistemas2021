@@ -13,10 +13,12 @@ DB = Sequel.connect(
   user: 'unicorn',
   password: 'magic'
 )
-# Nos dice que va a hacer rollback
-class Minitest::HooksSpec
-  def around
-    DB.transaction(rollback: :always, auto_savepoint: true) { super }
+module Minitest
+  # Nos dice que va a hacer rollback
+  class HooksSpec
+    def around
+      DB.transaction(rollback: :always, auto_savepoint: true) { super }
+    end
   end
 end
 require File.expand_path './app.rb'
