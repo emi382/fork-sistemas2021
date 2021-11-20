@@ -1,5 +1,6 @@
 # The class question includes the questions of our test that need to be answered
 class Question < Sequel::Model
+  plugin :validation_helpers
   many_to_one :choices
 
   # checks that theres at least 2 questions, each associated to at least one career through an outcome
@@ -25,6 +26,6 @@ class Question < Sequel::Model
 
   def validate
     super
-    errors.add(:description, 'cannot be empty') if !description || description.empty?
+    validates_presence :description, message: 'Requiere descripcion'
   end
 end

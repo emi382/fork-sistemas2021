@@ -1,5 +1,6 @@
 # The class outcome will tell us how much a question influences a certain career result
 class Outcome < Sequel::Model
+  plugin :validation_helpers
   many_to_one :choices
   many_to_one :careers
 
@@ -25,5 +26,10 @@ class Outcome < Sequel::Model
         k.acum += curr
       end
     end
+  end
+
+  def validate
+    super
+    validates_presence :career_id, message: 'Requiere ID de career'
   end
 end

@@ -1,5 +1,6 @@
 # This class includes possible careers that our test can return
 class Career < Sequel::Model
+  plugin :validation_helpers
   one_to_many :surveys
   one_to_many :outcomes
 
@@ -34,6 +35,6 @@ class Career < Sequel::Model
 
   def validate
     super
-    errors.add(:name, 'cannot be empty') if !name || name.empty?
+    validates_presence :name, message: 'Requiere nombre de carrera'
   end
 end
