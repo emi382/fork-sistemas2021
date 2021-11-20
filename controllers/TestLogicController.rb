@@ -9,7 +9,7 @@ class TestLogicController < Sinatra::Base
   it1 = 0
   it2 = 1
 
-  # starts the test by setting the iterators to their default values and passing the first two questions
+  # Starts the test by setting the iterators to their default values and passing the first two questions
   # WARNING: at least 2 questions needed for the test to work, and at least one outcome per question
   get '/start' do
     if Question.first_two
@@ -21,10 +21,7 @@ class TestLogicController < Sinatra::Base
     end
   end
 
-  # processes the current question.
-  # if it2 is smaller than questions.length, keeps on passing both the current question and the next question
-  # if it2 is equal to questions.length, passes only the current question to the page that deals with the last element
-  # if it2 is bigger than questions.length, redirects to the finish page with the test results
+  # Processes the current question and decides which step to take next
   get '/start/:id' do
     questions = Question.all
     qlen = questions.length
@@ -37,9 +34,8 @@ class TestLogicController < Sinatra::Base
     end
   end
 
-  # finds and updates the value of a particular choice
-  # it also increases the iterators, because this is done as part of the test-taking process
-  # redirects to the next question in the test
+  # Updates the value of the choice associated to a question
+  # Prepares iterators for next step and redirects to next question
   post '/choices/update' do
     Choice.find(choice_id: params[:choice_id]).update(value: params[:value])
     it1 += 1
@@ -47,13 +43,14 @@ class TestLogicController < Sinatra::Base
     redirect "/start/#{params[:next_id]}"
   end
 
-  # finds and updates the value of the final choice, redirects to the finish page
+  # Updates the value of the final choice, redirects to the finish page
   post '/choices/update/last' do
     Choice.find(choice_id: params[:choice_id]).update(value: params[:value])
     redirect '/finish'
   end
 
-  # calculates how much every career fits a certain user
+  # Result[0] is the array of all careers with their score
+  # Result[1] is the career with the highest score
   get '/finish' do
     result = TestLogicService.calculate_answer
     erb :finish, locals: { career: result[1], careers: result[0].sort_by do |career|

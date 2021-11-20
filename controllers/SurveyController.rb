@@ -6,13 +6,13 @@ class SurveyController < Sinatra::Base
     set :views, "#{settings.root}/../views"
   end
 
-  # shows /surveys path
+  # Shows /surveys path
   get '/surveys' do
     @surveys = Survey.all
     erb :'surveys/survey_index'
   end
 
-  # creates a new survey with the given name and career_id parameter
+  # Creates a new survey with the given name and career_id parameter
   post '/surveys' do
     Survey.create(name: params[:name], career_id: params[:career_id])
     redirect '/'
@@ -30,14 +30,15 @@ class SurveyController < Sinatra::Base
     end
   end
 
-  # given a range of dates, returns the career count of the surveys in that range
+  # Given a range of dates, returns the career count of the surveys in that range
+  # result has a structure that has the career name and the survey count
   get '/surveys/careercount' do
     result = SurveyService.career_count_view(params[:startDate], params[:finishDate], params[:career])
     erb :'surveys/careercount',
-        locals: { careers: result.first, career: result[1] }
+        locals: { career: result }
   end
 
-  # shows the information of a particular survey
+  # Shows the information of a particular survey
   get '/surveys/:id' do
     survey = Survey.where(survey_id: params[:id]).last
     erb :'surveys/survey_description',
@@ -45,7 +46,7 @@ class SurveyController < Sinatra::Base
                   date: survey.created_at.to_formatted_s(:db) }
   end
 
-  # deletes a survey given its id
+  # Deletes a survey given its id
   post '/surveys/:id/delete' do
     Survey.where(survey_id: params[:id]).delete
     redirect '/surveys'

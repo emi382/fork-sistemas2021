@@ -25,15 +25,17 @@ class Survey < Sequel::Model
     valid and in_range
   end
 
-  # this function returns a structure of careers and an accumulator representing the survey count of said careers
-  def self.career_count(surveys)
-    careers = Career.map_to_career_struct
+  # Returns a structure with the career's (given by cid) name and number of times it appears in surveys
+  def self.career_count(surveys,cid)
+    career_struct = Struct.new(:career_name, :surveycount)
+    career = Career.find(career_id: cid)
+    career_surveys = career_struct.new(career.name, 0)
     surveys.each do |s|
-      careers.each do |c|
-        c.acum = c.acum + 1 if s.career_id == c.career_id
+      if (s.career_id == career.career_id)
+        career_surveys.surveycount+=1
       end
     end
-    careers
+    return career_surveys
   end
 
   def validate

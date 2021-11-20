@@ -26,13 +26,9 @@
     </header>
     <section>
         <ul>
-            <%careers.each do |careerdo|%>
                <li>
-                   <% if careerdo.name == career %>
-                   <p class="text"> <%=careerdo.name%> - <%=careerdo.acum%> encuestas</p> 
-                   <% end %>
+                   <p class="text"> <%=career.career_name%> - <%=career.surveycount%> encuestas</p> 
                </li>
-           <%end%>
        </ul>
     </section>
     <br>
