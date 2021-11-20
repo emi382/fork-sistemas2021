@@ -1,7 +1,7 @@
 class SurveyService
 
   # Returns the first and last elements from
-  # the survey table, which is ordered by date
+  # the survey table, which is ordered by date, if surveys is not nil
   def self.first_and_last
     surveys = Survey.first
     if surveys.nil?

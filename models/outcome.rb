@@ -31,5 +31,7 @@ class Outcome < Sequel::Model
   def validate
     super
     validates_presence :career_id, message: 'Requiere ID de career'
+    validates_presence :choice_id, message: 'Requiere ID de choice'
+    validates_presence :weight, message: 'Requiere peso asociado'
   end
 end

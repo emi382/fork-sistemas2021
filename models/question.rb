@@ -27,5 +27,6 @@ class Question < Sequel::Model
   def validate
     super
     validates_presence :description, message: 'Requiere descripcion'
+    validates_presence :choice_id, message: 'Requiere choice asociada'
   end
 end

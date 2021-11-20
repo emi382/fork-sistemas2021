@@ -36,5 +36,6 @@ class Career < Sequel::Model
   def validate
     super
     validates_presence :name, message: 'Requiere nombre de carrera'
+    validates_unique :name, message: 'No puede haber carreras repetidas'
   end
 end

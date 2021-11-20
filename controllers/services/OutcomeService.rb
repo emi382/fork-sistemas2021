@@ -11,6 +11,10 @@ class OutcomeService
   # But only if the career exists
   def self.create_outcome(cid, chid, weight)
     career = Career.find(career_id: cid)
-    Outcome.create(choice_id: chid, career_id: cid, weight: weight) unless career.nil?
+    outcome=Outcome.new(choice_id: chid, career_id: cid, weight: weight)
+    if (career.nil? || !outcome.valid?)
+      return
+    end
+      outcome.save
   end
 end

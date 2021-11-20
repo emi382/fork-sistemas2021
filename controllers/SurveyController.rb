@@ -18,7 +18,8 @@ class SurveyController < Sinatra::Base
     redirect '/'
   end
 
-  # Se selecciona el rango y la carrera
+  # Usa la primera y ultima survey para calcular mi rango de surveys totales
+  # Dates[1] es la primera survey, dates[2] es la ultima survey
   get '/surveys/setdate' do
     dates = SurveyService.first_and_last
     if dates.first == false
