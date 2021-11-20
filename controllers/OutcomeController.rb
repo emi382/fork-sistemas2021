@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require_relative './services/OutcomeService'
 
+# Control class for outcomes
 class OutcomeController < Sinatra::Base
   configure :development, :production do
     set :views, "#{settings.root}/../views"

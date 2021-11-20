@@ -26,16 +26,14 @@ class Survey < Sequel::Model
   end
 
   # Returns a structure with the career's (given by cid) name and number of times it appears in surveys
-  def self.career_count(surveys,cid)
+  def self.career_count(surveys, cid)
     career_struct = Struct.new(:career_name, :surveycount)
     career = Career.find(career_id: cid)
     career_surveys = career_struct.new(career.name, 0)
     surveys.each do |s|
-      if (s.career_id == career.career_id)
-        career_surveys.surveycount+=1
-      end
+      career_surveys.surveycount += 1 if s.career_id == career.career_id
     end
-    return career_surveys
+    career_surveys
   end
 
   def validate

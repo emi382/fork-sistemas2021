@@ -1,5 +1,5 @@
+# Service class for questions
 class QuestionService
-
   # Creates a question and a choice associated to it
   def self.create_question(desc)
     choice = Choice.create(value: -1)

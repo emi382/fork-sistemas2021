@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require_relative './services/SurveyService'
 
+# Control class for surveys
 class SurveyController < Sinatra::Base
   configure :development, :production do
     set :views, "#{settings.root}/../views"

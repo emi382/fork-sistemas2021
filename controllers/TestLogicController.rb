@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require_relative './services/TestLogicService'
 
+# Control class for the test solving logic
 class TestLogicController < Sinatra::Base
   configure :development, :production do
     set :views, "#{settings.root}/../views"

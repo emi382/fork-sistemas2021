@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require_relative './services/CareerService'
 
+# Control class for careers
 class CareerController < Sinatra::Base
   configure :development, :production do
     set :views, "#{settings.root}/../views"
