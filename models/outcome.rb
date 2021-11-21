@@ -33,5 +33,6 @@ class Outcome < Sequel::Model
     validates_presence :career_id, message: 'Requiere ID de career'
     validates_presence :choice_id, message: 'Requiere ID de choice'
     validates_presence :weight, message: 'Requiere peso asociado'
+    validates_unique %i[career_id choice_id], message: 'No puede haber mismo career_id para misma pregunta'
   end
 end
