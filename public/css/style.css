@@ -66,33 +66,39 @@ header #logo :hover{
 }
 
 ul{
+  padding:0;
+  margin:0;
   list-style: none;
 }
 
 .ListText li{
   font-size: large;
 }
+
 nav{
   margin-top: 10px;
 }
 
 nav ul{
-  list-style: none;
   text-align: center;
-  padding: 0px;
-  margin: 2 px;
-  background: #343463;
+  padding: 0;
+  margin: 0;
 }
 
 nav ul li{
-  padding: 0px 30px;
-  display: inline-block;
+  display: block;
+  float: left;
+}
+
+nav li ul {
+  display: none;
 }
 
 nav ul li a{
-  display: flex;
+  display: block;
+  padding: 10px;
+  width:100px; 
   text-decoration: none;
-  background: #343463;
 }
 
 nav ul li a:hover{
@@ -159,14 +165,12 @@ thead tr{
 tbody tr {
   background: #534bae;
 }
-.mainmenu, .submenu {
-  list-style: none;
-  padding: 0;
-}
+
 
 /* this is the initial state of all submenus.
   we set it to max-height: 0, and hide the overflowed content.
 */
+/*
 .submenu {
   position: absolute;
   display: none;
@@ -176,25 +180,27 @@ tbody tr {
   margin-bottom: 49px;
   top: 49px;
   max-height: 0;
-}
+}*/
 
-.submenu li{
-  float: right;
-  color: #fff;
-  width: 100%;
-  margin: 0;
-}
 
-.submenu li a{
-  padding: 0;
-  margin: 0;
-}
 
 /* when hovering over a .mainmenu item,
   display the submenu inside it.
   we're changing the submenu's max-height from 0 to 200px;
 */
-.mainmenu li:hover .submenu {
+.mainmenu li:hover ul{
   display: block;
-  max-height: 200px;
+  position: absolute;
+}
+
+.mainmenu li:hover .submenu li a{
+  border-radius: 10%;
+  background: #343463;
+}
+.mainmenu li:hover .submenu li a:hover {
+  width:100px;
+}
+
+.mainmenu li:hover .submenu li {
+  float: none; 
 }
